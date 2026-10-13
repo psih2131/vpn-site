@@ -7,7 +7,12 @@
 
         <!-- Hero -->
         <section id="hero" class="hero">
-            <img :src="heroSchematic" alt="" class="hero__schematic" />
+            <img
+                :src="heroSchematic"
+                alt="Схема подключения VPN ключа Dark Nova для Happ и INCY"
+                title="Схема подключения VPN ключа Dark Nova для Happ и INCY"
+                class="hero__schematic"
+            />
             <div class="container">
                 <div class="hero__inner">
                     <div class="hero__content">
@@ -44,12 +49,22 @@
                             <span class="hero__trust-label">Работает с клиентами</span>
                             <div class="hero__trust-list">
                                 <span class="hero__trust-item">
-                                    <img :src="logoHapp" alt="Клиент Happ для VPN ключа Dark Nova" class="hero__trust-logo" />
+                                    <img
+                                        :src="logoHapp"
+                                        alt="Клиент Happ для VPN ключа Dark Nova"
+                                        title="Клиент Happ для VPN ключа Dark Nova"
+                                        class="hero__trust-logo"
+                                    />
                                     <span class="hero__trust-name">Happ</span>
                                 </span>
                                 <span class="hero__trust-plus">+</span>
                                 <span class="hero__trust-item">
-                                    <img :src="logoIncy" alt="Клиент INCY для VPN ключа Dark Nova" class="hero__trust-logo" />
+                                    <img
+                                        :src="logoIncy"
+                                        alt="Клиент INCY для VPN ключа Dark Nova"
+                                        title="Клиент INCY для VPN ключа Dark Nova"
+                                        class="hero__trust-logo"
+                                    />
                                     <span class="hero__trust-name">INCY</span>
                                 </span>
                             </div>
@@ -121,7 +136,12 @@
                                 Провайдер видит только зашифрованный трафик — не вашу историю.
                             </p>
                         </div>
-                        <img :src="featureSecurity" alt="" class="features__image features__image--security" />
+                        <img
+                            :src="featureSecurity"
+                            alt="Защита данных без логов — Dark Nova VPN"
+                            title="Защита данных без логов — Dark Nova VPN"
+                            class="features__image features__image--security"
+                        />
                     </div>
 
                     <div class="features__card features__card--row">
@@ -132,7 +152,12 @@
                                 для обхода белых списков и YouTube без рекламы.
                             </p>
                         </div>
-                        <img :src="featureApps" alt="" class="features__image features__image--apps" />
+                        <img
+                            :src="featureApps"
+                            alt="10 VPN серверов Dark Nova по всему миру"
+                            title="10 VPN серверов Dark Nova по всему миру"
+                            class="features__image features__image--apps"
+                        />
                     </div>
 
                     <div class="features__card features__card--row">
@@ -143,7 +168,12 @@
                                 онлайн-игр и быстрой загрузки файлов без просадок.
                             </p>
                         </div>
-                        <img :src="featureSpeed" alt="" class="features__image features__image--speed" />
+                        <img
+                            :src="featureSpeed"
+                            alt="Высокая скорость и низкий пинг Dark Nova VPN"
+                            title="Высокая скорость и низкий пинг Dark Nova VPN"
+                            class="features__image features__image--speed"
+                        />
                     </div>
                 </div>
             </div>
@@ -218,7 +248,12 @@
                                 со своего реферального счета.
                             </p>
                         </div>
-                        <img :src="promoReferral" alt="" class="pricing__promo-image pricing__promo-image--referral" />
+                        <img
+                            :src="promoReferral"
+                            alt="Реферальная программа Dark Nova VPN"
+                            title="Реферальная программа Dark Nova VPN"
+                            class="pricing__promo-image pricing__promo-image--referral"
+                        />
                     </div>
                     <div class="pricing__promo-card">
                         <div class="pricing__promo-content">
@@ -227,7 +262,12 @@
                                 если вам не понравится<br />или не подойдет Dark Nova VPN.
                             </p>
                         </div>
-                        <img :src="promoRefund" alt="" class="pricing__promo-image pricing__promo-image--refund" />
+                        <img
+                            :src="promoRefund"
+                            alt="Возврат денег в течение 14 дней — Dark Nova VPN"
+                            title="Возврат денег в течение 14 дней — Dark Nova VPN"
+                            class="pricing__promo-image pricing__promo-image--refund"
+                        />
                     </div>
                 </div>
             </div>
@@ -308,7 +348,12 @@
             <div class="container">
                 <div class="devices-alt__inner">
                     <div class="devices-alt__visual">
-                        <img :src="devicesAltPhone" alt="Приложение Dark Nova VPN" class="devices-alt__phone" />
+                        <img
+                            :src="devicesAltPhone"
+                            alt="Приложение Dark Nova VPN на смартфоне"
+                            title="Приложение Dark Nova VPN на смартфоне"
+                            class="devices-alt__phone"
+                        />
                     </div>
 
                     <div class="devices-alt__content">
@@ -381,7 +426,8 @@
                         >
                             <img
                                 :src="platform.image"
-                                alt=""
+                                :alt="platform.title"
+                                :title="platform.title"
                                 class="platforms__icon-img"
                                 :class="{ 'platforms__icon-img--wide': platform.wide }"
                             />
@@ -481,7 +527,7 @@
                 <h2 class="section-title">Блог</h2>
                 <div class="blog__grid">
                     <article v-for="post in blogPosts" :key="post.title" class="blog__card">
-                        <img :src="post.image" :alt="post.title" class="blog__image" />
+                        <img :src="post.image" :alt="post.title" :title="post.title" class="blog__image" />
                         <div class="blog__body">
                             <time class="blog__date">{{ post.date }}</time>
                             <h3 class="blog__title">{{ post.title }}</h3>
