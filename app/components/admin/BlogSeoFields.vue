@@ -23,10 +23,34 @@
                     <span class="admin-form__label">robots</span>
                     <input v-model="seo.robots" class="admin-form__input" type="text" placeholder="index, follow">
                 </label>
-                <label class="admin-form__field">
+                <div class="admin-form__field">
                     <span class="admin-form__label">canonical</span>
-                    <input v-model="seo.canonical" class="admin-form__input" type="text" placeholder="https://dark-nova-vpn.space/blog/...">
-                </label>
+                    <div class="admin-form__slug">
+                        <input
+                            v-model="seo.canonical"
+                            class="admin-form__input"
+                            type="text"
+                            placeholder="https://dark-nova-vpn.space/blog/..."
+                        >
+                        <button
+                            type="button"
+                            class="admin-form__slug-btn"
+                            title="Сгенерировать canonical из slug"
+                            aria-label="Сгенерировать canonical из slug"
+                            @click="onGenerateCanonical"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M4 12h4l2-7 4 14 2-7h4"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -46,10 +70,34 @@
                 <span class="admin-form__label">og:description</span>
                 <textarea v-model="seo.ogDescription" class="admin-form__textarea" rows="2"></textarea>
             </label>
-            <label class="admin-form__field">
+            <div class="admin-form__field">
                 <span class="admin-form__label">og:url</span>
-                <input v-model="seo.ogUrl" class="admin-form__input" type="text" placeholder="https://...">
-            </label>
+                <div class="admin-form__slug">
+                    <input
+                        v-model="seo.ogUrl"
+                        class="admin-form__input"
+                        type="text"
+                        placeholder="https://..."
+                    >
+                    <button
+                        type="button"
+                        class="admin-form__slug-btn"
+                        title="Сгенерировать og:url из slug"
+                        aria-label="Сгенерировать og:url из slug"
+                        @click="onGenerateOgUrl"
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path
+                                d="M4 12h4l2-7 4 14 2-7h4"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="admin-seo__section">
@@ -106,4 +154,31 @@ const seo = defineModel({
     type: Object,
     required: true,
 })
+
+const props = defineProps({
+    slug: {
+        type: String,
+        default: '',
+    },
+})
+
+const siteUrl = 'https://dark-nova-vpn.space'
+
+function buildPostUrl() {
+    const cleanSlug = String(props.slug || '').trim().replace(/^\/+|\/+$/g, '')
+    if (!cleanSlug) return ''
+    return `${siteUrl}/blog/${cleanSlug}`
+}
+
+function onGenerateCanonical() {
+    const url = buildPostUrl()
+    if (!url) return
+    seo.value.canonical = url
+}
+
+function onGenerateOgUrl() {
+    const url = buildPostUrl()
+    if (!url) return
+    seo.value.ogUrl = url
+}
 </script>

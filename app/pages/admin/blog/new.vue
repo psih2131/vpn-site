@@ -32,7 +32,7 @@
             />
             <AdminBlogContentFields v-model="form.contentHtml" />
             <AdminBlogRecommendedPicker v-model="form.recommendedIds" />
-            <AdminBlogSeoFields v-model="form.seo" />
+            <AdminBlogSeoFields v-model="form.seo" :slug="form.slug" />
         </div>
     </div>
 </template>

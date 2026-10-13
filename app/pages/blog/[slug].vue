@@ -102,21 +102,23 @@ const { data: coverResponse } = await useFetch(
 const { data: allPostsResponse } = await useFetch(
     () => adminUrl('/api/v1/admin/blog'),
     {
-        key: 'blog-posts',
+        key: 'blog-posts-raw',
         credentials: 'include',
     },
 )
 
-function mapPost(row, image = '') {
-    if (!row) return null
+const coverPath = coverResponse.value?.data?.path || ''
+const postImage = coverPath ? `${apiBase}/uploads/${coverPath}` : ''
+const row = postResponse.value?.data || null
 
-    return {
+const post = row
+    ? {
         id: row.id,
         slug: row.slug,
         title: row.title || '',
         excerpt: row.excerpt || '',
         date: formatDate(row.created_at, true),
-        image,
+        image: postImage,
         contentHtml: row.content_html || '',
         seo_title: row.seo_title || '',
         seo_description: row.seo_description || '',
@@ -136,40 +138,24 @@ function mapPost(row, image = '') {
         seo_twitter_title: row.seo_twitter_title || '',
         seo_twitter_description: row.seo_twitter_description || '',
     }
-}
+    : null
 
-function mapRecommended(row) {
-    return {
-        id: row.id,
-        slug: row.slug,
-        title: row.title || '',
-        excerpt: row.excerpt || '',
-        date: formatDate(row.created_at),
-        coverUploadId: row.cover_upload_id,
-    }
-}
-
-const post = computed(() => {
-    const row = postResponse.value?.data || null
-    const coverPath = coverResponse.value?.data?.path || ''
-    const image = coverPath ? `${apiBase}/uploads/${coverPath}` : ''
-    return mapPost(row, image)
-})
-
-const recommendedPosts = computed(() => {
-    const row = postResponse.value?.data || null
-    const recommendedIds = Array.isArray(row?.recommended_ids) ? row.recommended_ids : []
-    const allRows = allPostsResponse.value?.data || []
-
-    return recommendedIds
-        .map((id) => allRows.find((item) => Number(item.id) === Number(id)))
-        .filter(Boolean)
-        .map(mapRecommended)
-})
+const recommendedIds = Array.isArray(row?.recommended_ids) ? row.recommended_ids : []
+const allRows = allPostsResponse.value?.data || []
+const recommendedPosts = recommendedIds
+    .map((id) => allRows.find((item) => Number(item.id) === Number(id)))
+    .filter(Boolean)
+    .map((item) => ({
+        id: item.id,
+        slug: item.slug,
+        title: item.title || '',
+        excerpt: item.excerpt || '',
+        date: formatDate(item.created_at),
+        coverUploadId: item.cover_upload_id,
+    }))
 
 useHead(() => {
-    const current = post.value
-    if (!current) {
+    if (!post) {
         return {
             title: 'Статья не найдена | Dark Nova VPN',
             meta: [
@@ -179,36 +165,36 @@ useHead(() => {
         }
     }
 
-    const pageTitle = current.seo_title || current.title || 'Блог Dark Nova VPN'
-    const pageDescription = current.seo_description || current.excerpt || ''
-    const ogTitle = current.seo_og_title || pageTitle
-    const ogDescription = current.seo_og_description || pageDescription
-    const twitterTitle = current.seo_twitter_title || pageTitle
-    const twitterDescription = current.seo_twitter_description || pageDescription
-    const ogImage = current.image || ''
-    const canonical = current.seo_canonical || ''
-    const ogUrl = current.seo_og_url || canonical || ''
+    const pageTitle = post.seo_title || post.title || 'Блог Dark Nova VPN'
+    const pageDescription = post.seo_description || post.excerpt || ''
+    const ogTitle = post.seo_og_title || pageTitle
+    const ogDescription = post.seo_og_description || pageDescription
+    const twitterTitle = post.seo_twitter_title || pageTitle
+    const twitterDescription = post.seo_twitter_description || pageDescription
+    const ogImage = post.image || ''
+    const canonical = post.seo_canonical || ''
+    const ogUrl = post.seo_og_url || canonical || ''
 
     return {
         title: pageTitle,
         meta: [
             { name: 'description', content: pageDescription },
-            { name: 'keywords', content: current.seo_keywords || '' },
-            { name: 'robots', content: current.seo_robots || 'index, follow' },
+            { name: 'keywords', content: post.seo_keywords || '' },
+            { name: 'robots', content: post.seo_robots || 'index, follow' },
 
             { property: 'og:title', content: ogTitle },
             { property: 'og:description', content: ogDescription },
-            { property: 'og:type', content: current.seo_og_type || 'article' },
+            { property: 'og:type', content: post.seo_og_type || 'article' },
             { property: 'og:url', content: ogUrl },
             { property: 'og:image', content: ogImage },
 
-            { property: 'article:published_time', content: current.seo_article_published_time || '' },
-            { property: 'article:modified_time', content: current.seo_article_modified_time || '' },
-            { property: 'article:author', content: current.seo_article_author || 'Dark Nova' },
-            { property: 'article:section', content: current.seo_article_section || '' },
-            { property: 'article:tag', content: current.seo_article_tag || '' },
+            { property: 'article:published_time', content: post.seo_article_published_time || '' },
+            { property: 'article:modified_time', content: post.seo_article_modified_time || '' },
+            { property: 'article:author', content: post.seo_article_author || 'Dark Nova' },
+            { property: 'article:section', content: post.seo_article_section || '' },
+            { property: 'article:tag', content: post.seo_article_tag || '' },
 
-            { name: 'twitter:card', content: current.seo_twitter_card || 'summary_large_image' },
+            { name: 'twitter:card', content: post.seo_twitter_card || 'summary_large_image' },
             { name: 'twitter:title', content: twitterTitle },
             { name: 'twitter:description', content: twitterDescription },
             { name: 'twitter:image', content: ogImage },

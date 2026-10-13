@@ -39,7 +39,7 @@
                 v-model="form.recommendedIds"
                 :post-id="route.params.id"
             />
-            <AdminBlogSeoFields v-model="form.seo" />
+            <AdminBlogSeoFields v-model="form.seo" :slug="form.slug" />
         </div>
     </div>
 </template>
