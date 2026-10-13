@@ -60,8 +60,14 @@ export default defineNuxtConfig({
           '/api/__sitemap__/blog',
         ],
       },
+      directions: {
+        sources: [
+          '/api/__sitemap__/directions',
+        ],
+      },
     },
   },
+
 
 
 
