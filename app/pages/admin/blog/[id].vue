@@ -95,7 +95,9 @@ function fillForm(post) {
     form.excerpt = post.excerpt || ''
     form.contentHtml = post.content_html || ''
     form.coverUploadId = post.cover_upload_id ?? null
-    form.recommendedIds = Array.isArray(post.recommended_ids) ? [...post.recommended_ids] : []
+    const currentId = Number(route.params.id)
+    form.recommendedIds = (Array.isArray(post.recommended_ids) ? post.recommended_ids : [])
+        .filter((id) => Number(id) !== currentId)
 
     form.seo.title = post.seo_title || ''
     form.seo.description = post.seo_description || ''
@@ -190,7 +192,9 @@ async function onUpdate() {
                 excerpt: form.excerpt,
                 contentHtml: form.contentHtml,
                 coverUploadId: form.coverUploadId,
-                recommendedIds: form.recommendedIds,
+                recommendedIds: form.recommendedIds.filter(
+                    (id) => Number(id) !== Number(route.params.id),
+                ),
                 seo: form.seo,
             },
         })

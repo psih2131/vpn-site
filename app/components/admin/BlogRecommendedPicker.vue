@@ -20,7 +20,7 @@
                         </span>
                     </button>
                     <p v-if="getAvailablePosts().length === 0" class="admin-recommend__empty">
-                        {{ posts.length === 0 ? 'Постов пока нет' : 'Все посты уже добавлены' }}
+                        {{ otherPosts().length === 0 ? 'Других постов пока нет' : 'Все посты уже добавлены' }}
                     </p>
                 </div>
             </div>
@@ -43,7 +43,6 @@
                             type="button"
                             class="admin-recommend__remove"
                             aria-label="Убрать"
-                            :disabled="isLockedPost(post.id)"
                             @click="removePost(post.id)"
                         >
                             ×
@@ -78,12 +77,18 @@ const posts = ref([])
 const pending = ref(true)
 const loadError = ref(false)
 
-function isLockedPost(id) {
+function isCurrentPost(id) {
     return props.postId !== '' && props.postId !== null && String(id) === String(props.postId)
 }
 
+function otherPosts() {
+    return posts.value.filter((post) => !isCurrentPost(post.id))
+}
+
 function getSelectedIds() {
-    return props.modelValue.map(String)
+    return props.modelValue
+        .filter((id) => !isCurrentPost(id))
+        .map(String)
 }
 
 function getSelectedPosts() {
@@ -94,7 +99,7 @@ function getSelectedPosts() {
 
 function getAvailablePosts() {
     const selected = getSelectedIds()
-    return posts.value.filter((post) => !selected.includes(String(post.id)))
+    return otherPosts().filter((post) => !selected.includes(String(post.id)))
 }
 
 function formatDate(raw) {
@@ -109,25 +114,24 @@ function formatDate(raw) {
 }
 
 function emitSelected(ids) {
-    emit('update:modelValue', ids)
+    emit(
+        'update:modelValue',
+        ids.filter((id) => !isCurrentPost(id)),
+    )
 }
 
-function ensurePostIdSelected() {
-    if (props.postId === '' || props.postId === null || props.postId === undefined) return
-
-    const id = props.postId
-    if (getSelectedIds().includes(String(id))) return
-
-    emitSelected([...props.modelValue, id])
+function stripCurrentFromModel() {
+    if (!props.modelValue.some((id) => isCurrentPost(id))) return
+    emitSelected(props.modelValue)
 }
 
 function addPost(post) {
+    if (isCurrentPost(post.id)) return
     if (getSelectedIds().includes(String(post.id))) return
     emitSelected([...props.modelValue, post.id])
 }
 
 function removePost(id) {
-    if (isLockedPost(id)) return
     emitSelected(props.modelValue.filter((item) => String(item) !== String(id)))
 }
 
@@ -140,7 +144,7 @@ async function loadPosts() {
             credentials: 'include',
         })
         posts.value = response?.data || []
-        ensurePostIdSelected()
+        stripCurrentFromModel()
     } catch {
         posts.value = []
         loadError.value = true
@@ -150,7 +154,7 @@ async function loadPosts() {
 }
 
 watch(() => props.postId, () => {
-    ensurePostIdSelected()
+    stripCurrentFromModel()
 })
 
 onMounted(() => {
