@@ -1,0 +1,33 @@
+.account-wrapper {
+	display: flex;
+	min-height: 100vh;
+	background: #111;
+}
+
+.account-content {
+	flex: 1;
+	min-width: 0;
+	padding: 32px 36px;
+}
+
+.account-content__title {
+	font-family: $titleFont;
+	font-size: 34px;
+	font-weight: 500;
+	letter-spacing: -0.03em;
+	color: #fff;
+}
+
+@media only screen and (max-width: 900px) {
+	.account-wrapper {
+		flex-direction: column;
+	}
+
+	.account-content {
+		padding: 24px 16px 40px;
+	}
+
+	.account-content__title {
+		font-size: 28px;
+	}
+}

@@ -1,0 +1,124 @@
+.header {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	padding: 20px 0;
+	background-color: rgba(0, 0, 0, 0.85);
+	backdrop-filter: blur(12px);
+}
+
+.header__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+}
+
+.header__logo {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-shrink: 0;
+}
+
+.header__logo-icon {
+	width: 36px;
+	height: 36px;
+	flex-shrink: 0;
+}
+
+.header__logo-text {
+	font-family: $titleFont;
+	font-size: 22px;
+	font-weight: 700;
+	color: $color-text;
+	letter-spacing: -0.02em;
+}
+
+.header__nav {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 6px 8px;
+	border-radius: $radius-pill;
+	background-color: $color-bg-nav;
+	border: 1px solid $color-bg-nav-border;
+}
+
+.header__nav-item {
+	position: relative;
+}
+
+.header__nav-link {
+	display: block;
+	padding: 10px 18px;
+	border-radius: $radius-pill;
+	font-size: 14px;
+	font-weight: 500;
+	color: $color-text-muted;
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.header__nav-link:hover {
+	color: $color-text;
+	background-color: rgba(255, 255, 255, 0.06);
+}
+
+.header__nav-badge {
+	position: absolute;
+	top: -8px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 2px 8px;
+	border-radius: $radius-pill;
+	background-color: $color-badge-free;
+	color: $color-text;
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.header__actions {
+	flex-shrink: 0;
+}
+
+.header__connect-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 22px;
+	border-radius: $radius-pill;
+	background-color: $color-bg-card-inner;
+	border: 1px solid $color-border-light;
+	color: $color-text;
+	font-family: $textFont;
+	font-size: 14px;
+	font-weight: 600;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.header__connect-btn:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.2);
+}
+
+.header__connect-icon {
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+	color: $color-green;
+}
+
+@media only screen and (max-width: 1300px) {
+	.header__nav{
+		display: none;
+	}
+	.header{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+	}
+}

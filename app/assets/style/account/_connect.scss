@@ -1,0 +1,261 @@
+.connect-page {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+	width: 100%;
+	max-width: 760px;
+}
+
+.connect-page__head {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.connect-page__title {
+	font-family: $titleFont;
+	font-size: 34px;
+	font-weight: 500;
+	letter-spacing: -0.03em;
+	color: #fff;
+}
+
+.connect-page__desc {
+	font-size: 14px;
+	line-height: 1.45;
+	color: #8a8a8a;
+}
+
+.connect-stats {
+	max-width: 100%;
+}
+
+.connect-key {
+	padding: 22px;
+	border-radius: 18px;
+	background: #161616;
+	border: 1px solid #222;
+}
+
+.connect-key__top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 14px;
+}
+
+.connect-key__label {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #6f6f6f;
+}
+
+.connect-key__badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 5px 10px;
+	border-radius: 999px;
+	background: #1c1c1c;
+	border: 1px solid #2a2a2a;
+	font-size: 12px;
+	font-weight: 600;
+	color: #b8b8b8;
+}
+
+.connect-key__badge-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #00d981;
+}
+
+.connect-key__field {
+	padding: 14px 16px;
+	border-radius: 12px;
+	background: #111;
+	border: 1px solid #242424;
+	overflow: hidden;
+}
+
+.connect-key__value {
+	display: block;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 13px;
+	line-height: 1.45;
+	color: #d4d4d4;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.connect-key__hint {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin-top: 12px;
+	padding: 12px 14px;
+	border-radius: 12px;
+	background: rgba(196, 146, 42, 0.1);
+	border: 1px solid rgba(196, 146, 42, 0.22);
+	color: #c9a24b;
+	font-size: 13px;
+	line-height: 1.45;
+}
+
+.connect-key__hint-icon {
+	flex-shrink: 0;
+	width: 18px;
+	height: 18px;
+	margin-top: 1px;
+}
+
+.connect-key__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 16px;
+}
+
+.connect-key__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 46px;
+	padding: 12px 18px;
+	border-radius: 12px;
+	font-family: $textFont;
+	font-size: 14px;
+	font-weight: 650;
+	transition: opacity 0.15s ease, background-color 0.15s ease;
+
+	svg {
+		width: 18px;
+		height: 18px;
+	}
+
+	&--primary {
+		background: #fff;
+		color: #111;
+
+		&:hover {
+			opacity: 0.9;
+		}
+	}
+
+	&--ghost {
+		background: #1c1c1c;
+		border: 1px solid #2a2a2a;
+		color: #fff;
+
+		&:hover {
+			background: #222;
+		}
+	}
+}
+
+.connect-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.connect-grid__item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 18px 18px;
+	border-radius: 16px;
+	background: #161616;
+	border: 1px solid #222;
+	color: #fff;
+	text-align: left;
+	font-family: $textFont;
+	text-decoration: none;
+	transition: background-color 0.15s ease, border-color 0.15s ease;
+
+	&:hover {
+		background: #1a1a1a;
+		border-color: #2a2a2a;
+	}
+}
+
+.connect-grid__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 12px;
+	background: #1c1c1c;
+	color: #cfcfcf;
+
+	svg {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.connect-grid__text {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	min-width: 0;
+}
+
+.connect-grid__title {
+	font-size: 15px;
+	font-weight: 650;
+	color: #fff;
+}
+
+.connect-grid__sub {
+	font-size: 13px;
+	font-weight: 500;
+	color: #8a8a8a;
+}
+
+.connect-grid__external {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	color: #6f6f6f;
+
+	svg {
+		width: 14px;
+		height: 14px;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.connect-page__title {
+		font-size: 28px;
+	}
+
+	.connect-key {
+		padding: 16px;
+	}
+
+	.connect-key__actions {
+		flex-direction: column;
+	}
+
+	.connect-key__btn {
+		width: 100%;
+	}
+
+	.connect-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.connect-key__value {
+		white-space: normal;
+		word-break: break-all;
+	}
+}

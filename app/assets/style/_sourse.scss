@@ -1,0 +1,149 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style-type: none;
+}
+
+button {
+	cursor: pointer;
+	outline: 0 none !important;
+	border: none;
+}
+
+body::-webkit-scrollbar {
+	width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: darkgrey;
+	border-radius: 100px;
+}
+
+input {
+	outline: 0 none !important;
+}
+
+input[type=text] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input[type=tel] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input[type=email] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input[type=submit] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+select {
+	cursor: pointer;
+	outline: 0 none !important;
+	overflow: hidden;
+}
+
+textarea {
+	outline: 0 none !important;
+}
+
+svg {
+	shape-rendering: geometricPrecision;
+}
+
+body {
+	font-family: $textFont;
+	background-color: $color-bg;
+	color: $color-text;
+	-webkit-font-smoothing: antialiased;
+}
+
+ul {
+	margin-bottom: 0;
+}
+section{
+	max-width: $container-width;
+	margin: 0 auto;
+}
+
+.container {
+	width: $container-width;
+	max-width: 100%;
+	margin: 0 auto;
+
+}
+
+.app-wrapper {
+	min-height: 100vh;
+	background-color: $color-bg;
+}
+
+.section-title {
+	font-family: $titleFont;
+	font-size: 42px;
+	font-weight: 300;
+	line-height: 1.15;
+	color: $color-text;
+	margin-bottom: 40px;
+}
+
+.btn-green {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 16px 32px;
+	border-radius: $radius-pill;
+	background: $gradient-green;
+	color: $color-text;
+	font-family: $textFont;
+	font-size: 16px;
+	font-weight: 600;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-green:hover {
+	opacity: 0.92;
+	transform: translateY(-1px);
+}
+
+.btn-green__icon {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+}
+
+
+@media only screen and (max-width: 1300px) {
+	.container{
+		width: 350px;
+	}
+	.main{
+		padding-top: 84px;
+	}
+}
