@@ -31,6 +31,8 @@
 
             <div class="blog-post__content text-content" v-html="post.contentHtml"></div>
 
+            <BlogPostCta />
+
             <section v-if="recommendedPosts.length" class="blog-similar">
                 <h2 class="blog-similar__title">Похожие статьи</h2>
                 <div class="blog-similar__grid">
