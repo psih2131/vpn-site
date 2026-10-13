@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <NuxtLink to="/blog" class="header__nav-link">Блог</NuxtLink>
-                <a href="/#faq" class="header__nav-link">Поддержка</a>
+                <a href="https://t.me/darkNovaVpn_support" target="_blank" rel="noopener noreferrer" class="header__nav-link">Поддержка</a>
             </nav>
 
             <div class="header__actions">

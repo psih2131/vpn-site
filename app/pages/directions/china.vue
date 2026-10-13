@@ -668,7 +668,8 @@ const countries = [
     { flag: 'se', name: 'Швеция Hysteria', city: 'Hysteria | hysteria | TLS' },
     { flag: 'ru', name: 'Россия Vless', city: 'VLESS | TCP | Reality' },
     { flag: 'ru', name: 'Россия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'lte', name: 'Обход белых списков', city: 'VLESS | xhttp | TLS', badge: 'LTE', badgeType: 'lte' },
+    // { flag: 'lte', name: 'Обход белых списков', city: 'VLESS | xhttp | TLS', badge: 'LTE', badgeType: 'lte' },
+    { flag: 'cz', name: 'Чехия Vless', city: 'VLESS | TCP | Reality' },
     { flag: 'globe', name: 'Ютуб без рекламы', city: 'VLESS | xhttp | TLS', badge: 'No Ads', badgeType: 'noads' },
 ]
 

@@ -35,6 +35,13 @@
             <rect y="16" width="24" height="8" fill="#D52B1E"/>
         </svg>
 
+        <!-- Czech Republic -->
+        <svg v-else-if="code === 'cz'" class="server-flag__svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect width="24" height="12" fill="#FFFFFF"/>
+            <rect y="12" width="24" height="12" fill="#D7141A"/>
+            <polygon points="0,0 12,12 0,24" fill="#11457E"/>
+        </svg>
+
         <!-- White list LTE -->
         <svg v-else-if="code === 'lte'" class="server-flag__svg server-flag__svg--icon" viewBox="0 0 24 24" aria-hidden="true">
             <rect width="24" height="24" rx="12" fill="#1a1a1e"/>
