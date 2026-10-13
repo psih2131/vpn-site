@@ -15,7 +15,7 @@
                     <a href="/#hero" class="header__nav-link">Попробовать бесплатно</a>
                 </div>
                 <a href="/#pricing" class="header__nav-link">Тарифный план</a>
-                <a href="/#regions" class="header__nav-link">Доступные регионы</a>
+                <NuxtLink to="/regions" class="header__nav-link">Доступные регионы</NuxtLink>
                 <div class="header__nav-item header__nav-item--dropdown">
                     <span class="header__nav-link header__nav-link--dropdown">
                         Направления

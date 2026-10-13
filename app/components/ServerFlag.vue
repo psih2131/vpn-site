@@ -42,6 +42,13 @@
             <polygon points="0,0 12,12 0,24" fill="#11457E"/>
         </svg>
 
+        <!-- Spain -->
+        <svg v-else-if="code === 'es'" class="server-flag__svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect width="24" height="6" fill="#AA151B"/>
+            <rect y="6" width="24" height="12" fill="#F1BF00"/>
+            <rect y="18" width="24" height="6" fill="#AA151B"/>
+        </svg>
+
         <!-- White list LTE -->
         <svg v-else-if="code === 'lte'" class="server-flag__svg server-flag__svg--icon" viewBox="0 0 24 24" aria-hidden="true">
             <rect width="24" height="24" rx="12" fill="#1a1a1e"/>
