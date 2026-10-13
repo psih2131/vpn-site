@@ -6,7 +6,7 @@
                     <path d="M18 2L32 8V18C32 26 26 32 18 34C10 32 4 26 4 18V8L18 2Z" fill="#00D981"/>
                     <path d="M18 10L24 13V18C24 22 21 25 18 26C15 25 12 22 12 18V13L18 10Z" fill="#000"/>
                 </svg>
-                <span class="header__logo-text">Dark Nova ааааааааааааааааааааа</span>
+                <span class="header__logo-text">Dark Nova</span>
             </a>
 
             <nav class="header__nav">
