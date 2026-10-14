@@ -466,6 +466,73 @@
 	}
 }
 
+.admin-image-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 1200;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+}
+
+.admin-image-modal__backdrop {
+	position: absolute;
+	inset: 0;
+	border: 0;
+	background: rgba(0, 0, 0, 0.72);
+	cursor: pointer;
+}
+
+.admin-image-modal__panel {
+	position: relative;
+	z-index: 1;
+	width: min(720px, 100%);
+	padding: 22px;
+	border-radius: 16px;
+	border: 1px solid $color-border;
+	background: $color-bg-card;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.admin-image-modal__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 18px;
+}
+
+.admin-image-modal__title {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: $color-text;
+}
+
+.admin-image-modal__close {
+	width: 36px;
+	height: 36px;
+	border-radius: 10px;
+	border: 1px solid $color-border-light;
+	background: transparent;
+	color: $color-text-muted;
+	font-size: 22px;
+	line-height: 1;
+
+	&:hover {
+		color: $color-text;
+		border-color: rgba(255, 255, 255, 0.28);
+	}
+}
+
+.admin-image-modal__footer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 20px;
+}
+
 .admin-editor-fallback {
 	padding: 24px;
 	border-radius: 14px;
@@ -598,6 +665,16 @@
 			border-left: 3px solid $color-green;
 			background: rgba(255, 255, 255, 0.03);
 			color: $color-text-muted;
+		}
+
+		img,
+		.blog-content-image {
+			display: block;
+			max-width: 100%;
+			height: auto;
+			margin: 12px 0;
+			border-radius: 10px;
+			border: 1px solid rgba(255, 255, 255, 0.08);
 		}
 	}
 }

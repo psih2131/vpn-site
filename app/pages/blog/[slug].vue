@@ -16,7 +16,13 @@
             <h1 class="blog-post__title">{{ post.title }}</h1>
 
             <div class="blog-post__meta">
-                <span class="blog-post__date">{{ post.date }}</span>
+                <span class="blog-post__date">Добавлено: {{ post.datePublished }}</span>
+                <span
+                    v-if="post.dateUpdated && post.dateUpdated !== post.datePublished"
+                    class="blog-post__date"
+                >
+                    Обновлено: {{ post.dateUpdated }}
+                </span>
             </div>
 
             <!--
@@ -107,9 +113,23 @@ const { data: allPostsResponse } = await useFetch(
     },
 )
 
+function toIsoDate(raw) {
+    if (!raw) return ''
+    const date = new Date(raw)
+    if (Number.isNaN(date.getTime())) return String(raw)
+    return date.toISOString()
+}
+
 const coverPath = coverResponse.value?.data?.path || ''
 const postImage = coverPath ? `${apiBase}/uploads/${coverPath}` : ''
 const row = postResponse.value?.data || null
+
+const publishedIso = row
+    ? (row.seo_article_published_time || toIsoDate(row.created_at))
+    : ''
+const modifiedIso = row
+    ? (row.seo_article_modified_time || toIsoDate(row.updated_at || row.created_at))
+    : ''
 
 const post = row
     ? {
@@ -117,7 +137,8 @@ const post = row
         slug: row.slug,
         title: row.title || '',
         excerpt: row.excerpt || '',
-        date: formatDate(row.created_at, true),
+        datePublished: formatDate(row.created_at, true),
+        dateUpdated: formatDate(row.updated_at || row.created_at, true),
         image: postImage,
         contentHtml: row.content_html || '',
         seo_title: row.seo_title || '',
@@ -129,8 +150,8 @@ const post = row
         seo_og_description: row.seo_og_description || '',
         seo_og_type: row.seo_og_type || 'article',
         seo_og_url: row.seo_og_url || '',
-        seo_article_published_time: row.seo_article_published_time || '',
-        seo_article_modified_time: row.seo_article_modified_time || '',
+        seo_article_published_time: publishedIso,
+        seo_article_modified_time: modifiedIso,
         seo_article_author: row.seo_article_author || 'Dark Nova',
         seo_article_section: row.seo_article_section || '',
         seo_article_tag: row.seo_article_tag || '',
@@ -171,9 +192,12 @@ useHead(() => {
     const ogDescription = post.seo_og_description || pageDescription
     const twitterTitle = post.seo_twitter_title || pageTitle
     const twitterDescription = post.seo_twitter_description || pageDescription
-    const ogImage = post.image || ''
-    const canonical = post.seo_canonical || ''
-    const ogUrl = post.seo_og_url || canonical || ''
+    const ogImage = post.image || 'https://dark-nova-vpn.space/dark-nova-green-eyes.png'
+    const defaultCanonical = post.slug
+        ? `https://dark-nova-vpn.space/blog/${post.slug}`
+        : ''
+    const canonical = post.seo_canonical || defaultCanonical
+    const ogUrl = post.seo_og_url || canonical
 
     return {
         title: pageTitle,

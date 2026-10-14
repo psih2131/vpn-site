@@ -16,17 +16,6 @@
                 </div>
                 <a href="/#pricing" class="header__nav-link">Тарифный план</a>
                 <NuxtLink to="/regions" class="header__nav-link">Доступные регионы</NuxtLink>
-                <div class="header__nav-item header__nav-item--dropdown">
-                    <span class="header__nav-link header__nav-link--dropdown">
-                        Направления
-                        <svg class="header__nav-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
-                            <path d="M4 6.5 8 10.5 12 6.5"/>
-                        </svg>
-                    </span>
-                    <div class="header__dropdown">
-                        <NuxtLink to="/directions/china" class="header__dropdown-link">Китай</NuxtLink>
-                    </div>
-                </div>
                 <NuxtLink to="/blog" class="header__nav-link">Блог</NuxtLink>
                 <a href="https://t.me/darkNovaVpn_support" target="_blank" rel="noopener noreferrer" class="header__nav-link">Поддержка</a>
             </nav>

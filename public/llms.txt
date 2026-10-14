@@ -14,6 +14,7 @@ Dark Nova выдаёт ссылку-подписку в Telegram. Её вста�
 - [Регионы и карта серверов](https://dark-nova-vpn.space/regions): Страны и локации VPN-серверов
 - [VPN для Китая](https://dark-nova-vpn.space/directions/china): Направление и сценарии для Китая
 - [Блог](https://dark-nova-vpn.space/blog): Статьи про VPN, Happ, INCY, ключи и настройку
+- [Как настроить VPN Happ на iPhone](https://dark-nova-vpn.space/blog/kak-nastroit-vpn-happ-na-iphone): Пошаговая инструкция для iPhone
 
 ## Optional
 

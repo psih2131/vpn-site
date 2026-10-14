@@ -993,6 +993,13 @@
 	background: $gradient-card;
 	border: 1px solid $color-border;
 	transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+	text-decoration: none;
+	color: inherit;
+	cursor: default;
+
+	&[href] {
+		cursor: pointer;
+	}
 }
 
 .platforms__card:hover {

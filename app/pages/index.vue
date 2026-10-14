@@ -419,22 +419,44 @@
                 </p>
 
                 <div class="platforms__grid">
-                    <article v-for="platform in platforms" :key="platform.title" class="platforms__card">
-                        <span
-                            class="platforms__icon"
-                            :class="[`platforms__icon--${platform.icon}`, { 'platforms__icon--wide': platform.wide }]"
+                    <template v-for="platform in platforms" :key="platform.title">
+                        <NuxtLink
+                            v-if="platform.to"
+                            :to="platform.to"
+                            class="platforms__card"
                         >
-                            <img
-                                :src="platform.image"
-                                :alt="platform.title"
-                                :title="platform.title"
-                                class="platforms__icon-img"
-                                :class="{ 'platforms__icon-img--wide': platform.wide }"
-                            />
-                        </span>
-                        <h3 class="platforms__card-title">{{ platform.title }}</h3>
-                        <p class="platforms__card-text">{{ platform.text }}</p>
-                    </article>
+                            <span
+                                class="platforms__icon"
+                                :class="[`platforms__icon--${platform.icon}`, { 'platforms__icon--wide': platform.wide }]"
+                            >
+                                <img
+                                    :src="platform.image"
+                                    :alt="platform.title"
+                                    :title="platform.title"
+                                    class="platforms__icon-img"
+                                    :class="{ 'platforms__icon-img--wide': platform.wide }"
+                                />
+                            </span>
+                            <h3 class="platforms__card-title">{{ platform.title }}</h3>
+                            <p class="platforms__card-text">{{ platform.text }}</p>
+                        </NuxtLink>
+                        <article v-else class="platforms__card">
+                            <span
+                                class="platforms__icon"
+                                :class="[`platforms__icon--${platform.icon}`, { 'platforms__icon--wide': platform.wide }]"
+                            >
+                                <img
+                                    :src="platform.image"
+                                    :alt="platform.title"
+                                    :title="platform.title"
+                                    class="platforms__icon-img"
+                                    :class="{ 'platforms__icon-img--wide': platform.wide }"
+                                />
+                            </span>
+                            <h3 class="platforms__card-title">{{ platform.title }}</h3>
+                            <p class="platforms__card-text">{{ platform.text }}</p>
+                        </article>
+                    </template>
                 </div>
             </div>
         </section>
@@ -712,6 +734,7 @@ const platforms = [
         image: iconApple,
         title: 'VPN для iPhone и iPad',
         text: 'INCY скачивается из российского App Store без смены региона Apple ID. Подключение стартует вместе с системой и держится на любых операторах и Wi-Fi.',
+        to: '/blog/kak-nastroit-vpn-happ-na-iphone',
     },
     {
         icon: 'windows',

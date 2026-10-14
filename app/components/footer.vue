@@ -13,12 +13,20 @@
             </div>
 
             <div class="footer__col">
+                <h4 class="footer__col-title">Направления</h4>
+                <nav class="footer__links">
+                    <NuxtLink to="/regions" class="footer__link">Доступные регионы</NuxtLink>
+                    <NuxtLink to="/directions/china" class="footer__link">VPN для Китая</NuxtLink>
+                    <NuxtLink to="/blog" class="footer__link">Блог</NuxtLink>
+                </nav>
+            </div>
+
+            <div class="footer__col">
                 <h4 class="footer__col-title">Контакты</h4>
                 <nav class="footer__links">
                     <!-- <NuxtLink to="/docs/license" class="footer__link">Лицензионное соглашение</NuxtLink>
                     <NuxtLink to="/docs/privacy" class="footer__link">Политика конфиденциальности</NuxtLink>
                     <NuxtLink to="/docs/cookies" class="footer__link">Информация о Cookies</NuxtLink> -->
-                    <NuxtLink to="/blog" class="footer__link">Блог</NuxtLink>
                     <NuxtLink to="/docs/refund" class="footer__link">Политика возвратов</NuxtLink>
                     <NuxtLink to="/docs/no-logs" class="footer__link">Политика No-Logs</NuxtLink>
                 </nav>

@@ -12,6 +12,7 @@
             <button type="button" class="admin-editor__tool" :class="{ 'is-active': editor?.isActive('blockquote') }" @click="editor?.chain().focus().toggleBlockquote().run()">Quote</button>
             <button type="button" class="admin-editor__tool" @click="setLink">Link</button>
             <button type="button" class="admin-editor__tool" @click="editor?.chain().focus().unsetLink().run()">Unlink</button>
+            <button type="button" class="admin-editor__tool" @click="imageModalOpen = true">Img</button>
         </div>
 
         <div class="admin-editor__panels">
@@ -27,6 +28,12 @@
                 <pre class="admin-editor__code">{{ htmlCode || '<!-- пусто -->' }}</pre>
             </div>
         </div>
+
+        <AdminBlogImageUploadModal
+            v-if="imageModalOpen"
+            @close="imageModalOpen = false"
+            @confirm="onImageConfirm"
+        />
     </div>
 </template>
 
@@ -34,6 +41,7 @@
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
+import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
 
 const props = defineProps({
@@ -46,6 +54,7 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const htmlCode = ref(props.modelValue || '')
+const imageModalOpen = ref(false)
 
 const editor = useEditor({
     content: props.modelValue || '',
@@ -55,6 +64,13 @@ const editor = useEditor({
             openOnClick: false,
             HTMLAttributes: {
                 rel: 'noopener noreferrer',
+            },
+        }),
+        Image.configure({
+            inline: false,
+            allowBase64: true,
+            HTMLAttributes: {
+                class: 'blog-content-image',
             },
         }),
         Placeholder.configure({
@@ -90,6 +106,12 @@ function setLink() {
         return
     }
     editor.value.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+}
+
+function onImageConfirm(url) {
+    imageModalOpen.value = false
+    if (!editor.value || !url) return
+    editor.value.chain().focus().setImage({ src: url }).run()
 }
 
 onBeforeUnmount(() => {

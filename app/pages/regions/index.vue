@@ -50,12 +50,81 @@
                 </div>
             </div>
         </section>
+
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2 class="section-title faq__title">Ответы на вопросы</h2>
+                <div class="faq__list">
+                    <div
+                        v-for="(item, index) in faqItems"
+                        :key="index"
+                        class="faq__item"
+                        :class="{ 'faq__item--open': openFaq === index }"
+                    >
+                        <div
+                            class="faq__question"
+                            @click="toggleFaq(index)"
+                        >
+                            <span class="faq__question-text">{{ item.question }}</span>
+                            <span class="faq__toggle" :class="{ 'faq__toggle--open': openFaq === index }">+</span>
+                        </div>
+                        <Vue3SlideUpDown
+                            :model-value="openFaq === index"
+                            :duration="320"
+                            timing-function="cubic-bezier(0.4, 0, 0.2, 1)"
+                            eager
+                        >
+                            <p class="faq__answer">{{ item.answer }}</p>
+                        </Vue3SlideUpDown>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="regions-cta">
+            <div class="container">
+                <BlogPostCta />
+            </div>
+        </section>
     </div>
 </template>
 
 <script setup>
+import { Vue3SlideUpDown } from 'vue3-slide-up-down'
+
 const pageTitle = 'VPN-серверы по странам — карта регионов | Dark Nova'
 const pageDescription = 'Карта VPN-серверов Dark Nova: Нидерланды, Германия, Финляндия, Швеция, Чехия, Испания и Россия. Список локаций и протоколов VLESS / Hysteria.'
+const pageUrl = 'https://dark-nova-vpn.space/regions'
+const ogImage = 'https://dark-nova-vpn.space/dark-nova-green-eyes.png'
+
+const faqItems = [
+    {
+        question: 'В каких странах есть серверы Dark Nova?',
+        answer: 'Сейчас доступны локации в Нидерландах, Германии, Финляндии, Швеции, Чехии, Испании и России. На карте выше отмечены страны с серверами, ниже — полный список протоколов VLESS и Hysteria.',
+    },
+    {
+        question: 'Одна подписка работает на все регионы?',
+        answer: 'Да. Одна ссылка-подписка из Telegram-бота открывает все доступные серверы в Happ или INCY. Отдельно покупать доступ к каждой стране не нужно.',
+    },
+    {
+        question: 'Как выбрать страну в Happ или INCY?',
+        answer: 'Добавьте подписку из бота в клиент, обновите список серверов и выберите нужную локацию — например Германию или Нидерланды. Подключение занимает несколько секунд.',
+    },
+    {
+        question: 'Что делать, если сервер не подключается?',
+        answer: 'Смените локацию в списке, проверьте что подписка активна и ссылка вставлена целиком. Если не помогло — напишите в поддержку Dark Nova в Telegram, подскажем по вашему устройству.',
+    },
+    {
+        question: 'Чем отличаются VLESS и Hysteria?',
+        answer: 'VLESS Reality хорошо маскируется под обычный HTTPS-трафик. Hysteria часто даёт более стабильную скорость на нестабильных сетях. В подписке обычно есть оба варианта — можно переключаться и сравнить.',
+    },
+]
+
+const openFaq = ref(null)
+
+function toggleFaq(index) {
+    openFaq.value = openFaq.value === index ? null : index
+}
 
 useHead({
     title: pageTitle,
@@ -65,13 +134,33 @@ useHead({
         { property: 'og:title', content: pageTitle },
         { property: 'og:description', content: pageDescription },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://dark-nova-vpn.space/regions' },
+        { property: 'og:url', content: pageUrl },
+        { property: 'og:image', content: ogImage },
+        { property: 'og:image:alt', content: 'VPN-серверы Dark Nova — карта регионов' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: pageTitle },
         { name: 'twitter:description', content: pageDescription },
+        { name: 'twitter:image', content: ogImage },
     ],
     link: [
-        { rel: 'canonical', href: 'https://dark-nova-vpn.space/regions' },
+        { rel: 'canonical', href: pageUrl },
+    ],
+    script: [
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: faqItems.map((item) => ({
+                    '@type': 'Question',
+                    name: item.question,
+                    acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: item.answer,
+                    },
+                })),
+            }),
+        },
     ],
 })
 
