@@ -237,9 +237,9 @@
 }
 
 .admin-users__count--paid {
-	background: rgba(0, 217, 129, 0.18);
-	border-color: rgba(0, 217, 129, 0.55);
-	color: $color-green-light;
+	background: rgba(96, 165, 250, 0.14);
+	border-color: rgba(96, 165, 250, 0.45);
+	color: #60a5fa;
 }
 
 .admin-users__tabs {
@@ -312,10 +312,11 @@
 		minmax(160px, 1.2fr)
 		minmax(100px, 0.7fr)
 		minmax(90px, 0.6fr)
+		minmax(100px, 0.7fr)
 		minmax(160px, 1fr)
 		70px
 		minmax(140px, 1fr);
-	min-width: 820px;
+	min-width: 920px;
 }
 
 .admin-users-list__head {

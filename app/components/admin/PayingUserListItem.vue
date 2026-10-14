@@ -17,6 +17,9 @@
                 {{ paymentStatus }}
             </span>
         </span>
+        <span class="admin-users-list__col admin-users-list__col--total">
+            {{ totalPaid }}
+        </span>
         <span class="admin-users-list__col admin-users-list__col--status">
             <span
                 class="admin-users-list__badge"
@@ -106,4 +109,19 @@ const paymentStatusClass = computed(() => {
     return 'admin-users-list__badge--trial'
 })
 const subscription = computed(() => getSubscriptionInfo(paidPayments.value))
+
+const totalPaid = computed(() => {
+    const total = paidPayments.value.reduce((sum, payment) => {
+        const amount = Number(payment.amount)
+        return sum + (Number.isFinite(amount) ? amount : 0)
+    }, 0)
+
+    if (!paidPayments.value.length) return '—'
+
+    const formatted = Number.isInteger(total)
+        ? String(total)
+        : total.toFixed(2)
+
+    return `${formatted} ₽`
+})
 </script>
