@@ -12,6 +12,28 @@
 	margin-bottom: 72px;
 }
 
+.blog-page__seo {
+	margin-bottom: 0;
+
+	.seo-block__inner {
+		max-width: 100%;
+	}
+
+	.seo-block__title {
+		font-size: 26px;
+	}
+
+	a {
+		color: $color-green;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+
+		&:hover {
+			color: $color-green-light;
+		}
+	}
+}
+
 .blog-page__title {
 	font-family: $titleFont;
 	font-size: 36px;

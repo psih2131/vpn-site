@@ -35,7 +35,7 @@
                 <img :src="post.image" :alt="post.title">
             </div>
 
-            <div class="blog-post__content text-content" v-html="post.contentHtml"></div>
+            <div class="blog-post__content text-content" v-html="contentHtml"></div>
 
             <BlogPostCta />
 
@@ -70,6 +70,8 @@
 </template>
 
 <script setup>
+import { ensureImgAlt } from '~/utils/ensureImgAlt'
+
 const route = useRoute()
 const { adminUrl, apiBase } = useAdminApi()
 
@@ -160,6 +162,11 @@ const post = row
         seo_twitter_description: row.seo_twitter_description || '',
     }
     : null
+
+const contentHtml = computed(() => {
+    if (!post?.contentHtml) return ''
+    return ensureImgAlt(post.contentHtml, post.title || 'Иллюстрация к статье Dark Nova VPN')
+})
 
 const recommendedIds = Array.isArray(row?.recommended_ids) ? row.recommended_ids : []
 const allRows = allPostsResponse.value?.data || []

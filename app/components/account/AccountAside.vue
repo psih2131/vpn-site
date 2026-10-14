@@ -14,7 +14,7 @@
                 <img
                     class="account-aside__avatar"
                     src="https://i.pravatar.cc/84?img=12"
-                    alt=""
+                    alt="Аватар пользователя"
                     width="40"
                     height="40"
                 >

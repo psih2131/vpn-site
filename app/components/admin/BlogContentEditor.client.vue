@@ -111,7 +111,11 @@ function setLink() {
 function onImageConfirm(url) {
     imageModalOpen.value = false
     if (!editor.value || !url) return
-    editor.value.chain().focus().setImage({ src: url }).run()
+    const alt = window.prompt('Alt для картинки (описание)', 'Иллюстрация к статье')
+    editor.value.chain().focus().setImage({
+        src: url,
+        alt: (alt || 'Иллюстрация к статье').trim(),
+    }).run()
 }
 
 onBeforeUnmount(() => {

@@ -22,6 +22,31 @@
                     />
                 </div>
             </section>
+
+            <section class="seo-block blog-page__seo">
+                <div class="seo-block__inner">
+                    <h1 class="section-title seo-block__title">Блог Dark Nova VPN: инструкции Happ, INCY и VPN-ключ</h1>
+                    <div class="seo-block__content">
+                        <p>
+                            В блоге Dark Nova собраны практические статьи про VPN: как получить
+                            <strong>VPN ключ для Happ и INCY</strong>, как настроить клиент на iPhone,
+                            Windows, Android и macOS, и чем подписка отличается от разового конфига.
+                        </p>
+                        <p>
+                            Здесь есть пошаговые гайды — например, как настроить VPN Happ на iPhone,
+                            как подключить Happ на Windows и как настроить INCY VPN без смены региона
+                            Apple ID. Разбираем типичные ошибки подключения, обновление подписки
+                            и выбор сервера.
+                        </p>
+                        <p>
+                            Если нужен рабочий ключ прямо сейчас — откройте
+                            <a href="https://t.me/dark_nova_vpn_bot" target="_blank" rel="noopener noreferrer">Telegram-бот Dark Nova</a>:
+                            пробный доступ на 3 дня, дальше подписка от 130₽/мес, до 5 устройств
+                            и серверы в Европе и России.
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </template>
