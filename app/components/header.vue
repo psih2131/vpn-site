@@ -49,7 +49,7 @@
 <script setup>
 import { useModalStore } from '~/stores/modal'
 
-const telegramBotLink = 'https://26j8gl.s.gy/4YXGdp'
+const telegramBotLink = 'https://t.me/dark_nova_vpn_bot'
 const storeModal = useModalStore()
 
 function openAuthModal() {

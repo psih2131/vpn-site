@@ -1,0 +1,27 @@
+# Dark Nova VPN
+
+> Dark Nova VPN — быстрый VPN через Telegram-бот. Подписка-ключ для клиентов Happ и INCY, протоколы VLESS Reality и Hysteria2, пробный период 3 дня, от 130₽/мес, до 5 устройств.
+
+Dark Nova выдаёт ссылку-подписку в Telegram. Её вставляют в Happ или INCY — серверы появляются в списке автоматически. Сайт: продукт, карта регионов, направления (Китай) и блог с инструкциями.
+
+Подключение: https://t.me/dark_nova_vpn_bot  
+Поддержка: https://t.me/darkNovaVpn_support  
+Сайт: https://dark-nova-vpn.space
+
+## Pages
+
+- [Главная](https://dark-nova-vpn.space/): Оффер, тарифы, список серверов, как подключить
+- [Регионы и карта серверов](https://dark-nova-vpn.space/regions): Страны и локации VPN-серверов
+- [VPN для Китая](https://dark-nova-vpn.space/directions/china): Направление и сценарии для Китая
+- [Блог](https://dark-nova-vpn.space/blog): Статьи про VPN, Happ, INCY, ключи и настройку
+
+## Optional
+
+- [Sitemap](https://dark-nova-vpn.space/sitemap_index.xml): Индекс sitemap для поисковиков
+- [robots.txt](https://dark-nova-vpn.space/robots.txt): Правила обхода ботами
+
+## Notes
+
+- Не путать Happ/INCY (клиенты) с самим VPN-сервисом: ключ выдаёт Dark Nova, клиенты только подключаются.
+- Служебные разделы `/admin` и `/account` не для публичного использования.
+- Предпочтительный язык ответов по сайту — русский.

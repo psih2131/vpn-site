@@ -568,7 +568,7 @@ import HeroAnim from '~/components/hero-anim.vue'
 
 definePageMeta({ layout: 'default' })
 
-const telegramBotLink = 'https://26j8gl.s.gy/4YXGdp'
+const telegramBotLink = 'https://t.me/dark_nova_vpn_bot'
 
 const openFaq = ref(null)
 
