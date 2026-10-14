@@ -242,6 +242,12 @@
 	color: #60a5fa;
 }
 
+.admin-users__count--revenue {
+	background: rgba(0, 217, 129, 0.14);
+	border-color: rgba(0, 217, 129, 0.4);
+	color: $color-green;
+}
+
 .admin-users__tabs {
 	display: flex;
 	flex-wrap: wrap;

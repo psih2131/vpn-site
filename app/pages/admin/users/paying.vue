@@ -11,6 +11,12 @@
                     >
                         paid {{ paidUsersCount }}
                     </span>
+                    <span
+                        v-if="!pending && !error"
+                        class="admin-users__count admin-users__count--revenue"
+                    >
+                        {{ totalRevenue }}
+                    </span>
                 </div>
                 <p class="admin-content__hint">Список платящих пользователей VPN</p>
             </div>
@@ -66,4 +72,21 @@ const paidUsersCount = computed(() => (
         && user.payments.some((payment) => payment.status === 'paid')
     )).length
 ))
+
+const totalRevenue = computed(() => {
+    const total = users.value.reduce((sum, user) => {
+        if (!Array.isArray(user.payments)) return sum
+        return sum + user.payments.reduce((userSum, payment) => {
+            if (payment.status !== 'paid') return userSum
+            const amount = Number(payment.amount)
+            return userSum + (Number.isFinite(amount) ? amount : 0)
+        }, 0)
+    }, 0)
+
+    const formatted = Number.isInteger(total)
+        ? String(total)
+        : total.toFixed(2)
+
+    return `${formatted} ₽`
+})
 </script>
