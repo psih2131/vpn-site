@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /account
+
+Sitemap: https://dark-nova-vpn.space/sitemap_index.xml
