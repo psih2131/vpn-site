@@ -5,6 +5,12 @@
                 <div class="admin-users__title-row">
                     <h1 class="admin-content__title">Пользователи</h1>
                     <span v-if="!pending && !error" class="admin-users__count">{{ users.length }}</span>
+                    <span
+                        v-if="!pending && !error"
+                        class="admin-users__count admin-users__count--active"
+                    >
+                        active {{ activeUsersCount }}
+                    </span>
                 </div>
                 <p class="admin-content__hint">Список всех пользователей VPN</p>
             </div>
@@ -55,4 +61,8 @@ const users = computed(() => {
     const rows = data.value?.data?.rows
     return Array.isArray(rows) ? rows : []
 })
+
+const activeUsersCount = computed(() => (
+    users.value.filter((user) => String(user.status || '').toLowerCase() === 'active').length
+))
 </script>

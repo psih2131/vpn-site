@@ -87,6 +87,7 @@
                         v-for="payment in payments"
                         :key="payment.id"
                         class="admin-payment-card"
+                        :class="paymentCardClass(payment.status)"
                     >
                         <div class="admin-payment-card__top">
                             <div class="admin-payment-card__main">
@@ -95,10 +96,10 @@
                                     {{ display(payment.subscription_period) }}
                                 </span>
                                 <span
-                                    class="admin-users-list__badge"
+                                    class="admin-payment-card__status"
                                     :class="paymentBadgeClass(payment.status)"
                                 >
-                                    {{ display(payment.status) }}
+                                    {{ paymentStatusLabel(payment.status) }}
                                 </span>
                             </div>
                             <div class="admin-payment-card__amount">
@@ -214,11 +215,29 @@ function formatDate(value) {
 
 function paymentBadgeClass(status) {
     const value = String(status || '').toLowerCase()
-    if (value === 'paid') return 'admin-users-list__badge--paid'
+    if (value === 'paid') return 'admin-payment-card__status--paid'
     if (value === 'refunded' || value === 'failed' || value === 'error') {
-        return 'admin-users-list__badge--overdue'
+        return 'admin-payment-card__status--fail'
     }
-    return 'admin-users-list__badge--trial'
+    return 'admin-payment-card__status--pending'
+}
+
+function paymentCardClass(status) {
+    const value = String(status || '').toLowerCase()
+    if (value === 'paid') return 'admin-payment-card--paid'
+    if (value === 'refunded' || value === 'failed' || value === 'error') {
+        return 'admin-payment-card--fail'
+    }
+    return 'admin-payment-card--pending'
+}
+
+function paymentStatusLabel(status) {
+    const value = String(status || '').toLowerCase()
+    if (value === 'paid') return 'Оплачено'
+    if (value === 'refunded') return 'Возврат'
+    if (value === 'failed' || value === 'error') return 'Ошибка'
+    if (value === 'pending') return 'Не оплачено'
+    return display(status)
 }
 
 function getLatestPayment(list = []) {

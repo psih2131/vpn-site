@@ -20,6 +20,7 @@
             <div class="admin-users-list__head admin-users-list__head--paying">
                 <span class="admin-users-list__col admin-users-list__col--name">Пользователь</span>
                 <span class="admin-users-list__col admin-users-list__col--plan">Тариф</span>
+                <span class="admin-users-list__col admin-users-list__col--pay-status">Платёж</span>
                 <span class="admin-users-list__col admin-users-list__col--status">Статус</span>
                 <span class="admin-users-list__col admin-users-list__col--lang">Язык</span>
                 <span class="admin-users-list__col admin-users-list__col--sub">VPN Sub ID</span>

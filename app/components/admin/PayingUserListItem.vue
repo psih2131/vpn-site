@@ -9,6 +9,14 @@
         <span class="admin-users-list__col admin-users-list__col--plan">
             {{ plan }}
         </span>
+        <span class="admin-users-list__col admin-users-list__col--pay-status">
+            <span
+                class="admin-users-list__badge"
+                :class="paymentStatusClass"
+            >
+                {{ paymentStatus }}
+            </span>
+        </span>
         <span class="admin-users-list__col admin-users-list__col--status">
             <span
                 class="admin-users-list__badge"
@@ -80,7 +88,22 @@ function getSubscriptionInfo(payments = []) {
     }
 }
 
-const latestPayment = computed(() => getLatestPayment(props.user.payments))
+const paidPayments = computed(() => {
+    const list = props.user.payments
+    if (!Array.isArray(list)) return []
+    return list.filter((payment) => payment.status === 'paid')
+})
+
+const latestPayment = computed(() => getLatestPayment(paidPayments.value))
 const plan = computed(() => display(latestPayment.value?.subscription_period))
-const subscription = computed(() => getSubscriptionInfo(props.user.payments))
+const paymentStatus = computed(() => display(latestPayment.value?.status))
+const paymentStatusClass = computed(() => {
+    const value = String(latestPayment.value?.status || '').toLowerCase()
+    if (value === 'paid') return 'admin-users-list__badge--paid'
+    if (value === 'refunded' || value === 'failed' || value === 'error') {
+        return 'admin-users-list__badge--overdue'
+    }
+    return 'admin-users-list__badge--trial'
+})
+const subscription = computed(() => getSubscriptionInfo(paidPayments.value))
 </script>
