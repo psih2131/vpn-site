@@ -236,6 +236,12 @@
 	color: #60a5fa;
 }
 
+.admin-users__count--paid {
+	background: rgba(0, 217, 129, 0.18);
+	border-color: rgba(0, 217, 129, 0.55);
+	color: $color-green-light;
+}
+
 .admin-users__tabs {
 	display: flex;
 	flex-wrap: wrap;

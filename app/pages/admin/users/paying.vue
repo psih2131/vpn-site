@@ -5,6 +5,12 @@
                 <div class="admin-users__title-row">
                     <h1 class="admin-content__title">Платящие</h1>
                     <span v-if="!pending && !error" class="admin-users__count">{{ users.length }}</span>
+                    <span
+                        v-if="!pending && !error"
+                        class="admin-users__count admin-users__count--paid"
+                    >
+                        paid {{ paidUsersCount }}
+                    </span>
                 </div>
                 <p class="admin-content__hint">Список платящих пользователей VPN</p>
             </div>
@@ -52,4 +58,11 @@ const users = computed(() => {
     const list = data.value?.data
     return Array.isArray(list) ? list : []
 })
+
+const paidUsersCount = computed(() => (
+    users.value.filter((user) => (
+        Array.isArray(user.payments)
+        && user.payments.some((payment) => payment.status === 'paid')
+    )).length
+))
 </script>
