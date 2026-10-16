@@ -31,6 +31,7 @@
                 @cleared="onCoverCleared"
             />
             <AdminBlogContentFields v-model="form.contentHtml" />
+            
             <AdminBlogRecommendedPicker v-model="form.recommendedIds" />
             <AdminBlogSeoFields v-model="form.seo" :slug="form.slug" />
         </div>

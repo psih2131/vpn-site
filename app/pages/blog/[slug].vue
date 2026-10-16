@@ -5,6 +5,8 @@
         </div>
 
         <div v-else-if="post" class="blog-post-page__inner">
+            <BlogScrollProgress />
+
             <nav class="blog-breadcrumbs" aria-label="Хлебные крошки">
                 <NuxtLink to="/" class="blog-breadcrumbs__link">Главная</NuxtLink>
                 <span class="blog-breadcrumbs__sep">/</span>
