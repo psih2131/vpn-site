@@ -13,6 +13,14 @@
             <button type="button" class="admin-editor__tool" @click="setLink">Link</button>
             <button type="button" class="admin-editor__tool" @click="editor?.chain().focus().unsetLink().run()">Unlink</button>
             <button type="button" class="admin-editor__tool" @click="imageModalOpen = true">Img</button>
+            <button type="button" class="admin-editor__tool" @click="editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()">Table</button>
+            <template v-if="editor?.isActive('table')">
+                <button type="button" class="admin-editor__tool" @click="editor?.chain().focus().addRowAfter().run()">+ Row</button>
+                <button type="button" class="admin-editor__tool" @click="editor?.chain().focus().deleteRow().run()">− Row</button>
+                <button type="button" class="admin-editor__tool" @click="editor?.chain().focus().addColumnAfter().run()">+ Col</button>
+                <button type="button" class="admin-editor__tool" @click="editor?.chain().focus().deleteColumn().run()">− Col</button>
+                <button type="button" class="admin-editor__tool" @click="editor?.chain().focus().deleteTable().run()">Del table</button>
+            </template>
         </div>
 
         <div class="admin-editor__panels">
@@ -43,6 +51,7 @@ import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
+import { TableKit } from '@tiptap/extension-table'
 
 const props = defineProps({
     modelValue: {
@@ -75,6 +84,9 @@ const editor = useEditor({
         }),
         Placeholder.configure({
             placeholder: 'Начните писать текст статьи…',
+        }),
+        TableKit.configure({
+            table: { resizable: false },
         }),
     ],
     onUpdate: ({ editor: current }) => {

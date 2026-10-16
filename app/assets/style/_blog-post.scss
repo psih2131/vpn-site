@@ -289,6 +289,49 @@
 		border-radius: 12px;
 		margin: 18px 0;
 	}
+
+	.tableWrapper {
+		margin: 0 0 18px;
+		overflow-x: auto;
+	}
+
+	table {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		margin: 0 0 18px;
+		overflow-x: auto;
+		border-collapse: collapse;
+		font-size: 15px;
+	}
+
+	.tableWrapper table {
+		display: table;
+		margin: 0;
+	}
+
+	th,
+	td {
+		min-width: 120px;
+		padding: 10px 12px;
+		border: 1px solid $color-border;
+		text-align: left;
+		vertical-align: top;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	th {
+		background: rgba(255, 255, 255, 0.05);
+		color: $color-text;
+		font-weight: 600;
+	}
+
+	.selectedCell {
+		background: rgba(255, 255, 255, 0.08);
+	}
 }
 
 .blog-similar {
