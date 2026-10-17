@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to="`/admin/users/${user.id}`" class="admin-users-list__row admin-users-list__row--paying">
+    <div class="admin-users-list__row admin-users-list__row--paying" @click="goToUser">
         <span class="admin-users-list__col admin-users-list__col--name">
             <span class="admin-users-list__name">{{ user.id }}</span>
             <span class="admin-users-list__username">
@@ -34,7 +34,21 @@
         <span class="admin-users-list__col admin-users-list__col--sub" :title="display(user.vpn_subid)">
             {{ display(user.vpn_subid) }}
         </span>
-    </NuxtLink>
+        <span class="admin-users-list__col admin-users-list__col--actions" @click.stop>
+            <button
+                type="button"
+                class="admin-blog-list__btn admin-blog-list__btn--danger"
+                aria-label="Удалить пользователя"
+                title="Удалить пользователя"
+                :disabled="adminBusy"
+                @click="onDelete"
+            >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 7h14M10 7V5h4v2M8 7l.8 12h6.4L16 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </span>
+    </div>
 </template>
 
 <script setup>
@@ -44,6 +58,10 @@ const props = defineProps({
         required: true,
     },
 })
+
+const emit = defineEmits(['deleted'])
+
+const { adminBusy, deleteUser } = useAdminDeleteUser()
 
 function display(value) {
     if (value === undefined || value === null || value === '') return '—'
@@ -124,4 +142,14 @@ const totalPaid = computed(() => {
 
     return `${formatted} ₽`
 })
+
+function goToUser() {
+    if (adminBusy.value) return
+    navigateTo(`/admin/users/${props.user.id}`)
+}
+
+async function onDelete() {
+    const ok = await deleteUser(props.user.id)
+    if (ok) emit('deleted', props.user.id)
+}
 </script>

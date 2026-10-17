@@ -33,12 +33,14 @@
                 <span class="admin-users-list__col admin-users-list__col--vpn">VPN ID</span>
                 <span class="admin-users-list__col admin-users-list__col--sub">VPN Sub ID</span>
                 <span class="admin-users-list__col admin-users-list__col--email">Email</span>
+                <span class="admin-users-list__col admin-users-list__col--actions"></span>
             </div>
 
             <AdminUserListItem
                 v-for="user in users"
                 :key="user.id"
                 :user="user"
+                @deleted="onUserDeleted"
             />
         </div>
     </div>
@@ -51,7 +53,7 @@ definePageMeta({
 
 const { adminUrl } = useAdminApi()
 
-const { data, pending, error } = await useAsyncData('admin-users-all', () =>
+const { data, pending, error, refresh } = await useAsyncData('admin-users-all', () =>
     $fetch(adminUrl('/api/v1/admin/users'), {
         credentials: 'include',
     }),
@@ -65,4 +67,11 @@ const users = computed(() => {
 const activeUsersCount = computed(() => (
     users.value.filter((user) => String(user.status || '').toLowerCase() === 'active').length
 ))
+
+async function onUserDeleted() {
+    await Promise.all([
+        refresh(),
+        refreshNuxtData('admin-users-paying'),
+    ])
+}
 </script>
