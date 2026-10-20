@@ -98,6 +98,7 @@
 <script setup>
 definePageMeta({
     layout: 'account',
+    middleware: 'account-auth',
 })
 
 const status = {

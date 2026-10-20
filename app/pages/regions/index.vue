@@ -94,8 +94,8 @@ import { Vue3SlideUpDown } from 'vue3-slide-up-down'
 
 const pageTitle = 'VPN-серверы по странам — карта регионов | Dark Nova'
 const pageDescription = 'Карта VPN-серверов Dark Nova: Нидерланды, Германия, Финляндия, Швеция, Чехия, Испания и Россия. Список локаций и протоколов VLESS / Hysteria.'
-const pageUrl = 'https://dark-nova-vpn.space/regions'
-const ogImage = 'https://dark-nova-vpn.space/dark-nova-green-eyes.png'
+const pageUrl = 'https://darknovavpn.com/regions'
+const ogImage = 'https://darknovavpn.com/dark-nova-green-eyes.png'
 
 const faqItems = [
     {

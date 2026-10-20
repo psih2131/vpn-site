@@ -832,7 +832,7 @@ const blogPosts = [
 
 
 
-const siteUrl = 'https://dark-nova-vpn.space'
+const siteUrl = 'https://darknovavpn.com'
 const pageUrl = `${siteUrl}/directions/china`
 const pageTitle = 'VPN для Китая — стабильный доступ без блокировок | Dark Nova VPN'
 const pageDescription = 'VPN для Китая от Dark Nova Vpn: обход GFW, серверы под китайские сети, ключ для Happ и INCY. Подключение за пару минут, 3 дня бесплатно — без сложных настроек.'

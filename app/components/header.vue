@@ -21,15 +21,23 @@
             </nav>
 
             <div class="header__actions">
-                <a :href="telegramBotLink" target="_blank" rel="noopener noreferrer" class="header__connect-btn">
-                    <svg class="header__connect-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
-                    </svg>
-                    Подключить
-                </a>
-                <!-- <button type="button" class="header__connect-btn" @click="openAuthModal">
+                <NuxtLink
+                    v-if="user"
+                    to="/account"
+                    class="header__user"
+                >
+                    <span class="header__user-avatar" aria-hidden="true">{{ userInitial }}</span>
+                    <span class="header__user-email">{{ displayEmail }}</span>
+                </NuxtLink>
+
+                <button
+                    v-else-if="!userPending"
+                    type="button"
+                    class="header__connect-btn"
+                    @click="openAuthModal"
+                >
                     Авторизоваться
-                </button> -->
+                </button>
             </div>
         </div>
     </header>
@@ -38,11 +46,53 @@
 <script setup>
 import { useModalStore } from '~/stores/modal'
 
-const telegramBotLink = 'https://t.me/dark_nova_vpn_bot'
 const storeModal = useModalStore()
+const { adminUrl } = useAdminApi()
+
+const user = ref(null)
+const userPending = ref(true)
+
+const userInitial = computed(() => {
+    const email = String(user.value?.email || '').trim()
+    return email ? email[0].toUpperCase() : '?'
+})
+
+const displayEmail = computed(() => {
+    const email = String(user.value?.email || '').trim()
+    if (email.length <= 15) return email
+    return `${email.slice(0, 15)}...`
+})
 
 function openAuthModal() {
     storeModal.typeActiveModal('authorization')
     storeModal.openCloseModal(true)
 }
+
+async function loadUserInfo() {
+    userPending.value = true
+
+    try {
+        const response = await fetch(adminUrl('/api/v1/account/user-info'), {
+            method: 'GET',
+            credentials: 'include',
+        })
+
+        const data = await response.json().catch(() => null)
+
+        if (response.ok && data?.success && data?.data?.user) {
+            user.value = data.data.user
+            return
+        }
+
+        user.value = null
+    } catch {
+        user.value = null
+    } finally {
+        userPending.value = false
+    }
+}
+
+onMounted(() => {
+    loadUserInfo()
+})
 </script>

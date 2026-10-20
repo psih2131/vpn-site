@@ -71,8 +71,8 @@ useHead({
             content: 'Гайды и статьи про VPN: подключение, безопасность, серверы и работа с Happ и INCY.',
         },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://dark-nova-vpn.space/blog' },
-        { property: 'og:image', content: 'https://dark-nova-vpn.space/dark-nova-green-eyes.png' },
+        { property: 'og:url', content: 'https://darknovavpn.com/blog' },
+        { property: 'og:image', content: 'https://darknovavpn.com/dark-nova-green-eyes.png' },
         { property: 'og:image:alt', content: 'Блог Dark Nova VPN' },
 
         { property: 'article:published_time', content: '' },
@@ -87,10 +87,10 @@ useHead({
             name: 'twitter:description',
             content: 'Гайды и статьи про VPN: подключение, безопасность, серверы и работа с Happ и INCY.',
         },
-        { name: 'twitter:image', content: 'https://dark-nova-vpn.space/dark-nova-green-eyes.png' },
+        { name: 'twitter:image', content: 'https://darknovavpn.com/dark-nova-green-eyes.png' },
     ],
     link: [
-        { rel: 'canonical', href: 'https://dark-nova-vpn.space/blog' },
+        { rel: 'canonical', href: 'https://darknovavpn.com/blog' },
     ],
 })
 

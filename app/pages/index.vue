@@ -857,7 +857,7 @@ const blogPosts = [
 
 
 
-const siteUrl = 'https://dark-nova-vpn.space'
+const siteUrl = 'https://darknovavpn.com'
 const pageTitle = 'VPN ключ для Happ и INCY — Dark Nova VPN'
 const pageDescription = 'VPN ключ для клиентов Happ и INCY. Быстрая выдача в Telegram, 3 дня бесплатно, оплата от 130₽/мес. Dark Nova VPN.'
 const pageKeywords = 'VPN ключ для Happ, VPN ключ для INCY, ключ для впн Happ, ключ для впн INCY, VPN Happ, VPN INCY, Dark Nova VPN, VPN ключ Telegram'

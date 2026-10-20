@@ -62,8 +62,25 @@
                         :key="item.to"
                         :to="item.to"
                         class="account-aside__link"
-                        :class="{ 'is-active': isNavActive(item.to) }"
+                        :class="{
+                            'is-active': isNavActive(item.to),
+                            'account-aside__link--featured': item.highlight,
+                        }"
                     >
+                        <svg
+                            v-if="item.highlight"
+                            class="account-aside__snake"
+                            aria-hidden="true"
+                        >
+                            <rect
+                                class="account-aside__snake-path"
+                                x="1"
+                                y="1"
+                                rx="9"
+                                ry="9"
+                                pathLength="100"
+                            />
+                        </svg>
                         <span class="account-aside__link-icon" v-html="item.icon"></span>
                         <span class="account-aside__link-text">{{ item.label }}</span>
                         <span v-if="item.badge" class="account-aside__badge">{{ item.badge }}</span>
@@ -102,7 +119,7 @@ const navGroups = [
     [
         { label: 'Главная', to: '/account', icon: icons.home },
         { label: 'Оплата подписки', to: '/account/subscription', icon: icons.payment },
-        { label: 'Подключить VPN', to: '/account/connect', icon: icons.vpn },
+        { label: 'Подключить VPN', to: '/account/connect', icon: icons.vpn, highlight: true },
         { label: 'Реферальная программа', to: '/account/referral', icon: icons.users },
         { label: 'Уведомления', to: '/account/notifications', icon: icons.bell, badge: 5 },
     ],
@@ -118,7 +135,23 @@ function isNavActive(to) {
     return route.path === to || route.path.startsWith(`${to}/`)
 }
 
+const { adminUrl } = useAdminApi()
+const loggingOut = ref(false)
+
 async function logout() {
-    await navigateTo('/')
+    if (loggingOut.value) return
+    loggingOut.value = true
+
+    try {
+        await fetch(adminUrl('/api/v1/account/logout'), {
+            method: 'POST',
+            credentials: 'include',
+        })
+    } catch {
+        // даже если запрос упал — уводим с панели
+    } finally {
+        loggingOut.value = false
+        await navigateTo('/')
+    }
 }
 </script>

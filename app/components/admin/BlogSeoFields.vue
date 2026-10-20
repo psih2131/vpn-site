@@ -30,7 +30,7 @@
                             v-model="seo.canonical"
                             class="admin-form__input"
                             type="text"
-                            placeholder="https://dark-nova-vpn.space/blog/..."
+                            placeholder="https://darknovavpn.com/blog/..."
                         >
                         <button
                             type="button"
@@ -162,7 +162,7 @@ const props = defineProps({
     },
 })
 
-const siteUrl = 'https://dark-nova-vpn.space'
+const siteUrl = 'https://darknovavpn.com'
 
 function buildPostUrl() {
     const cleanSlug = String(props.slug || '').trim().replace(/^\/+|\/+$/g, '')

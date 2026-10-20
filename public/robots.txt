@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /account
 
-Sitemap: https://dark-nova-vpn.space/sitemap_index.xml
+Sitemap: https://darknovavpn.com/sitemap_index.xml

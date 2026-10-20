@@ -201,9 +201,9 @@ useHead(() => {
     const ogDescription = post.seo_og_description || pageDescription
     const twitterTitle = post.seo_twitter_title || pageTitle
     const twitterDescription = post.seo_twitter_description || pageDescription
-    const ogImage = post.image || 'https://dark-nova-vpn.space/dark-nova-green-eyes.png'
+    const ogImage = post.image || 'https://darknovavpn.com/dark-nova-green-eyes.png'
     const defaultCanonical = post.slug
-        ? `https://dark-nova-vpn.space/blog/${post.slug}`
+        ? `https://darknovavpn.com/blog/${post.slug}`
         : ''
     const canonical = post.seo_canonical || defaultCanonical
     const ogUrl = post.seo_og_url || canonical

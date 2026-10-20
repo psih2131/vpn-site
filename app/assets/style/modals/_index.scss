@@ -242,12 +242,54 @@
 	}
 }
 
+.modal__error {
+	margin: 0;
+	padding: 10px 12px;
+	border-radius: $radius-sm;
+	background: rgba(239, 68, 68, 0.12);
+	border: 1px solid rgba(239, 68, 68, 0.35);
+	color: #f87171;
+	font-size: 13px;
+	line-height: 1.45;
+	text-align: center;
+}
+
 .modal__footer {
 	margin-top: 22px;
 	text-align: center;
 	font-size: 14px;
 	line-height: 1.5;
 	color: $color-text-muted;
+}
+
+.modal__telegram {
+	margin-top: 28px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	width: 100%;
+	padding: 14px 20px;
+	border-radius: $radius-pill;
+	background: #2AABEE;
+	color: #fff;
+	font-family: $textFont;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+
+	&:hover {
+		opacity: 0.94;
+		transform: translateY(-1px);
+		background: #229ED9;
+	}
+}
+
+.modal__telegram-icon {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
 }
 
 @media only screen and (max-width: 480px) {

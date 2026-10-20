@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   
 
   site: {
-    url: 'https://dark-nova-vpn.space/',
+    url: 'https://darknovavpn.com',
   },
 
 
@@ -44,8 +44,8 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/account': { redirect: '/' },
-    '/account/**': { redirect: '/' },
+    // '/account': { redirect: '/' },
+    // '/account/**': { redirect: '/' },
   },
 
   sitemap: {

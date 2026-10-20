@@ -172,6 +172,51 @@
 	color: $color-green;
 }
 
+.header__user {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 6px 14px 6px 6px;
+	border-radius: $radius-pill;
+	background-color: $color-bg-card-inner;
+	border: 1px solid $color-border-light;
+	color: $color-text;
+	text-decoration: none;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
+	max-width: 220px;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+		border-color: rgba(255, 255, 255, 0.2);
+	}
+}
+
+.header__user-avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background: rgba(0, 217, 129, 0.16);
+	border: 1px solid rgba(0, 217, 129, 0.45);
+	color: $color-green;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1;
+	flex-shrink: 0;
+	text-transform: uppercase;
+}
+
+.header__user-email {
+	font-family: $textFont;
+	font-size: 14px;
+	font-weight: 600;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 @media only screen and (max-width: 1300px) {
 	.header__nav{
 		display: none;

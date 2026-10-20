@@ -137,6 +137,7 @@ import { useNotificationStore } from '~/stores/notification'
 
 definePageMeta({
     layout: 'account',
+    middleware: 'account-auth',
 })
 
 const storeNotification = useNotificationStore()

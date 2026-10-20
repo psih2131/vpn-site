@@ -6,20 +6,20 @@ Dark Nova выдаёт ссылку-подписку в Telegram. Её вста�
 
 Подключение: https://t.me/dark_nova_vpn_bot  
 Поддержка: https://t.me/darkNovaVpn_support  
-Сайт: https://dark-nova-vpn.space
+Сайт: https://darknovavpn.com
 
 ## Pages
 
-- [Главная](https://dark-nova-vpn.space/): Оффер, тарифы, список серверов, как подключить
-- [Регионы и карта серверов](https://dark-nova-vpn.space/regions): Страны и локации VPN-серверов
-- [VPN для Китая](https://dark-nova-vpn.space/directions/china): Направление и сценарии для Китая
-- [Блог](https://dark-nova-vpn.space/blog): Статьи про VPN, Happ, INCY, ключи и настройку
-- [Как настроить VPN Happ на iPhone](https://dark-nova-vpn.space/blog/kak-nastroit-vpn-happ-na-iphone): Пошаговая инструкция для iPhone
+- [Главная](https://darknovavpn.com/): Оффер, тарифы, список серверов, как подключить
+- [Регионы и карта серверов](https://darknovavpn.com/regions): Страны и локации VPN-серверов
+- [VPN для Китая](https://darknovavpn.com/directions/china): Направление и сценарии для Китая
+- [Блог](https://darknovavpn.com/blog): Статьи про VPN, Happ, INCY, ключи и настройку
+- [Как настроить VPN Happ на iPhone](https://darknovavpn.com/blog/kak-nastroit-vpn-happ-na-iphone): Пошаговая инструкция для iPhone
 
 ## Optional
 
-- [Sitemap](https://dark-nova-vpn.space/sitemap_index.xml): Индекс sitemap для поисковиков
-- [robots.txt](https://dark-nova-vpn.space/robots.txt): Правила обхода ботами
+- [Sitemap](https://darknovavpn.com/sitemap_index.xml): Индекс sitemap для поисковиков
+- [robots.txt](https://darknovavpn.com/robots.txt): Правила обхода ботами
 
 ## Notes
 

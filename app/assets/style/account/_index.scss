@@ -8,6 +8,7 @@
 	flex: 1;
 	min-width: 0;
 	padding: 32px 36px;
+	text-align: left;
 }
 
 .account-content__title {
@@ -16,6 +17,278 @@
 	font-weight: 500;
 	letter-spacing: -0.03em;
 	color: #fff;
+	margin-bottom: 28px;
+}
+
+.account-content__hint {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.account-profile {
+	max-width: 640px;
+	margin: 0;
+	padding: 28px 30px;
+	border-radius: 18px;
+	background: #16161a;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.account-profile__top {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 16px;
+	margin-bottom: 24px;
+	padding-bottom: 22px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.account-profile__avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	background: rgba(0, 217, 129, 0.14);
+	border: 1px solid rgba(0, 217, 129, 0.4);
+	color: #00d981;
+	font-size: 20px;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.account-profile__name {
+	margin: 0 0 6px;
+	font-family: $titleFont;
+	font-size: 22px;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	color: #fff;
+}
+
+.account-profile__email {
+	margin: 0;
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.55);
+	word-break: break-all;
+}
+
+.account-profile__form {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+}
+
+.account-profile__section {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.account-profile__section--editable {
+	padding-top: 22px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.account-profile__section-title {
+	margin: 0;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.4);
+}
+
+.account-profile__list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+.account-profile__field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0;
+	padding: 16px 18px;
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.account-profile__label {
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.42);
+}
+
+.account-profile__telegram {
+	grid-column: 1 / -1;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 20px;
+	border-radius: 16px;
+	background:
+		radial-gradient(circle at top right, rgba(42, 171, 238, 0.16), transparent 42%),
+		linear-gradient(180deg, rgba(42, 171, 238, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+	border: 1px solid rgba(42, 171, 238, 0.28);
+}
+
+.account-profile__telegram-head {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+}
+
+.account-profile__telegram-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 12px;
+	background: #2AABEE;
+	color: #fff;
+	flex-shrink: 0;
+	box-shadow: 0 8px 20px rgba(42, 171, 238, 0.28);
+
+	svg {
+		width: 22px;
+		height: 22px;
+	}
+}
+
+.account-profile__telegram-title {
+	margin: 0 0 6px;
+	font-family: $titleFont;
+	font-size: 17px;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	color: #fff;
+}
+
+.account-profile__telegram-text {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.58);
+	max-width: 48ch;
+}
+
+.account-profile__telegram-benefits {
+	display: grid;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		position: relative;
+		padding-left: 22px;
+		font-size: 13px;
+		line-height: 1.45;
+		color: rgba(255, 255, 255, 0.78);
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0.45em;
+			left: 0;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #2AABEE;
+			box-shadow: 0 0 0 3px rgba(42, 171, 238, 0.18);
+		}
+	}
+}
+
+.account-profile__telegram-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.account-profile__value {
+	margin: 0;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 1.4;
+	color: #fff;
+	word-break: break-word;
+}
+
+.account-profile__input {
+	width: 100%;
+	padding: 12px 14px;
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0.28);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: #fff;
+	font-family: $textFont;
+	font-size: 14px;
+	font-weight: 500;
+	transition: border-color 0.2s ease, background-color 0.2s ease;
+
+	&::placeholder {
+		color: rgba(255, 255, 255, 0.35);
+	}
+
+	&:focus {
+		background: rgba(0, 0, 0, 0.36);
+		border-color: rgba(0, 217, 129, 0.45);
+	}
+
+	&[readonly] {
+		opacity: 0.72;
+		cursor: default;
+	}
+}
+
+.account-profile__error {
+	margin: 0;
+	padding: 12px 14px;
+	border-radius: 12px;
+	background: rgba(239, 68, 68, 0.12);
+	border: 1px solid rgba(239, 68, 68, 0.35);
+	color: #f87171;
+	font-size: 13px;
+	line-height: 1.45;
+}
+
+.account-profile__submit {
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 13px 22px;
+	border-radius: 999px;
+	background: $gradient-green;
+	color: #fff;
+	font-family: $textFont;
+	font-size: 14px;
+	font-weight: 600;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+
+	&:hover:not(:disabled) {
+		opacity: 0.92;
+		transform: translateY(-1px);
+	}
+
+	&:disabled {
+		opacity: 0.7;
+		cursor: not-allowed;
+	}
 }
 
 @media only screen and (max-width: 900px) {
@@ -29,5 +302,17 @@
 
 	.account-content__title {
 		font-size: 28px;
+	}
+
+	.account-profile {
+		padding: 22px 18px;
+	}
+
+	.account-profile__list {
+		grid-template-columns: 1fr;
+	}
+
+	.account-profile__submit {
+		width: 100%;
 	}
 }
