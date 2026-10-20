@@ -15,7 +15,6 @@ export default defineNuxtConfig({
       meta: [
         { name: 'robots', content: 'index, follow' },
         { name: 'googlebot', content: 'index, follow' },
-        { name: 'yandex-verification', content: '4efa53a05048661b' },
       ],
       htmlAttrs: {
         lang: 'ru',
