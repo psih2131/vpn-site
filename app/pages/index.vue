@@ -911,7 +911,11 @@ useHead({
                         '@id': `${siteUrl}/#organization`,
                         name: 'Dark Nova VPN',
                         url: `${siteUrl}/`,
-                        logo: `${siteUrl}/favicon.ico`,
+                        logo: {
+                            '@type': 'ImageObject',
+                            url: ogImage,
+                        },
+                        image: ogImage,
                         sameAs: [
                             'https://t.me/darkNovaVpn_support',
                         ],
@@ -958,6 +962,10 @@ useHead({
                     },
                     {
                         '@type': 'FAQPage',
+                        '@id': `${siteUrl}/#faq`,
+                        url: `${siteUrl}/`,
+                        inLanguage: 'ru-RU',
+                        isPartOf: { '@id': `${siteUrl}/#website` },
                         mainEntity: faqItems.map((item) => ({
                             '@type': 'Question',
                             name: item.question,
