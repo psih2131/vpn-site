@@ -10,6 +10,7 @@
                 <Authorization v-else-if="storeModal.modalType === 'authorization'" key="authorization" />
                 <RestorePass v-else-if="storeModal.modalType === 'restorePass'" key="restorePass" />
                 <RestorePassCode v-else-if="storeModal.modalType === 'restorePassCode'" key="restorePassCode" />
+                <ConnectDevice v-else-if="storeModal.modalType === 'connectDevice'" key="connectDevice" />
             </Transition>
         </div>
     </Transition>
@@ -20,6 +21,7 @@ import Registration from '~/components/modals/Registration.vue'
 import Authorization from '~/components/modals/Authorization.vue'
 import RestorePass from '~/components/modals/RestorePass.vue'
 import RestorePassCode from '~/components/modals/RestorePassCode.vue'
+import ConnectDevice from '~/components/modals/ConnectDevice.vue'
 import { useModalStore } from '~/stores/modal'
 
 const storeModal = useModalStore()

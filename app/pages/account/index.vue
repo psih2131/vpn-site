@@ -61,6 +61,7 @@
                             >
                         </label>
 
+                        <!--
                         <div class="account-profile__telegram">
                             <div class="account-profile__telegram-head">
                                 <span class="account-profile__telegram-icon" aria-hidden="true">
@@ -94,6 +95,7 @@
                                 >
                             </label>
                         </div>
+                        -->
                     </div>
 
                     <p v-if="formError" class="account-profile__error">{{ formError }}</p>
