@@ -305,6 +305,24 @@
 	}
 }
 
+.admin-accounts-list {
+	.admin-users-list__head,
+	.admin-users-list__row {
+		grid-template-columns:
+			110px
+			minmax(180px, 1.4fr)
+			minmax(100px, 0.8fr)
+			minmax(100px, 0.8fr)
+			110px
+			150px;
+		min-width: 860px;
+	}
+
+	.admin-users-list__row {
+		cursor: default;
+	}
+}
+
 .admin-users-list__head,
 .admin-users-list__row {
 	display: grid;
