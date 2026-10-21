@@ -166,8 +166,40 @@
 
 .sub-pay__footer {
 	display: flex;
-	justify-content: flex-end;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 14px;
 	margin-top: 14px;
+}
+
+.sub-pay__ready {
+	width: 100%;
+	padding: 14px 16px;
+	border-radius: 12px;
+	background: #111;
+	border: 1px solid #242424;
+}
+
+.sub-pay__ready-title {
+	font-size: 14px;
+	font-weight: 650;
+	color: #fff;
+}
+
+.sub-pay__ready-text {
+	margin-top: 4px;
+	font-size: 13px;
+	line-height: 1.4;
+	color: #9a9a9a;
+}
+
+.sub-pay__ready-link {
+	display: block;
+	margin-top: 10px;
+	font-size: 13px;
+	line-height: 1.45;
+	color: #00d981;
+	word-break: break-all;
 }
 
 .sub-pay__btn {

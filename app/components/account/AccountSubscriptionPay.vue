@@ -31,6 +31,14 @@
                 <template v-if="paying">Создание платежа…</template>
                 <template v-else>Оплатить {{ selectedPlanData?.price }} {{ selectedPlanData?.currency }}</template>
             </button>
+
+            <div v-if="paymentUrl" class="sub-pay__ready">
+                <p class="sub-pay__ready-title">Ваша платежная ссылка готова</p>
+                <p class="sub-pay__ready-text">Перейдите и оплатите, если вас не перебросило на страницу оплаты автоматически</p>
+                <a class="sub-pay__ready-link" :href="paymentUrl" target="_blank" rel="noopener noreferrer">
+                    {{ paymentUrl }}
+                </a>
+            </div>
         </div>
     </section>
 </template>
@@ -41,6 +49,7 @@ import { useNotificationStore } from '~/stores/notification'
 const { adminUrl } = useAdminApi()
 const storeNotification = useNotificationStore()
 const paying = ref(false)
+const paymentUrl = ref('')
 
 const { data: plansResponse } = await useAsyncData('account-plans', () =>
     $fetch(adminUrl('/api/v1/admin/plans')),
@@ -67,6 +76,7 @@ async function pay() {
     }
 
     paying.value = true
+    paymentUrl.value = ''
 
     try {
         const data = await $fetch(adminUrl('/api/v1/account/payments'), {
@@ -75,8 +85,8 @@ async function pay() {
             body: { planId },
         })
 
-        const paymentUrl = data?.data?.paymentUrl
-        if (!data?.success || !paymentUrl) {
+        const url = data?.data?.paymentUrl
+        if (!data?.success || !url) {
             storeNotification.setNotification({
                 type: 'error',
                 text: 'Не удалось получить ссылку на оплату',
@@ -84,7 +94,8 @@ async function pay() {
             return
         }
 
-        window.open(paymentUrl, '_blank', 'noopener,noreferrer')
+        paymentUrl.value = url
+        window.open(url, '_blank', 'noopener,noreferrer')
     } catch (error) {
         storeNotification.setNotification({
             type: 'error',

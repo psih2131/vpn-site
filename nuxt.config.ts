@@ -12,6 +12,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
       meta: [
         { name: 'robots', content: 'index, follow' },
         { name: 'googlebot', content: 'index, follow' },
