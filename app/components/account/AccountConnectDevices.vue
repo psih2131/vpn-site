@@ -25,10 +25,7 @@
 </template>
 
 <script setup>
-import { useNotificationStore } from '~/stores/notification'
-
 const { adminUrl } = useAdminApi()
-const storeNotification = useNotificationStore()
 
 const devices = ref([])
 const limit = 5
@@ -55,10 +52,6 @@ async function loadDevices() {
             : []
     } catch {
         devices.value = []
-        storeNotification.setNotification({
-            type: 'error',
-            text: 'Не удалось получить устройства',
-        })
     }
 }
 

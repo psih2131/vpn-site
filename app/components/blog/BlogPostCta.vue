@@ -3,23 +3,29 @@
         <div class="blog-post-cta__inner">
             <h2 class="blog-post-cta__title">Подключи VPN за пару минут</h2>
             <p class="blog-post-cta__text">
-                Получи ключ для Happ и INCY в Telegram — 3 дня бесплатно, без карт и сложных настроек.
+                Получи ключ для Happ и INCY — 3 дня бесплатно, без карт и сложных настроек.
             </p>
-            <a
-                :href="telegramBotLink"
-                target="_blank"
-                rel="noopener noreferrer"
+            <button
+                type="button"
                 class="blog-post-cta__btn"
+                @click="openRegistration"
             >
                 Подключить бесплатно
                 <svg class="blog-post-cta__btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                     <path d="M3 8h10M9 4l4 4-4 4"/>
                 </svg>
-            </a>
+            </button>
         </div>
     </section>
 </template>
 
 <script setup>
-const telegramBotLink = 'https://t.me/dark_nova_vpn_bot'
+import { useModalStore } from '~/stores/modal'
+
+const storeModal = useModalStore()
+
+function openRegistration() {
+    storeModal.typeActiveModal('registration')
+    storeModal.openCloseModal(true)
+}
 </script>

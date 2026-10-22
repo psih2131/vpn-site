@@ -30,12 +30,12 @@
                             Цена подписки на месяц — от 130₽/мес.
                         </p>
                         <div class="hero__actions">
-                            <a :href="telegramBotLink" target="_blank" rel="noopener noreferrer" class="hero__btn">
+                            <button type="button" class="hero__btn" @click="openRegistration">
                                 Подключить бесплатно
                                 <svg class="hero__btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                                     <path d="M3 8h10M9 4l4 4-4 4"/>
                                 </svg>
-                            </a>
+                            </button>
                             <a href="#howto" class="hero__btn hero__btn--ghost">
                                 <span class="hero__play">
                                     <svg viewBox="0 0 16 16" fill="currentColor">
@@ -232,9 +232,9 @@
                             </div>
                             <p v-if="plan.priceNote" class="pricing__price-note">{{ plan.priceNote }}</p>
                         </div>
-                        <a :href="telegramBotLink" target="_blank" rel="noopener noreferrer" class="pricing__btn">
+                        <button type="button" class="pricing__btn" @click="openRegistration">
                             {{ plan.button }}
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -319,11 +319,10 @@
                         <span class="howto-grid__meta">{{ step.meta }}</span>
                     </article>
 
-                    <a
-                        :href="telegramBotLink"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <button
+                        type="button"
                         class="howto-grid__cell howto-grid__cell--cta"
+                        @click="openRegistration"
                     >
                         <div class="howto-grid__head">
                             <span class="howto-grid__num howto-grid__num--accent">05.</span>
@@ -335,8 +334,8 @@
                             <h3 class="howto-grid__step-title">Пользуйтесь свободным интернетом</h3>
                             <p class="howto-grid__step-text">3 дня бесплатно, карта не нужна. Дальше — 130₽ в месяц.</p>
                         </div>
-                        <span class="howto-grid__meta howto-grid__meta--accent">Начать в Telegram</span>
-                    </a>
+                        <span class="howto-grid__meta howto-grid__meta--accent">Начать бесплатно</span>
+                    </button>
 
                     <div class="howto-grid__cell howto-grid__cell--empty"></div>
                 </div>
@@ -393,12 +392,12 @@
                                 >
                                     <div class="devices-alt__body">
                                         <p class="devices-alt__text">{{ item.text }}</p>
-                                        <a :href="telegramBotLink" target="_blank" rel="noopener noreferrer" class="devices-alt__more">
+                                        <button type="button" class="devices-alt__more" @click="openRegistration">
                                             Подключить
                                             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                                                 <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/>
                                             </svg>
-                                        </a>
+                                        </button>
                                     </div>
                                 </Vue3SlideUpDown>
                             </div>
@@ -590,9 +589,16 @@ import blogImg3 from '~/assets/images/s5.jpg'
 import HeroAnim from '~/components/hero-anim.vue'
 
 
+import { useModalStore } from '~/stores/modal'
+
 definePageMeta({ layout: 'default' })
 
-const telegramBotLink = 'https://t.me/dark_nova_vpn_bot'
+const storeModal = useModalStore()
+
+function openRegistration() {
+    storeModal.typeActiveModal('registration')
+    storeModal.openCloseModal(true)
+}
 
 const openFaq = ref(null)
 

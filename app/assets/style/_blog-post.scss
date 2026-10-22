@@ -209,12 +209,14 @@
 	align-items: center;
 	gap: 10px;
 	padding: 16px 24px;
+	border: 0;
 	border-radius: $radius-pill;
 	background-color: $color-text;
 	color: #0b0b0d;
 	font-family: $textFont;
 	font-size: 14px;
 	font-weight: 600;
+	cursor: pointer;
 	transition: transform 0.25s ease, opacity 0.25s ease;
 }
 

@@ -86,12 +86,14 @@
 	align-items: center;
 	gap: 10px;
 	padding: 16px 24px;
+	border: 0;
 	border-radius: $radius-pill;
 	background-color: $color-text;
 	color: #0b0b0d;
 	font-family: $textFont;
 	font-size: 14px;
 	font-weight: 600;
+	cursor: pointer;
 	transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
@@ -629,9 +631,11 @@
 	justify-content: center;
 	width: 100%;
 	padding: 16px 20px;
+	border: 0;
 	border-radius: $radius-pill;
 	background: $gradient-green;
 	color: $color-text;
+	cursor: pointer;
 	font-family: $textFont;
 	font-size: 14px;
 	font-weight: 600;
@@ -941,11 +945,16 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	font-family: inherit;
 	font-size: 10px;
 	font-weight: 600;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
 	color: $color-green;
+	cursor: pointer;
 }
 
 .devices-alt__more svg {
@@ -1101,6 +1110,15 @@
 
 .howto-grid__cell:hover {
 	background-color: #0f0f11;
+}
+
+button.howto-grid__cell {
+	width: 100%;
+	border: 0;
+	text-align: left;
+	font: inherit;
+	color: inherit;
+	cursor: pointer;
 }
 
 .howto-grid__cell--empty {

@@ -59,8 +59,8 @@ const userInitial = computed(() => {
 
 const displayEmail = computed(() => {
     const email = String(user.value?.email || '').trim()
-    if (email.length <= 15) return email
-    return `${email.slice(0, 15)}...`
+    if (email.length <= 12) return email
+    return `${email.slice(0, 12)}...`
 })
 
 function openAuthModal() {
