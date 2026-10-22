@@ -28,12 +28,12 @@ export default defineNuxtConfig({
       script: [
         {
           key: 'gtag-js',
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-X3S151K5ZT',
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-Y1P90KMD0K',
           async: true,
         },
         {
           key: 'gtag-config',
-          innerHTML: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-X3S151K5ZT');`,
+          innerHTML: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-Y1P90KMD0K');`,
         },
       ],
     },
