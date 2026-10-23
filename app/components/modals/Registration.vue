@@ -93,7 +93,7 @@ const storeModal = useModalStore()
 const storeNotification = useNotificationStore()
 const { adminUrl } = useAdminApi()
 
-const telegramBotLink = 'https://t.me/dark_nova_vpn_bot'
+const telegramBotLink = 'https://26j8gl.s.gy/jOFHDR'
 
 const email = ref('')
 const password = ref('')
