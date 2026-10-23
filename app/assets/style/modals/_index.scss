@@ -262,8 +262,16 @@
 	color: $color-text-muted;
 }
 
+.modal__divider {
+	margin-top: 22px;
+	text-align: center;
+	font-size: 13px;
+	line-height: 1.4;
+	color: $color-text-muted;
+}
+
 .modal__telegram {
-	margin-top: 28px;
+	margin-top: 12px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

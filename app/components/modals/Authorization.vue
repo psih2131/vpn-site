@@ -57,6 +57,8 @@
             </button>
         </p>
 
+        <p class="modal__divider">или продолжите в Telegram</p>
+
         <a
             :href="telegramBotLink"
             target="_blank"
