@@ -109,6 +109,8 @@ async function activateAccount() {
 }
 
 function openAuthorization() {
+    const { trackEvent } = useGtag()
+    trackEvent('click_cta', { button_name: 'activate_login' })
     storeModal.typeActiveModal('authorization')
     storeModal.openCloseModal(true)
 }

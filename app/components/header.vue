@@ -48,6 +48,7 @@ import { useModalStore } from '~/stores/modal'
 
 const storeModal = useModalStore()
 const { adminUrl } = useAdminApi()
+const { trackEvent } = useGtag()
 
 const user = ref(null)
 const userPending = ref(true)
@@ -64,6 +65,7 @@ const displayEmail = computed(() => {
 })
 
 function openAuthModal() {
+    trackEvent('click_cta', { button_name: 'header_auth' })
     storeModal.typeActiveModal('authorization')
     storeModal.openCloseModal(true)
 }

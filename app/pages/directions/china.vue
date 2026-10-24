@@ -30,7 +30,7 @@
                             Цена подписки на месяц — от 130₽/мес.
                         </p>
                         <div class="hero__actions">
-                            <button type="button" class="hero__btn" @click="openRegistration">
+                            <button type="button" class="hero__btn" @click="openRegistration('china_hero_connect_free')">
                                 Подключить бесплатно
                                 <svg class="hero__btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                                     <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -232,7 +232,7 @@
                             </div>
                             <p v-if="plan.priceNote" class="pricing__price-note">{{ plan.priceNote }}</p>
                         </div>
-                        <button type="button" class="pricing__btn" @click="openRegistration">
+                        <button type="button" class="pricing__btn" @click="openRegistration(plan.trackId)">
                             {{ plan.button }}
                         </button>
                     </div>
@@ -322,7 +322,7 @@
                     <button
                         type="button"
                         class="howto-grid__cell howto-grid__cell--cta"
-                        @click="openRegistration"
+                        @click="openRegistration('china_howto_start_free')"
                     >
                         <div class="howto-grid__head">
                             <span class="howto-grid__num howto-grid__num--accent">05.</span>
@@ -392,7 +392,7 @@
                                 >
                                     <div class="devices-alt__body">
                                         <p class="devices-alt__text">{{ item.text }}</p>
-                                        <button type="button" class="devices-alt__more" @click="openRegistration">
+                                        <button type="button" class="devices-alt__more" @click="openRegistration('china_devices_connect')">
                                             Подключить
                                             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                                                 <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/>
@@ -570,8 +570,10 @@ import { useModalStore } from '~/stores/modal'
 definePageMeta({ layout: 'default' })
 
 const storeModal = useModalStore()
+const { trackEvent } = useGtag()
 
-function openRegistration() {
+function openRegistration(buttonName = 'china_cta_register') {
+    trackEvent('click_cta', { button_name: buttonName })
     storeModal.typeActiveModal('registration')
     storeModal.openCloseModal(true)
 }
@@ -626,6 +628,7 @@ const plans = [
     {
         badge: 'Базовый тариф',
         badgeIcon: 'base',
+        trackId: 'china_pricing_1m',
         title: 'Подписка на 1 месяц',
         features: monthlyPlanFeatures,
         disabledFeatures: [],
@@ -638,6 +641,7 @@ const plans = [
     {
         badge: 'Выгодный тариф',
         badgeIcon: 'value',
+        trackId: 'china_pricing_3m',
         title: 'Подписка на 3 месяца',
         features: quarterlyPlanFeatures,
         disabledFeatures: [],
@@ -651,6 +655,7 @@ const plans = [
     {
         badge: 'Выгодный тариф',
         badgeIcon: 'value',
+        trackId: 'china_pricing_1y',
         title: 'Подписка на 1 год',
         features: yearlyPlanFeatures,
         disabledFeatures: [],

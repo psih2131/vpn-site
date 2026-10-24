@@ -66,13 +66,14 @@
             </button>
         </p>
 
-        <p class="modal__divider">или продолжите в Telegram</p>
+        <p class="modal__divider">или продолжите в телеграм боте</p>
 
         <a
             :href="telegramBotLink"
             target="_blank"
             rel="noopener noreferrer"
             class="modal__telegram"
+            @click="trackTelegram"
         >
             <svg class="modal__telegram-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -92,6 +93,7 @@ import { useNotificationStore } from '~/stores/notification'
 const storeModal = useModalStore()
 const storeNotification = useNotificationStore()
 const { adminUrl } = useAdminApi()
+const { trackEvent } = useGtag()
 
 const telegramBotLink = 'https://26j8gl.s.gy/jOFHDR'
 
@@ -108,8 +110,13 @@ function closeModal() {
 }
 
 function openAuthorization() {
+    trackEvent('click_cta', { button_name: 'register_to_auth' })
     storeModal.typeActiveModal('authorization')
     storeModal.openCloseModal(true)
+}
+
+function trackTelegram() {
+    trackEvent('click_cta', { button_name: 'register_telegram' })
 }
 
 function showInfoNotification() {
@@ -152,6 +159,7 @@ function validateForm() {
 
 async function onSubmit() {
     formError.value = ''
+    trackEvent('click_register', { button_name: 'register_submit' })
 
     const payload = validateForm()
     if (!payload) return

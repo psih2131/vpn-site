@@ -57,13 +57,14 @@
             </button>
         </p>
 
-        <p class="modal__divider">или продолжите в Telegram</p>
+        <p class="modal__divider">или продолжите в телеграм боте</p>
 
         <a
             :href="telegramBotLink"
             target="_blank"
             rel="noopener noreferrer"
             class="modal__telegram"
+            @click="trackTelegram"
         >
             <svg class="modal__telegram-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -84,6 +85,7 @@ const storeModal = useModalStore()
 const storeNotification = useNotificationStore()
 const router = useRouter()
 const { adminUrl } = useAdminApi()
+const { trackEvent } = useGtag()
 
 const telegramBotLink = 'https://26j8gl.s.gy/jOFHDR'
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -98,6 +100,7 @@ function closeModal() {
 }
 
 function openRegistration() {
+    trackEvent('click_cta', { button_name: 'auth_to_register' })
     storeModal.typeActiveModal('registration')
     storeModal.openCloseModal(true)
 }
@@ -105,6 +108,10 @@ function openRegistration() {
 function openRestorePass() {
     storeModal.typeActiveModal('restorePass')
     storeModal.openCloseModal(true)
+}
+
+function trackTelegram() {
+    trackEvent('click_cta', { button_name: 'auth_telegram' })
 }
 
 function showSuccessNotification() {
@@ -116,6 +123,7 @@ function showSuccessNotification() {
 
 async function onSubmit() {
     formError.value = ''
+    trackEvent('click_login', { button_name: 'auth_submit' })
 
     const emailValue = email.value.trim().toLowerCase()
     const passwordValue = password.value

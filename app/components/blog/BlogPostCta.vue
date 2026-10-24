@@ -23,8 +23,10 @@
 import { useModalStore } from '~/stores/modal'
 
 const storeModal = useModalStore()
+const { trackEvent } = useGtag()
 
 function openRegistration() {
+    trackEvent('click_cta', { button_name: 'blog_post_cta' })
     storeModal.typeActiveModal('registration')
     storeModal.openCloseModal(true)
 }
