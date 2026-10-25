@@ -14,7 +14,14 @@ Dark Nova выдаёт ссылку-подписку в Telegram. Её вста�
 - [Регионы и карта серверов](https://darknovavpn.com/regions): Страны и локации VPN-серверов
 - [VPN для Китая](https://darknovavpn.com/directions/china): Направление и сценарии для Китая
 - [Блог](https://darknovavpn.com/blog): Статьи про VPN, Happ, INCY, ключи и настройку
+- [Как подключить vpn на андроид](https://darknovavpn.com/blog/kak-podklyuchit-vpn-na-android-poshagovaya-instruktsiya): Пошаговая инструкция для Android
+- [Как скачать впн на смарт тв самсунг, lg, sony](https://darknovavpn.com/blog/kak-skachat-vpn-na-smart-tv-samsung-lg-sony): VPN на Smart TV и Android TV
+- [Как настроить INCY VPN](https://darknovavpn.com/blog/kak-nastroit-incy-vpn): Инструкция для iPhone и Android
+- [Как настроить VPN Happ на Windows](https://darknovavpn.com/blog/kak-nastroit-vpn-happ-na-windows): Пошаговая инструкция для Windows
 - [Как настроить VPN Happ на iPhone](https://darknovavpn.com/blog/kak-nastroit-vpn-happ-na-iphone): Пошаговая инструкция для iPhone
+- [Как установить VPN на макбук](https://darknovavpn.com/blog/kak-ustanovit-vpn-na-makbuk-nastroyka-na-macos-s-nulya): Настройка на macOS с нуля
+- [Что такое ключ для VPN](https://darknovavpn.com/blog/chto-takoe-klyuch-dlya-vpn-konfig-podpiska-i-vless): Конфиг, подписка и VLESS
+- [Великий китайский файрвол](https://darknovavpn.com/blog/velikiy-kitayskiy-fayrvol-kak-ustroen-internet-v-kitae): Как устроен интернет в Китае
 
 ## Optional
 
