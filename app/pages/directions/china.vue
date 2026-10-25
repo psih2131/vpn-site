@@ -174,122 +174,12 @@
             </div>
         </section>
 
-        <!-- Pricing -->
-        <section id="pricing" class="pricing">
-            <div class="container">
-                <h2 class="section-title">Тарифный план Dark Nova VPN</h2>
-                <div class="pricing__grid">
-                    <div v-for="plan in plans" :key="plan.title" class="pricing__card">
-                        <div class="pricing__badge">
-                            <svg v-if="plan.badgeIcon === 'test'" class="pricing__badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="8" cy="8" r="6"/>
-                                <path d="M5.5 10c.8 1 1.6 1.5 2.5 1.5s1.7-.5 2.5-1.5"/>
-                                <circle cx="6" cy="6.5" r=".75" fill="currentColor" stroke="none"/>
-                                <circle cx="10" cy="6.5" r=".75" fill="currentColor" stroke="none"/>
-                            </svg>
-                            <svg v-else-if="plan.badgeIcon === 'base'" class="pricing__badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="2" y="5" width="12" height="9" rx="1"/>
-                                <path d="M5 5V4a3 3 0 016 0v1"/>
-                            </svg>
-                            <svg v-else class="pricing__badge-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="8" cy="8" r="6"/>
-                                <path d="M5 10s1 1.5 3 1.5 3-1.5 3-1.5"/>
-                                <circle cx="6" cy="7" r=".75" fill="currentColor" stroke="none"/>
-                                <circle cx="10" cy="7" r=".75" fill="currentColor" stroke="none"/>
-                            </svg>
-                            {{ plan.badge }}
-                        </div>
-                        <h3 class="pricing__card-title">{{ plan.title }}</h3>
-                        <ul class="pricing__list">
-                            <li
-                                v-for="(feature, index) in plan.features"
-                                :key="feature"
-                                class="pricing__list-item"
-                                :class="{ 'pricing__list-item--disabled': plan.disabledFeatures.includes(index) }"
-                            >
-                                <span
-                                    class="pricing__list-dot"
-                                    :class="{ 'pricing__list-dot--disabled': plan.disabledFeatures.includes(index) }"
-                                ></span>
-                                {{ feature }}
-                            </li>
-                        </ul>
-                        <div class="pricing__price-block">
-                            <div class="pricing__price-top">
-                                <div class="pricing__price-main">
-                                    <span class="pricing__price-value">{{ plan.priceValue }}</span>
-                                    <span class="pricing__price-period">
-                                        <span class="pricing__price-period-line">{{ plan.pricePeriodLine1 }}</span>
-                                        <span class="pricing__price-period-line">{{ plan.pricePeriodLine2 }}</span>
-                                    </span>
-                                </div>
-                                <span v-if="plan.priceDiscount" class="pricing__price-discount">{{ plan.priceDiscount }}</span>
-                            </div>
-                            <p v-if="plan.priceNote" class="pricing__price-note">{{ plan.priceNote }}</p>
-                        </div>
-                        <button type="button" class="pricing__btn" @click="openRegistration(plan.trackId)">
-                            {{ plan.button }}
-                        </button>
-                    </div>
-                </div>
+        <PricingSection
+            title="Тарифный план Dark Nova VPN"
+            track-prefix="china_"
+        />
 
-                <div class="pricing__promo-row">
-                    <div class="pricing__promo-card">
-                        <div class="pricing__promo-content">
-                            <h3 class="pricing__promo-title">Реферальная<br />программа для вас</h3>
-                            <p class="pricing__promo-text">
-                                50% комиссия со всех платежей привлеченного пользователя.
-                                Лимит на вывод — 2000₽, также можете оплачивать тариф
-                                со своего реферального счета.
-                            </p>
-                        </div>
-                        <img
-                            :src="promoReferral"
-                            alt="Реферальная программа Dark Nova VPN"
-                            title="Реферальная программа Dark Nova VPN"
-                            class="pricing__promo-image pricing__promo-image--referral"
-                        />
-                    </div>
-                    <div class="pricing__promo-card">
-                        <div class="pricing__promo-content">
-                            <h3 class="pricing__promo-title">Вернем деньги<br />в течение 14 дней</h3>
-                            <p class="pricing__promo-text">
-                                если вам не понравится<br />или не подойдет Dark Nova VPN.
-                            </p>
-                        </div>
-                        <img
-                            :src="promoRefund"
-                            alt="Возврат денег в течение 14 дней — Dark Nova VPN"
-                            title="Возврат денег в течение 14 дней — Dark Nova VPN"
-                            class="pricing__promo-image pricing__promo-image--refund"
-                        />
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Countries -->
-        <section id="regions" class="countries">
-            <div class="container">
-                <h2 class="section-title">Рабочие ВПН серверы для работы в Китае</h2>
-                <div class="countries__grid">
-                    <div v-for="country in countries" :key="`${country.name}-${country.city}`" class="countries__item">
-                        <ServerFlag :code="country.flag" class="countries__flag" />
-                        <div class="countries__info">
-                            <div class="countries__name">{{ country.name }}</div>
-                            <div class="countries__city">{{ country.city }}</div>
-                        </div>
-                        <span
-                            v-if="country.badge"
-                            class="countries__badge"
-                            :class="`countries__badge--${country.badgeType}`"
-                        >
-                            {{ country.badge }}
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <CountriesSection title="Рабочие ВПН серверы для работы в Китае" />
 
         <!-- How to connect -->
         <section id="howto" class="howto-grid">
@@ -402,36 +292,10 @@
             </div>
         </section>
 
-        <!-- Platforms -->
-        <section id="platforms" class="platforms">
-            <div class="container">
-                <h2 class="section-title platforms__title">Dark Nova VPN работает на всех устройствах</h2>
-                <p class="platforms__subtitle">
-                    Один аккаунт — все платформы. Подключение идёт через приложения Happ и INCY:
-                    вы получаете ссылку-подписку в Telegram-боте, вставляете её в клиент —
-                    и все серверы появляются в списке автоматически.
-                </p>
-
-                <div class="platforms__grid">
-                    <article v-for="platform in platforms" :key="platform.title" class="platforms__card">
-                        <span
-                            class="platforms__icon"
-                            :class="[`platforms__icon--${platform.icon}`, { 'platforms__icon--wide': platform.wide }]"
-                        >
-                            <img
-                                :src="platform.image"
-                                :alt="platform.title"
-                                :title="platform.title"
-                                class="platforms__icon-img"
-                                :class="{ 'platforms__icon-img--wide': platform.wide }"
-                            />
-                        </span>
-                        <h3 class="platforms__card-title">{{ platform.title }}</h3>
-                        <p class="platforms__card-text">{{ platform.text }}</p>
-                    </article>
-                </div>
-            </div>
-        </section>
+        <PlatformsSection
+            title="Dark Nova VPN работает на всех устройствах"
+            subtitle="Один аккаунт — все платформы. Подключение идёт через приложения Happ и INCY: вы получаете ссылку-подписку в Telegram-боте, вставляете её в клиент — и все серверы появляются в списке автоматически."
+        />
 
         
 
@@ -541,7 +405,6 @@
 <script setup>
 import { ref } from 'vue'
 import { Vue3SlideUpDown } from 'vue3-slide-up-down'
-import ServerFlag from '~/components/ServerFlag.vue'
 import heroSchematic from '~/assets/images/hero-schematic.png'
 import logoHapp from '~/assets/images/logo/happ.webp'
 import logoIncy from '~/assets/images/logo/incy.png'
@@ -549,14 +412,6 @@ import devicesAltPhone from '~/assets/images/devices-alt-phone.png'
 import featureSecurity from '~/assets/images/feature-security.png'
 import featureApps from '~/assets/images/feature-apps.png'
 import featureSpeed from '~/assets/images/feature-speed.png'
-import iconAndroid from '~/assets/images/icon-android.png'
-import iconApple from '~/assets/images/icon-apple.png'
-import iconWindows from '~/assets/images/icon-windows.png'
-import iconLinux from '~/assets/images/icon-linux.png'
-import iconFinder from '~/assets/images/icon-finder.png'
-import iconAndroidTv from '~/assets/images/icon-android-tv.png'
-import promoReferral from '~/assets/images/promo-referral.png'
-import promoRefund from '~/assets/images/promo-refund.png'
 import blogImg1 from '~/assets/images/s3.jpg'
 import blogImg2 from '~/assets/images/s4.jpg'
 import blogImg3 from '~/assets/images/s5.jpg'
@@ -598,98 +453,6 @@ const heroChart = [
     { label: 'RU', vless: '36%', hysteria: '52%' },
 ]
 
-const monthlyPlanFeatures = [
-    '30 дней',
-    'Нет лимита на трафик',
-    'Нет ограничения по скорости',
-    '5 устройств на подписку',
-    'Приоритетная техподдержка',
-    '10 серверов',
-    'Обход белых списков',
-]
-
-const yearlyPlanFeatures = [
-    '365 дней',
-    'Выгода 17%',
-    'Нет лимита на трафик',
-    'Нет ограничения по скорости',
-    '5 устройств на подписку',
-    'Приоритетное обслуживание',
-    'Все серверы',
-    'Обход белых списков',
-]
-
-const quarterlyPlanFeatures = [
-    '90 дней',
-    'Выгода 10%',
-    'Нет лимита на трафик',
-    'Нет ограничения по скорости',
-    '5 устройств на подписку',
-    'Приоритетная техподдержка',
-    '10 серверов',
-    'Обход белых списков',
-]
-
-const plans = [
-    {
-        badge: 'Базовый тариф',
-        badgeIcon: 'base',
-        trackId: 'china_pricing_1m',
-        title: 'Подписка на 1 месяц',
-        features: monthlyPlanFeatures,
-        disabledFeatures: [],
-        priceValue: '130₽',
-        pricePeriodLine1: 'в',
-        pricePeriodLine2: 'месяц',
-        priceNote: '130₽ списывается ежемесячно',
-        button: 'Попробовать бесплатно',
-    },
-    {
-        badge: 'Выгодный тариф',
-        badgeIcon: 'value',
-        trackId: 'china_pricing_3m',
-        title: 'Подписка на 3 месяца',
-        features: quarterlyPlanFeatures,
-        disabledFeatures: [],
-        priceValue: '117₽',
-        pricePeriodLine1: 'в',
-        pricePeriodLine2: 'месяц',
-        priceNote: '350₽ оплата за 3 месяца',
-        priceDiscount: '-10%',
-        button: 'Попробовать бесплатно',
-    },
-    {
-        badge: 'Выгодный тариф',
-        badgeIcon: 'value',
-        trackId: 'china_pricing_1y',
-        title: 'Подписка на 1 год',
-        features: yearlyPlanFeatures,
-        disabledFeatures: [],
-        priceValue: '108₽',
-        pricePeriodLine1: 'в',
-        pricePeriodLine2: 'месяц',
-        priceNote: '1 300₽ оплата за год',
-        priceDiscount: '-17%',
-        button: 'Попробовать бесплатно',
-    },
-]
-
-const countries = [
-    { flag: 'nl', name: 'Нидерланды Vless', city: 'VLESS | TCP | Reality', badge: 'Extra Fast', badgeType: 'fast' },
-    { flag: 'nl', name: 'Нидерланды Hysteria', city: 'Hysteria | hysteria | TLS', badge: 'Extra Fast', badgeType: 'fast' },
-    { flag: 'de', name: 'Германия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'de', name: 'Германия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'fi', name: 'Финляндия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'fi', name: 'Финляндия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'us', name: 'США Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'us', name: 'США Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'ru', name: 'Россия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'ru', name: 'Россия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    // { flag: 'lte', name: 'Обход белых списков', city: 'VLESS | xhttp | TLS', badge: 'LTE', badgeType: 'lte' },
-    { flag: 'cz', name: 'Чехия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'globe', name: 'Ютуб без рекламы', city: 'VLESS | xhttp | TLS', badge: 'No Ads', badgeType: 'noads' },
-]
-
 const openDevice = ref(0)
 
 function toggleDevice(index) {
@@ -712,46 +475,6 @@ const deviceBenefits = [
     {
         title: 'Поддержка и инструкции',
         text: 'Пошаговые инструкции под каждую систему прямо в Telegram-боте, а живая поддержка отвечает круглосуточно.',
-    },
-]
-
-const platforms = [
-    {
-        icon: 'android',
-        image: iconAndroid,
-        title: 'VPN для Android',
-        text: 'Смартфоны и планшеты на Android. Happ и INCY есть в Google Play, оба поддерживают VLESS Reality и Hysteria2 и подключаются в одно касание.',
-    },
-    {
-        icon: 'apple',
-        image: iconApple,
-        title: 'VPN для iPhone и iPad',
-        text: 'INCY скачивается из российского App Store без смены региона Apple ID. Подключение стартует вместе с системой и держится на любых операторах и Wi-Fi.',
-    },
-    {
-        icon: 'windows',
-        image: iconWindows,
-        title: 'VPN для Windows',
-        text: 'Клиент для Windows 10 и 11 защищает весь трафик на компьютере и ноутбуке: браузер, игры и приложения работают через выбранный сервер.',
-    },
-    {
-        icon: 'finder',
-        image: iconFinder,
-        title: 'VPN для macOS',
-        text: 'Приложение для Mac на чипах Apple Silicon и Intel. Не нагружает систему и удерживает защищённое соединение в фоновом режиме.',
-    },
-    {
-        icon: 'linux',
-        image: iconLinux,
-        title: 'VPN для Linux',
-        text: 'Поддержка популярных дистрибутивов и гибкая настройка конфигураций для опытных пользователей, домашних и рабочих серверов.',
-    },
-    {
-        icon: 'androidtv',
-        image: iconAndroidTv,
-        wide: true,
-        title: 'VPN для Android TV',
-        text: 'Клиент ставится на телевизор или ТВ-приставку и снимает ограничения со стримингов — без отдельной подписки и настройки роутера.',
     },
 ]
 
