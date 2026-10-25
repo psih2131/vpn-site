@@ -7,11 +7,11 @@
                     <span class="regions-hero__accent">карта регионов</span>
                 </h1>
                 <p class="regions-hero__subtitle">
-                    Нидерланды, Германия, Финляндия, Швеция, Чехия, Испания и Россия — выберите локацию и подключайтесь за минуту.
+                    Нидерланды, Германия, Финляндия, США, Чехия и Россия — выберите локацию и подключайтесь за минуту.
                 </p>
 
                 <div class="regions-hero__stats">
-                    <div class="regions-hero__stat">7 СТРАН</div>
+                    <div class="regions-hero__stat">6 СТРАН</div>
                     <div class="regions-hero__stat">10 ЛОКАЦИЙ</div>
                     <div class="regions-hero__stat">99.9% UPTIME</div>
                 </div>
@@ -93,14 +93,14 @@
 import { Vue3SlideUpDown } from 'vue3-slide-up-down'
 
 const pageTitle = 'VPN-серверы по странам — карта регионов | Dark Nova'
-const pageDescription = 'Карта VPN-серверов Dark Nova: Нидерланды, Германия, Финляндия, Швеция, Чехия, Испания и Россия. Список локаций и протоколов VLESS / Hysteria.'
+const pageDescription = 'Карта VPN-серверов Dark Nova: Нидерланды, Германия, Финляндия, США, Чехия и Россия. Список локаций и протоколов VLESS / Hysteria.'
 const pageUrl = 'https://darknovavpn.com/regions'
 const ogImage = 'https://darknovavpn.com/dark-nova-green-eyes.png'
 
 const faqItems = [
     {
         question: 'В каких странах есть серверы Dark Nova?',
-        answer: 'Сейчас доступны локации в Нидерландах, Германии, Финляндии, Швеции, Чехии, Испании и России. На карте выше отмечены страны с серверами, ниже — полный список протоколов VLESS и Hysteria.',
+        answer: 'Сейчас доступны локации в Нидерландах, Германии, Финляндии, США, Чехии и России. На карте выше отмечены страны с серверами, ниже — полный список протоколов VLESS и Hysteria.',
     },
     {
         question: 'Одна подписка работает на все регионы?',
@@ -171,8 +171,8 @@ const countries = [
     { flag: 'de', name: 'Германия Hysteria', city: 'Hysteria | hysteria | TLS' },
     { flag: 'fi', name: 'Финляндия Vless', city: 'VLESS | TCP | Reality' },
     { flag: 'fi', name: 'Финляндия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'se', name: 'Швеция Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'se', name: 'Швеция Hysteria', city: 'Hysteria | hysteria | TLS' },
+    { flag: 'us', name: 'США Vless', city: 'VLESS | TCP | Reality' },
+    { flag: 'us', name: 'США Hysteria', city: 'Hysteria | hysteria | TLS' },
     { flag: 'ru', name: 'Россия Vless', city: 'VLESS | TCP | Reality' },
     { flag: 'ru', name: 'Россия Hysteria', city: 'Hysteria | hysteria | TLS' },
     { flag: 'cz', name: 'Чехия Vless', city: 'VLESS | TCP | Reality' },

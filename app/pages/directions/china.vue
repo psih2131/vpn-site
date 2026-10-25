@@ -22,16 +22,11 @@
                             </svg>
                             3 дня бесплатно
                         </span>
-                        <h1 class="hero__title">Получи VPN ключ для Китая для Happ и Incy<br />бесплатно</h1>
-                        <p class="hero__text">
-                            VPN для работы и обхода блокировок в Китае: ключ для Happ и INCY выдаём в Telegram за пару минут.
-                            Вы получаете доступ на 3 дня бесплатно, 5 устройств на подписке —
-                            без карт и сложных настроек.
-                            Цена подписки на месяц — от 130₽/мес.
-                        </p>
+                        <h1 class="hero__title" v-html="heroContent.titleLead"></h1>
+                        <p class="hero__text" v-html="heroContent.subtitle"></p>
                         <div class="hero__actions">
                             <button type="button" class="hero__btn" @click="openRegistration('china_hero_connect_free')">
-                                Подключить бесплатно
+                                Подключить впн бесплатно
                                 <svg class="hero__btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                                     <path d="M3 8h10M9 4l4 4-4 4"/>
                                 </svg>
@@ -126,7 +121,7 @@
         <!-- Features -->
         <section class="features">
             <div class="container">
-                <h2 class="section-title">Почему доверяют нашему VPN?</h2>
+                <h2 class="section-title">Почему доверяют нашему ВПН в Китае?</h2>
                 <div class="features__grid">
                     <div class="features__card features__card--large">
                         <div class="features__card-content">
@@ -182,7 +177,7 @@
         <!-- Pricing -->
         <section id="pricing" class="pricing">
             <div class="container">
-                <h2 class="section-title">Тарифный план Dark Nova VPN для Китая</h2>
+                <h2 class="section-title">Тарифный план Dark Nova VPN</h2>
                 <div class="pricing__grid">
                     <div v-for="plan in plans" :key="plan.title" class="pricing__card">
                         <div class="pricing__badge">
@@ -276,7 +271,7 @@
         <!-- Countries -->
         <section id="regions" class="countries">
             <div class="container">
-                <h2 class="section-title">Список доступных vpn серверов в Китае</h2>
+                <h2 class="section-title">Рабочие ВПН серверы для работы в Китае</h2>
                 <div class="countries__grid">
                     <div v-for="country in countries" :key="`${country.name}-${country.city}`" class="countries__item">
                         <ServerFlag :code="country.flag" class="countries__flag" />
@@ -299,7 +294,7 @@
         <!-- How to connect -->
         <section id="howto" class="howto-grid">
             <div class="container">
-                <h2 class="section-title howto-grid__title">Как запустить наш VPN в Китае</h2>
+                <h2 class="section-title howto-grid__title">Как установить наш ВПН в Китае</h2>
                 <p class="howto-grid__subtitle">
                     Четыре шага и пара минут — без регистрации, ручных настроек и лишних приложений.
                 </p>
@@ -475,43 +470,48 @@
         <section id="about-vpn" class="seo-block">
             <div class="container">
                 <div class="seo-block__inner">
-                    <h2 class="section-title seo-block__title">VPN для Китая — работа и обход блокировок</h2>
+                    <h2 class="section-title seo-block__title">Впн для Китая — нужен ли он и как скачать заранее</h2>
                     <div class="seo-block__content">
                         <p>
-                            <strong>VPN для Китая</strong> от Dark Nova нужен тем, кто едет в командировку,
-                            учится или живёт в КНР и хочет стабильный доступ к привычным сервисам.
-                            Мы выдаём ключ для Happ и INCY в Telegram: одна ссылка-подписка —
-                            без ручных конфигов, «бесплатных» ключей с форумов и долгих настроек.
+                            <strong>Впн для Китая</strong> нужен, если вы едете в командировку, учитесь
+                            или живёте в КНР и хотите открывать привычные сервисы. Без впн в Китае
+                            недоступны Google, YouTube, Instagram, WhatsApp, Telegram, Facebook и многие
+                            другие зарубежные сайты. Местные сервисы вроде WeChat, Baidu и Amap работают
+                            и без впн — а всё остальное обычно требует рабочий ключ.
                         </p>
                         <p>
-                            Подключение занимает пару минут: открываете бота, получаете доступ,
-                            добавляете ссылку в клиент и выбираете сервер. Карта на старте не нужна —
-                            сначала можно проверить сервис на пробном периоде.
+                            Скачать впн, уже находясь в Китае, почти невозможно: Google Play и App Store
+                            с китайским аккаунтом режут такие приложения, а сайты сервисов часто не открываются.
+                            Поэтому клиенты Happ и INCY лучше поставить до поездки, а <strong>впн ключ для Китая</strong>
+                            получить у нас на сайте или в Telegram.
                         </p>
 
-                        <h3 class="seo-block__subtitle">Почему выбирают VPN для Китая от Dark Nova</h3>
+                        <h3 class="seo-block__subtitle">Работает ли Happ и INCY в Китае</h3>
                         <p>
-                            После оплаты подписки ключ работает сразу на нескольких устройствах —
-                            до 5 одновременных подключений. Happ закрывает Android, Windows, macOS,
-                            Linux и Android TV, а INCY ставится из российского App Store без смены региона —
-                            удобно, если вы в Китае на iPhone.
+                            Да: Happ и INCY в Китае работают как клиенты. Сами по себе они не дают доступ —
+                            нужен ключ с протоколами VLESS Reality или Hysteria2. Один ключ Dark Nova
+                            подходит и для Happ, и для INCY: Happ закрывает Android, Windows, macOS, Linux
+                            и Android TV, а INCY ставится из российского App Store без смены региона —
+                            удобно на iPhone в Китае.
                         </p>
                         <p>
-                            Около 10 серверов, протоколы VLESS Reality и Hysteria2, низкий пинг и
-                            стабильная скорость — для работы, мессенджеров и привычных сайтов в китайских сетях.
+                            После оплаты ключ держит до 5 устройств сразу. Около 10 серверов, низкий пинг
+                            и стабильная скорость — для работы, мессенджеров и привычных сайтов в китайских сетях.
                             Логи посещений не пишем: провайдер видит только зашифрованный трафик.
                         </p>
 
-                        <h3 class="seo-block__subtitle">Как попробовать VPN для Китая бесплатно</h3>
+                        <h3 class="seo-block__subtitle">Как получить впн для Китая бесплатно</h3>
                         <p>
-                            3 дня теста позволяют проверить скорость и стабильность до оплаты.
-                            Дальше подписка — от 130₽/мес прямо в Telegram.
-                            Если сервис не подошёл — возврат в течение 14 дней через
-                            @darkNovaVpn_support.
+                            Скачать впн для Китая бесплатно в смысле «вечный доступ» мы не обещаем —
+                            зато даём 3 дня без привязки карты, чтобы проверить скорость и стабильность.
+                            Дальше подписка — от 130₽/мес. Ключ выдаём на сайте и в Telegram-боте:
+                            регистрируетесь, получаете ссылку-подписку, добавляете её в Happ или INCY
+                            и выбираете сервер.
                         </p>
                         <p>
-                            Dark Nova VPN — простой способ взять VPN для Китая под Happ и INCY:
-                            выдача в боте, понятные тарифы и стабильное соединение на телефоне, ПК и ТВ.
+                            Dark Nova — простой способ взять впн для Китая под Happ и INCY: выдача ключа
+                            на сайте и в боте, понятные тарифы и стабильное соединение на телефоне, ПК и ТВ.
+                            Если сервис не подошёл — возврат в течение 14 дней через @darkNovaVpn_support.
                         </p>
                     </div>
                 </div>
@@ -584,11 +584,17 @@ function toggleFaq(index) {
     openFaq.value = openFaq.value === index ? null : index
 }
 
+const heroContent = {
+    titleLead: 'Получи впн ключ для Китая бесплатно - Happ и Incy',
+    titleTail: 'бесплатно',
+    subtitle: 'Впн для работы и обхода блокировок в Китае. Ключ для Happ и INCY выдаём на сайте и в Telegram за пару минут: 3 дня бесплатно, 5 устройств на подписке, без карт и сложных настроек. Подписка — от 130₽/мес.',
+}
+
 const heroChart = [
     { label: 'NL', vless: '62%', hysteria: '88%', active: true },
     { label: 'DE', vless: '48%', hysteria: '70%' },
     { label: 'FI', vless: '55%', hysteria: '76%' },
-    { label: 'SE', vless: '42%', hysteria: '64%' },
+    { label: 'US', vless: '42%', hysteria: '64%' },
     { label: 'RU', vless: '36%', hysteria: '52%' },
 ]
 
@@ -675,8 +681,8 @@ const countries = [
     { flag: 'de', name: 'Германия Hysteria', city: 'Hysteria | hysteria | TLS' },
     { flag: 'fi', name: 'Финляндия Vless', city: 'VLESS | TCP | Reality' },
     { flag: 'fi', name: 'Финляндия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'se', name: 'Швеция Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'se', name: 'Швеция Hysteria', city: 'Hysteria | hysteria | TLS' },
+    { flag: 'us', name: 'США Vless', city: 'VLESS | TCP | Reality' },
+    { flag: 'us', name: 'США Hysteria', city: 'Hysteria | hysteria | TLS' },
     { flag: 'ru', name: 'Россия Vless', city: 'VLESS | TCP | Reality' },
     { flag: 'ru', name: 'Россия Hysteria', city: 'Hysteria | hysteria | TLS' },
     // { flag: 'lte', name: 'Обход белых списков', city: 'VLESS | xhttp | TLS', badge: 'LTE', badgeType: 'lte' },
@@ -778,45 +784,54 @@ const howtoSteps = [
 
 const faqItems = [
     {
-        question: 'Как взять VPN для Китая под Happ и INCY?',
-        answer: 'Нажмите «Подключить» и откройте Telegram-бот Dark Nova. После короткой регистрации бот выдаст пробный доступ на 3 дня и пришлёт ссылку-подписку. Её добавляете в Happ или INCY как обычный ключ, выбираете сервер и подключаетесь. Один ключ подходит сразу для обоих клиентов — отдельно ничего докупать не нужно. После теста продлите подписку в боте, ссылка останется той же.',
+        question: 'Нужен ли впн в Китае?',
+        answer: 'Да, VPN в Китае нужен, если вы хотите пользоваться привычными зарубежными сервисами вроде Google, YouTube, Instagram, WhatsApp, Telegram или Facebook, которые заблокированы системой «Великий китайский щит»',
     },
     {
-        question: 'Какие клиенты нужны для VPN в Китае?',
-        answer: 'Достаточно Happ или INCY — оба на ядре Xray и принимают одну и ту же ссылку-подписку. Happ удобен на Android, Windows, macOS, Linux и Android TV. INCY ставится из российского App Store без смены региона Apple ID — удобно, если вы в Китае на iPhone.',
+        question: 'Что заблокировано в Китае?',
+        answer: 'В Китае заблокированы сервисы Google (включая поисковик, карты и Gmail), соцсети Instagram, Facebook, мессенджеры WhatsApp и Telegram, большинство популярных сервисов вроде Netflix, Spotify, YouTube и других',
     },
     {
-        question: 'Сколько устройств можно держать онлайн?',
-        answer: 'На платной подписке — до 5 устройств сразу: телефон, ноутбук, планшет или ТВ. На бесплатных 3 днях доступно 1 устройство. Этого обычно хватает и для работы, и для личных задач в поездке по Китаю.',
+        question: 'Что работает в Китае без впн?',
+        answer: 'В Китае без VPN работают местные приложения, такие как WeChat (основа общения и платежей в Китае), поисковик Baidu и карты Amap',
     },
     {
-        question: 'Можно ли проверить VPN для Китая бесплатно?',
-        answer: 'Да. Пробный период — 3 дня: 20 GB трафика, ограничение скорости и 1 устройство. Так вы сможете убедиться, что соединение подходит для работы и обхода блокировок в Китае. Дальше подписка — от 130₽ в месяц.',
+        question: 'Можно ли скачать впн находясь в Китае?',
+        answer: 'Скачать VPN, находясь непосредственно в Китае, крайне сложно и практически невозможно стандартными методами, так как магазины приложений Google Play и App Store (если аккаунт зарегистрирован в Китае) заблокированы, а сайты самих VPN-сервисов не открываются из-за Великого китайского файрвола.',
     },
     {
-        question: 'Какие тарифы и что брать выгоднее?',
-        answer: '1 месяц — 130₽. 3 месяца — 350₽ (около 117₽/мес, выгода 10%). Год — 1 300₽ (около 108₽/мес, выгода 17%), приоритетная поддержка и доступ ко всем серверам. Для длительной поездки или работы в Китае чаще берут квартал или год.',
+        question: 'Работает ли клиент happ в Китае?',
+        answer: 'Да, приложение Happ (Happ - Proxy Utility) в Китае работает, но само по себе оно является лишь клиентом (оболочкой). Для полноценной работы вам надо купить ключ VPN для Китая с протоколом VLESS Reality или Hysteria2 и вставить его в Happ. Как раз ключ с такими протоколами мы и предоставляем.',
     },
     {
-        question: 'Подойдёт ли VPN для обхода блокировок в Китае?',
-        answer: 'Да. Мы заточены под стабильный доступ: серверы на VLESS Reality и Hysteria2 с TLS, трафик выглядит как обычный HTTPS. Это помогает для работы и привычных сервисов в китайских сетях. Если у оператора жёсткий белый список, используйте отдельный сервер обхода из списка.',
+        question: 'Работает ли Incy в Китае?',
+        answer: 'Да, приложение Incy (Incognito Browser) в Китае работает стабильно, на практике даже лучше чем Happ, так как Incy поддерживает больше протоколов и имеет больше функций.',
     },
     {
-        question: 'Пишете ли вы логи посещений?',
-        answer: 'Нет. Историю сайтов не сохраняем и третьим лицам не передаём. Провайдер в Китае или дома видит только зашифрованный канал, а не то, какими сервисами вы пользуетесь.',
+        question: 'Можно ли получить впн для Китая бесплатно у нас?',
+        answer: 'Dark Nova VPN предоставляет доступ к впн сервису на 3 дня бесплатно без привязки карты, этого времени будет достаточно чтобы проверить впн сервис и понять подойдет ли он для ваших задач в Китае.',
     },
     {
-        question: 'Что с возвратом, если VPN не зашёл?',
-        answer: 'Если сервис не подошёл для ваших задач в Китае или в целом — вернём деньги в течение 14 дней с оплаты. Напишите в поддержку, разберёмся без лишней бюрократии.',
+        question: 'Работает ли в Китае впн в целом?',
+        answer: 'Да, но с оговорками, большинство сервисов которые работают через приложения на телефоне будут заблокированы особенно на протоколах типа OpenVPN, WireGuard, но если использовать впн через клиент типа Happ или INCY то проблем не возникнет, самое важное скачать клиенты до того как вы отправитесь в Китай. Поэтому ответ на вопрос "работает ли впн в Китае?" можно ответить ДА',
     },
     {
-        question: 'Как устроена реферальная программа?',
-        answer: 'Делитесь ссылкой из бота с друзьями и коллегами и получайте 50% с их оплат на баланс. Вывести можно от 2000₽, либо тратить бонус на свою подписку — удобно, если ездите в Китай регулярно.',
+        question: 'Как получить ВПН ключ для Happ и INCY?',
+        answer: 'Чтобы получить VPN ключ для клиентов Happ и INCY, нажмите «Подключить» на сайте и зарегистрируйтесь или перейдите в Telegram-бот Dark Nova. Пройдите короткую регистрацию — бот сразу выдаст пробный доступ на 3 дня и пришлёт ссылку-ключ (подписку). Эту же ссылку можно добавить в Happ или INCY: в приложении выберите добавление по ссылке, вставьте ключ из бота и подключитесь к серверу. Один ключ подходит для обоих клиентов, отдельно для Happ и INCY ничего покупать не нужно. После пробного периода продлите подписку в боте — ключ останется тем же.',
     },
     {
-        question: 'Куда писать, если что-то не подключается?',
-        answer: 'В Telegram: @darkNovaVpn_support. Отвечаем круглосуточно — поможем с установкой Happ/INCY и подключением VPN для работы в Китае.',
+        question: 'В каких приложениях работает VPN ключ?',
+        answer: 'Мы выдаём одну ссылку-подписку, которая подходит для Happ и INCY — оба клиента работают на ядре Xray. Happ есть в Google Play и на Windows, macOS, Linux и Android TV, а INCY скачивается из российского App Store без смены региона Apple ID.',
     },
+    {
+        question: 'Сколько устройств можно подключить по нашему VPN ключу?',
+        answer: 'Платная подписка Dark Nova VPN работает одновременно на 5 устройствах — например, телефон, ноутбук и телевизор. В пробном периоде доступно 1 устройство.',
+    },
+    {
+        question: 'Вы храните логи?',
+        answer: 'Нет. Мы не ведём журнал посещённых сайтов и не передаём данные третьим лицам — провайдер тоже не увидит вашу историю, он видит только зашифрованное соединение.',
+    },
+  
 ]
 
 const blogPosts = [
@@ -845,8 +860,8 @@ const blogPosts = [
 
 const siteUrl = 'https://darknovavpn.com'
 const pageUrl = `${siteUrl}/directions/china`
-const pageTitle = 'VPN для Китая — стабильный доступ без блокировок | Dark Nova VPN'
-const pageDescription = 'VPN для Китая от Dark Nova Vpn: обход GFW, серверы под китайские сети, ключ для Happ и INCY. Подключение за пару минут, 3 дня бесплатно — без сложных настроек.'
+const pageTitle = 'Скачать впн для Китая бесплатно для Happ и INCY'
+const pageDescription = 'Получи впн ключ для Китая: для клиентов Happ и INCY. 3 дня бесплатно, затем от 130₽/мес. 10 серверов для подключения. 5 устройств на 1 подписку'
 const pageKeywords = 'впн для китая, VPN для Китая, VPN Китай, обход GFW, VPN Китай Happ, VPN Китай INCY, Dark Nova VPN Китай, ключ VPN для Китая'
 const ogImage = `${siteUrl}/dark-nova-green-eyes.png`
 
@@ -867,7 +882,7 @@ useHead({
         { property: 'og:locale', content: 'ru_RU' },
         { property: 'og:site_name', content: 'Dark Nova VPN' },
         { property: 'og:image', content: ogImage },
-        { property: 'og:image:alt', content: 'VPN для Китая — Dark Nova VPN' },
+        { property: 'og:image:alt', content: 'ВПН для Китая — Dark Nova VPN' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: pageTitle },
         { name: 'twitter:description', content: pageDescription },
@@ -925,8 +940,8 @@ useHead({
                     },
                     {
                         '@type': 'SoftwareApplication',
-                        name: 'VPN для Китая — Dark Nova VPN',
-                        alternateName: ['VPN для Китая', 'Dark Nova VPN'],
+                        name: 'ВПН для Китая бесплатно — Dark Nova VPN',
+                        alternateName: ['Впн для Китая', 'Dark Nova VPN'],
                         applicationCategory: 'SecurityApplication',
                         operatingSystem: 'Android, iOS, Windows, macOS, Linux, Android TV',
                         offers: [

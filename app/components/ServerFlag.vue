@@ -28,6 +28,19 @@
             <rect y="10.5" width="24" height="3" fill="#FECC00"/>
         </svg>
 
+        <!-- USA -->
+        <svg v-else-if="code === 'us'" class="server-flag__svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect width="24" height="24" fill="#FFFFFF"/>
+            <rect y="0" width="24" height="1.846" fill="#B22234"/>
+            <rect y="3.692" width="24" height="1.846" fill="#B22234"/>
+            <rect y="7.385" width="24" height="1.846" fill="#B22234"/>
+            <rect y="11.077" width="24" height="1.846" fill="#B22234"/>
+            <rect y="14.769" width="24" height="1.846" fill="#B22234"/>
+            <rect y="18.462" width="24" height="1.846" fill="#B22234"/>
+            <rect y="22.154" width="24" height="1.846" fill="#B22234"/>
+            <rect width="10" height="12.923" fill="#3C3B6E"/>
+        </svg>
+
         <!-- Russia -->
         <svg v-else-if="code === 'ru'" class="server-flag__svg" viewBox="0 0 24 24" aria-hidden="true">
             <rect width="24" height="8" fill="#FFFFFF"/>

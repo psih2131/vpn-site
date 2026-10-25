@@ -50,12 +50,11 @@ setWorkerUrl(maplibreWorkerUrl)
 
 const servers = [
     { id: 'fi', flag: 'fi', city: 'Хельсинки', country: 'Финляндия', lng: 24.9384, lat: 60.1699 },
-    { id: 'se', flag: 'se', city: 'Стокгольм', country: 'Швеция', lng: 18.0686, lat: 59.3293 },
     { id: 'nl', flag: 'nl', city: 'Амстердам', country: 'Нидерланды', lng: 4.9041, lat: 52.3676 },
     { id: 'de', flag: 'de', city: 'Берлин', country: 'Германия', lng: 10.4515, lat: 51.1657 },
     { id: 'cz', flag: 'cz', city: 'Прага', country: 'Чехия', lng: 14.4378, lat: 50.0755 },
-    { id: 'es', flag: 'es', city: 'Мадрид', country: 'Испания', lng: -3.7038, lat: 40.4168 },
     { id: 'ru', flag: 'ru', city: 'Москва', country: 'Россия', lng: 37.6173, lat: 55.7558 },
+    { id: 'us', flag: 'us', city: 'Нью-Йорк', country: 'США', lng: -74.006, lat: 40.7128 },
 ]
 
 const regions = [
@@ -63,6 +62,7 @@ const regions = [
     { id: 'baltic', label: 'Балтика', center: [22, 59], zoom: 4.2 },
     { id: 'west', label: 'Запад', center: [6, 50], zoom: 4.4 },
     { id: 'cis', label: 'СНГ', center: [37, 55], zoom: 3.8 },
+    { id: 'na', label: 'Северная Америка', center: [-95, 40], zoom: 3.2 },
     { id: 'asia', label: 'Азия', center: [90, 40], zoom: 2.8 },
     { id: 'latam', label: 'Лат. Америка', center: [-60, -15], zoom: 2.6 },
     { id: 'oceania', label: 'Океания', center: [145, -25], zoom: 2.8 },

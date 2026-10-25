@@ -612,7 +612,7 @@ const heroChart = [
     { label: 'NL', vless: '62%', hysteria: '88%', active: true },
     { label: 'DE', vless: '48%', hysteria: '70%' },
     { label: 'FI', vless: '55%', hysteria: '76%' },
-    { label: 'SE', vless: '42%', hysteria: '64%' },
+    { label: 'US', vless: '42%', hysteria: '64%' },
     { label: 'RU', vless: '36%', hysteria: '52%' },
 ]
 
@@ -699,8 +699,8 @@ const countries = [
     { flag: 'de', name: 'Германия Hysteria', city: 'Hysteria | hysteria | TLS' },
     { flag: 'fi', name: 'Финляндия Vless', city: 'VLESS | TCP | Reality' },
     { flag: 'fi', name: 'Финляндия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'se', name: 'Швеция Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'se', name: 'Швеция Hysteria', city: 'Hysteria | hysteria | TLS' },
+    { flag: 'us', name: 'США Vless', city: 'VLESS | TCP | Reality' },
+    { flag: 'us', name: 'США Hysteria', city: 'Hysteria | hysteria | TLS' },
     { flag: 'ru', name: 'Россия Vless', city: 'VLESS | TCP | Reality' },
     { flag: 'ru', name: 'Россия Hysteria', city: 'Hysteria | hysteria | TLS' },
     // { flag: 'lte', name: 'Обход белых списков', city: 'VLESS | xhttp | TLS', badge: 'LTE', badgeType: 'lte' },
