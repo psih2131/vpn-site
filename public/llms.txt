@@ -1,8 +1,8 @@
 # Dark Nova VPN
 
-> Dark Nova VPN — быстрый VPN через Telegram-бот. Подписка-ключ для клиентов Happ и INCY, протоколы VLESS Reality и Hysteria2, пробный период 3 дня, от 130₽/мес, до 5 устройств.
+> Dark Nova VPN — быстрый VPN через Telegram-бот и веб сайт. Подписка-ключ для клиентов Happ и INCY, протоколы VLESS Reality и Hysteria2, пробный период 3 дня, от 130₽/мес, до 5 устройств.
 
-Dark Nova выдаёт ссылку-подписку в Telegram. Её вставляют в Happ или INCY — серверы появляются в списке автоматически. Сайт: продукт, карта регионов, направления (Китай) и блог с инструкциями.
+Dark Nova выдаёт ссылку-подписку в Telegram а также у себя на сайте. Её вставляют в Happ или INCY — серверы появляются в списке автоматически. Сайт: продукт, карта регионов, направления (Китай) и блог с инструкциями.
 
 Подключение: https://t.me/dark_nova_vpn_bot  
 Поддержка: https://t.me/darkNovaVpn_support  
@@ -22,6 +22,7 @@ Dark Nova выдаёт ссылку-подписку в Telegram. Её вста�
 - [Как установить VPN на макбук](https://darknovavpn.com/blog/kak-ustanovit-vpn-na-makbuk-nastroyka-na-macos-s-nulya): Настройка на macOS с нуля
 - [Что такое ключ для VPN](https://darknovavpn.com/blog/chto-takoe-klyuch-dlya-vpn-konfig-podpiska-i-vless): Конфиг, подписка и VLESS
 - [Великий китайский файрвол](https://darknovavpn.com/blog/velikiy-kitayskiy-fayrvol-kak-ustroen-internet-v-kitae): Как устроен интернет в Китае
+- [Karing VPN: скачать и настроить](https://darknovavpn.com/blog/karing-vpn-skachat-i-nastroit): Что такое Karing, где скачать и как настроить
 
 ## Optional
 
