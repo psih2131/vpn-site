@@ -36,6 +36,11 @@
 	border-radius: 16px;
 	background: #161616;
 	border: 1px solid #222;
+
+	&--expired {
+		background: rgba(255, 77, 79, 0.08);
+		border-color: rgba(255, 77, 79, 0.28);
+	}
 }
 
 .sub-stats__label {
@@ -64,6 +69,10 @@
 
 	&--active {
 		color: #00d981;
+	}
+
+	&--expired {
+		color: #ff6b6d;
 	}
 }
 

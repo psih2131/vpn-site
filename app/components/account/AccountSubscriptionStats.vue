@@ -12,9 +12,18 @@
             <span class="sub-stats__label">Окончание</span>
             <strong class="sub-stats__value">{{ endDate }}</strong>
         </div>
-        <div class="sub-stats__card">
+        <div
+            class="sub-stats__card"
+            :class="{ 'sub-stats__card--expired': !pending && subscription && !isActive }"
+        >
             <span class="sub-stats__label">Статус</span>
-            <strong class="sub-stats__value" :class="{ 'sub-stats__value--active': isActive }">{{ statusLabel }}</strong>
+            <strong
+                class="sub-stats__value"
+                :class="{
+                    'sub-stats__value--active': isActive,
+                    'sub-stats__value--expired': !pending && subscription && !isActive,
+                }"
+            >{{ statusLabel }}</strong>
         </div>
     </section>
 </template>
