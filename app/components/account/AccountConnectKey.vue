@@ -1,25 +1,76 @@
 <template>
     <section class="connect-key">
         <div class="connect-key__top">
-            <span class="connect-key__label">Ваш ключ</span>
+            <span class="connect-key__label">Ваш основной VPN ключ</span>
         </div>
 
         <UiConnectKeyField :value="connectionKey" filename="vpn-key.txt" />
 
-        <div class="connect-key__alert" role="note">
-            <span class="connect-key__alert-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M12 3.6 2.7 19.2a1.4 1.4 0 0 0 1.2 2.1h16.2a1.4 1.4 0 0 0 1.2-2.1L12 3.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                    <path d="M12 9.2v4.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                    <path d="M12 16.8h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                </svg>
-            </span>
-            <div class="connect-key__alert-body">
-                <p class="connect-key__alert-title">Внимание</p>
-                <p class="connect-key__alert-text">
-                    Ключ данной конфигурации может использоваться только в клиентах Happ и INCY. Подробнее в разделе «Установить приложение».
-                </p>
-            </div>
+        <p class="connect-key__hint">
+            <svg class="connect-key__hint-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 9v4.5M10 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span>Если VPN с этим ключом не заработал — попробуйте резервный ключ ниже.</span>
+        </p>
+
+        <div class="connect-key__guide">
+            <p class="connect-key__guide-heading">Как подключить VPN</p>
+
+            <ol class="connect-key__roadmap">
+                <li class="connect-key__roadmap-item">
+                    <div class="connect-key__roadmap-rail" aria-hidden="true">
+                        <span class="connect-key__roadmap-num">1</span>
+                        <span class="connect-key__roadmap-line"></span>
+                    </div>
+                    <div class="connect-key__roadmap-card">
+                        <div class="connect-key__roadmap-body">
+                            <p class="connect-key__roadmap-title">Скачайте приложение под ваше устройство</p>
+                            <p class="connect-key__roadmap-text">Happ или INCY — телефон, ПК или ТВ. Кнопка ниже откроет инструкцию со ссылками.</p>
+                        </div>
+                        <span class="connect-key__roadmap-check" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10.5 8.2 13.5 15 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </li>
+                <li class="connect-key__roadmap-item">
+                    <div class="connect-key__roadmap-rail" aria-hidden="true">
+                        <span class="connect-key__roadmap-num">2</span>
+                        <span class="connect-key__roadmap-line"></span>
+                    </div>
+                    <div class="connect-key__roadmap-card">
+                        <div class="connect-key__roadmap-body">
+                            <p class="connect-key__roadmap-title">Вставьте ссылку в скачанное приложение</p>
+                            <p class="connect-key__roadmap-text">Скопируйте ключ выше → в приложении «+» → вставить из буфера.</p>
+                        </div>
+                        <span class="connect-key__roadmap-check" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10.5 8.2 13.5 15 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </li>
+                <li class="connect-key__roadmap-item">
+                    <div class="connect-key__roadmap-rail" aria-hidden="true">
+                        <span class="connect-key__roadmap-num">3</span>
+                    </div>
+                    <div class="connect-key__roadmap-card">
+                        <div class="connect-key__roadmap-body">
+                            <p class="connect-key__roadmap-title">Выберите сервер и включите</p>
+                            <p class="connect-key__roadmap-text">В списке доступных серверов выберите локацию и нажмите кнопку подключения.</p>
+                        </div>
+                        <span class="connect-key__roadmap-check" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10.5 8.2 13.5 15 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </li>
+            </ol>
+
+            <AccountConnectActions class="connect-key__guide-actions" />
         </div>
     </section>
 </template>

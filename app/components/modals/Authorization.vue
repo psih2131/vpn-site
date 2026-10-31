@@ -79,10 +79,8 @@
 
 <script setup>
 import { useModalStore } from '~/stores/modal'
-import { useNotificationStore } from '~/stores/notification'
 
 const storeModal = useModalStore()
-const storeNotification = useNotificationStore()
 const router = useRouter()
 const { adminUrl } = useAdminApi()
 const { trackEvent } = useGtag()
@@ -112,13 +110,6 @@ function openRestorePass() {
 
 function trackTelegram() {
     trackEvent('click_cta', { button_name: 'auth_telegram' })
-}
-
-function showSuccessNotification() {
-    storeNotification.setNotification({
-        type: 'success',
-        text: 'Вы успешно вошли в аккаунт',
-    })
 }
 
 async function onSubmit() {
@@ -165,9 +156,8 @@ async function onSubmit() {
             return
         }
 
-        showSuccessNotification()
         closeModal()
-        await router.push('/account')
+        await router.push('/account/connect')
     } catch {
         formError.value = 'Не удалось войти. Попробуйте позже.'
     } finally {

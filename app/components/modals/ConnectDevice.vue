@@ -72,12 +72,12 @@ const tablet = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 const tv = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="m8 7 4-4 4 4"/></svg>`
 
 const devices = [
+    { id: 'iphone', label: 'iPhone', icon: phone },
+    { id: 'android', label: 'Android', icon: phone },
+    { id: 'ipad', label: 'iPad', icon: tablet },
     { id: 'windows', label: 'Windows', icon: monitor },
     { id: 'mac', label: 'Mac OS', icon: apple },
     { id: 'linux', label: 'Linux', icon: monitor },
-    { id: 'ipad', label: 'iPad', icon: tablet },
-    { id: 'iphone', label: 'iPhone', icon: phone },
-    { id: 'android', label: 'Android', icon: phone },
     { id: 'apple-tv', label: 'Apple TV', icon: tv },
     { id: 'android-tv', label: 'Android TV', icon: tv },
 ]

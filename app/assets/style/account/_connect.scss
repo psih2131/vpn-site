@@ -34,14 +34,15 @@
 	width: 100%;
 	padding: 18px 20px;
 	border-radius: 18px;
-	background: #161616;
-	border: 1px solid #222;
+	background: #16161a;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 	color: inherit;
 	text-decoration: none;
 
 	&:hover {
-		border-color: #2e2e2e;
-		background: #1a1a1a;
+		border-color: rgba(255, 255, 255, 0.12);
+		background: #1a1a1f;
 	}
 }
 
@@ -121,8 +122,9 @@
 	width: 100%;
 	padding: 22px;
 	border-radius: 18px;
-	background: #161616;
-	border: 1px solid #222;
+	background: #16161a;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 }
 
 .connect-key__top {
@@ -140,60 +142,256 @@
 	color: #8a8a8a;
 }
 
-.connect-key__alert {
-	display: flex;
-	align-items: flex-start;
-	gap: 12px;
-	margin-top: 12px;
-	padding: 14px 16px;
-	border-radius: 14px;
-	background: #12110f;
-	border: 1px solid #2a261f;
-	box-shadow: inset 3px 0 0 #e2b656;
+.connect-key__meta {
+	margin-top: 16px;
+	padding-top: 16px;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.connect-key__alert-mark {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex: 0 0 auto;
-	width: 28px;
-	height: 28px;
-	border-radius: 8px;
-	background: rgba(226, 182, 86, 0.12);
-	color: #e2b656;
-
-	svg {
-		width: 16px;
-		height: 16px;
-	}
-}
-
-.connect-key__alert-body {
-	min-width: 0;
-	padding-top: 1px;
-}
-
-.connect-key__alert-title {
-	margin: 0 0 4px;
-	font-size: 13px;
-	font-weight: 650;
-	color: #f3e6c8;
-}
-
-.connect-key__alert-text {
-	margin: 0;
-	font-size: 13px;
-	line-height: 1.55;
-	color: #b7b0a2;
-}
-
-.connect-key__label {
+.connect-key__meta-label {
+	margin: 0 0 6px;
 	font-size: 11px;
 	font-weight: 600;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: #6f6f6f;
+}
+
+.connect-key__meta-text {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.55;
+	color: #9a9a9a;
+
+	& + & {
+		margin-top: 8px;
+	}
+}
+
+.connect-key__info {
+	margin-top: 18px;
+	padding: 18px;
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.connect-key__info-head {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.connect-key__info-mark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 12px;
+	background: rgba(0, 217, 129, 0.1);
+	border: 1px solid rgba(0, 217, 129, 0.22);
+	color: #00d981;
+
+	svg {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.connect-key__info-title {
+	margin: 0 0 5px;
+	font-size: 15px;
+	font-weight: 650;
+	color: #fff;
+}
+
+.connect-key__info-lead {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.connect-key__info-list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.connect-key__info-item {
+	display: grid;
+	grid-template-columns: 28px minmax(0, 1fr);
+	gap: 12px;
+	align-items: start;
+}
+
+.connect-key__info-num {
+	padding-top: 1px;
+	font-size: 12px;
+	font-weight: 650;
+	letter-spacing: 0.04em;
+	color: rgba(255, 255, 255, 0.28);
+}
+
+.connect-key__info-item-title {
+	margin: 0 0 4px;
+	font-size: 13px;
+	font-weight: 650;
+	color: #fff;
+}
+
+.connect-key__info-item-text {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.52);
+}
+
+.connect-key__label {
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	color: #fff;
+}
+
+.connect-key__guide {
+	margin-top: 18px;
+	padding-top: 18px;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.connect-key__guide-heading {
+	margin: 0;
+	font-size: 15px;
+	font-weight: 650;
+	color: #fff;
+}
+
+.connect-key__roadmap {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.connect-key__roadmap-item {
+	display: grid;
+	grid-template-columns: 32px minmax(0, 1fr);
+	gap: 12px;
+	align-items: stretch;
+}
+
+.connect-key__roadmap-rail {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 16px;
+}
+
+.connect-key__roadmap-num {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background: #00d981;
+	font-size: 12px;
+	font-weight: 700;
+	color: #fff;
+	box-shadow: 0 0 0 4px rgba(0, 217, 129, 0.12);
+}
+
+.connect-key__roadmap-line {
+	flex: 1;
+	width: 2px;
+	min-height: 16px;
+	margin-top: 6px;
+	background: #00d981;
+	border-radius: 999px;
+}
+
+.connect-key__roadmap-card {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 10px;
+	padding: 16px 16px 16px 18px;
+	border-radius: 16px;
+	background: #1a1a1a;
+	border: 1px solid #262626;
+}
+
+.connect-key__roadmap-item:last-child .connect-key__roadmap-card {
+	margin-bottom: 0;
+}
+
+.connect-key__roadmap-body {
+	flex: 1;
+	min-width: 0;
+}
+
+.connect-key__roadmap-title {
+	margin: 0;
+	font-size: 15px;
+	font-weight: 650;
+	color: #fff;
+}
+
+.connect-key__roadmap-text {
+	margin: 5px 0 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #8f8f8f;
+}
+
+.connect-key__roadmap-check {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background: #00d981;
+	color: #fff;
+
+	svg {
+		width: 14px;
+		height: 14px;
+	}
+}
+
+.connect-key__guide-actions {
+	margin-top: 35px;
+
+	.connect-grid__item:not(.connect-grid__item--pulse):not(.connect-grid__item--black) {
+		background: #1a1a1a;
+		border-color: #2a2a2a;
+
+		&:hover {
+			background: #1f1f1f;
+			border-color: #333;
+		}
+	}
 }
 
 .connect-key__badge {
@@ -350,9 +548,10 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	gap: 14px;
-	padding: 18px 18px;
-	border-radius: 16px;
+	gap: 12px;
+	min-height: 52px;
+	padding: 12px 16px;
+	border-radius: 14px;
 	background: #161616;
 	border: 1px solid #222;
 	color: #fff;
@@ -365,6 +564,64 @@
 		background: #1a1a1a;
 		border-color: #2a2a2a;
 	}
+
+	&--black {
+		background: #000;
+		border-color: #1a1a1a;
+
+		&:hover {
+			background: #0a0a0a;
+			border-color: #222;
+		}
+	}
+
+	&--pulse {
+		justify-content: center;
+		text-align: center;
+		background: #fff;
+		border-color: #fff;
+		color: #111;
+		animation: connect-grid-pulse 2.4s ease-in-out infinite;
+
+		&:hover {
+			background: #f2f2f2;
+			border-color: #f2f2f2;
+		}
+
+		.connect-grid__icon {
+			position: absolute;
+			left: 16px;
+			background: #ebebeb;
+			color: #222;
+		}
+
+		.connect-grid__title {
+			color: #111;
+		}
+
+		.connect-grid__sub {
+			color: #666;
+		}
+	}
+}
+
+@keyframes connect-grid-pulse {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.35);
+		transform: scale(1);
+	}
+
+	50% {
+		box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+		transform: scale(1.015);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.connect-grid__item--pulse {
+		animation: none;
+	}
 }
 
 .connect-grid__icon {
@@ -372,15 +629,15 @@
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
-	width: 40px;
-	height: 40px;
-	border-radius: 12px;
+	width: 32px;
+	height: 32px;
+	border-radius: 10px;
 	background: #1c1c1c;
 	color: #cfcfcf;
 
 	svg {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 	}
 }
 
@@ -392,7 +649,7 @@
 }
 
 .connect-grid__title {
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: 650;
 	color: #fff;
 }
@@ -405,8 +662,9 @@
 
 .connect-grid__external {
 	position: absolute;
-	top: 14px;
+	top: 50%;
 	right: 14px;
+	transform: translateY(-50%);
 	color: #6f6f6f;
 
 	svg {
@@ -482,6 +740,7 @@
 	font-size: 15px;
 	font-weight: 500;
 	text-align: left;
+	text-decoration: none;
 
 	&:hover {
 		background: #222;
@@ -632,16 +891,35 @@
 }
 
 .device-guide__apps {
-	margin-top: 22px;
+	margin-top: 36px;
 }
 
 .device-guide__apps-label {
-	margin: 0 0 12px;
+	margin: 0 0 8px;
 	font-size: 11px;
 	font-weight: 600;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.4);
+	color: #fff;
+}
+
+.device-guide__apps-intro {
+	margin: 0 0 16px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.5;
+	color: #cfcfcf;
+}
+
+.device-guide__apps-note {
+	margin: 14px 0 0;
+	padding: 12px 14px;
+	border-radius: 12px;
+	background: rgba(255, 77, 79, 0.08);
+	border: 1px solid rgba(255, 77, 79, 0.28);
+	font-size: 13px;
+	line-height: 1.5;
+	color: #ff8a8c;
 }
 
 .device-guide__app {

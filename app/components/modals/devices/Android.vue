@@ -3,7 +3,7 @@
         <div class="device-guide__head">
             <button class="device-guide__back" type="button" @click="emit('back')">← К устройствам</button>
             <h2 id="device-guide-title" class="device-guide__title">Установка на Android</h2>
-            <p class="device-guide__clients">Поддерживаемые клиенты: <span>Happ, INCY</span></p>
+            <p class="device-guide__clients">Поддерживаемые клиенты: <span>Happ, INCY, Karing</span></p>
         </div>
 
         <ol class="device-guide__steps">
@@ -11,7 +11,7 @@
                 <span class="device-guide__num">1</span>
                 <div>
                     <p class="device-guide__step-title">Скачайте клиент</p>
-                    <p class="device-guide__step-text">Установите одно из рекомендованных приложений ниже — Happ или INCY</p>
+                    <p class="device-guide__step-text">Установите одно из рекомендованных приложений ниже — Happ, INCY или Karing</p>
                 </div>
             </li>
             <li class="device-guide__step">
@@ -111,6 +111,34 @@
                     </a>
                 </div>
             </article>
+            <article class="device-guide__app">
+                <div class="device-guide__app-head">
+                    <img class="device-guide__logo" :src="logoKaring" alt="Логотип Karing">
+                    <p class="device-guide__app-name">Karing</p>
+                </div>
+                <div class="device-guide__app-actions">
+                    <a class="device-guide__download" href="https://karing.app/download" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 15V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        .apk
+                    </a>
+                    <a class="device-guide__site" href="https://karing.app" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M2 12h20" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        Открыть сайт
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 17 17 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
         </div>
 
         <div class="device-guide__footer">
@@ -130,6 +158,7 @@
 import { useConnectKey } from '~/composables/useConnectKey'
 import logoHapp from '~/assets/images/logo/happ.webp'
 import logoIncy from '~/assets/images/logo/incy.png'
+import logoKaring from '~/assets/images/logo/karing.jpg'
 
 const emit = defineEmits(['back'])
 const { copyKey, closeModal, loadKey } = useConnectKey()

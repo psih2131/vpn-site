@@ -10,8 +10,8 @@
                 </svg>
             </span>
             <div class="connect-devices__text">
-                <p class="connect-devices__title">Устройства</p>
-                <p class="connect-devices__desc">До {{ limit }} устройств. Список, добавление и удаление — в разделе «Устройства».</p>
+                <p class="connect-devices__title">Ваши полключенные устройства</p>
+                <p class="connect-devices__desc">Максимальное количество до {{ limit }} штук.</p>
             </div>
         </div>
 

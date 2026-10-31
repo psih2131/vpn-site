@@ -2,6 +2,10 @@
     <component
         :is="to ? 'a' : 'button'"
         class="connect-grid__item"
+        :class="{
+            'connect-grid__item--pulse': pulse,
+            'connect-grid__item--black': black,
+        }"
         v-bind="to ? { href: to } : { type: 'button' }"
     >
         <span class="connect-grid__icon" aria-hidden="true">
@@ -34,6 +38,14 @@ defineProps({
         default: '',
     },
     arrow: {
+        type: Boolean,
+        default: false,
+    },
+    pulse: {
+        type: Boolean,
+        default: false,
+    },
+    black: {
         type: Boolean,
         default: false,
     },
