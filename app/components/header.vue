@@ -13,7 +13,7 @@
                 </div>
                 <a :href="`${$localePath('/')}#pricing`" class="header__nav-link">{{ $t('header.pricing') }}</a>
                 <NuxtLink :to="$localePath('/regions')" class="header__nav-link">{{ $t('header.regions') }}</NuxtLink>
-                <NuxtLink :to="$localePath('/blog')" class="header__nav-link">{{ $t('header.blog') }}</NuxtLink>
+                <NuxtLink v-if="isRu" :to="$localePath('/blog')" class="header__nav-link">{{ $t('header.blog') }}</NuxtLink>
                 <a href="https://t.me/darkNovaVpn_support" target="_blank" rel="noopener noreferrer" class="header__nav-link">{{ $t('header.support') }}</a>
             </nav>
 
@@ -47,6 +47,8 @@ import { useModalStore } from '~/stores/modal'
 import logoMark from '~/assets/images/logo.png'
 
 const storeModal = useModalStore()
+const { locale } = useI18n()
+const isRu = computed(() => locale.value === 'ru')
 const { adminUrl } = useAdminApi()
 const { trackEvent } = useGtag()
 

@@ -27,6 +27,11 @@ export default defineNuxtConfig({
       ],
       script: [
         {
+          key: 'contentsquare',
+          src: 'https://t.contentsquare.net/uxa/314de66c4e6ce.js',
+          defer: true,
+        },
+        {
           key: 'gtag-js',
           src: 'https://www.googletagmanager.com/gtag/js?id=G-Y1P90KMD0K',
           async: true,

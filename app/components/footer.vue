@@ -14,7 +14,7 @@
                 <nav class="footer__links">
                     <NuxtLink :to="$localePath('/regions')" class="footer__link">{{ $t('footer.regions') }}</NuxtLink>
                     <NuxtLink :to="$localePath('/directions/china')" class="footer__link">{{ $t('footer.china') }}</NuxtLink>
-                    <NuxtLink :to="$localePath('/blog')" class="footer__link">{{ $t('footer.blog') }}</NuxtLink>
+                    <NuxtLink v-if="isRu" :to="$localePath('/blog')" class="footer__link">{{ $t('footer.blog') }}</NuxtLink>
                 </nav>
             </div>
 
@@ -44,5 +44,7 @@
 <script setup>
 import logoMark from '~/assets/images/logo.png'
 
+const { locale } = useI18n()
+const isRu = computed(() => locale.value === 'ru')
 const telegramBotLink = 'https://t.me/dark_nova_vpn_bot'
 </script>
