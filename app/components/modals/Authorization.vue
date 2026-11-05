@@ -57,6 +57,7 @@
             </button>
         </p>
 
+        <template v-if="isRu">
         <p class="modal__divider">{{ $t('auth.orTelegram') }}</p>
 
         <a
@@ -74,6 +75,7 @@
             </svg>
             {{ $t('auth.useTelegram') }}
         </a>
+        </template>
     </div>
 </template>
 
@@ -82,7 +84,8 @@ import { useModalStore } from '~/stores/modal'
 
 const storeModal = useModalStore()
 const router = useRouter()
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const isRu = computed(() => locale.value === 'ru')
 const localePath = useLocalePath()
 const { adminUrl } = useAdminApi()
 const { trackEvent } = useGtag()

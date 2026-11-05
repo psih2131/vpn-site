@@ -130,9 +130,9 @@
     "howto": {
       "title": "How to connect our VPN",
       "subtitle": "Four steps and a couple of minutes — no signup form, no manual setup, and no extra apps.",
-      "s1Title": "Open the bot",
-      "s1Text": "Click Connect and start Dark Nova VPN in Telegram. No signup form and no email.",
-      "s1Meta": "Telegram",
+      "s1Title": "Sign up",
+      "s1Text": "Click Connect and register on the site.",
+      "s1Meta": "Website",
       "s2Title": "Get a VPN key",
       "s2Text": "Activate 3 free days or pay for a subscription right in the chat with the bot.",
       "s2Meta": "Trial",
