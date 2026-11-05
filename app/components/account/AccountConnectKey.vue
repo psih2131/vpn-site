@@ -1,7 +1,7 @@
 <template>
     <section class="connect-key">
         <div class="connect-key__top">
-            <span class="connect-key__label">Ваш основной VPN ключ</span>
+            <span class="connect-key__label">{{ $t('cabinet.key.main') }}</span>
         </div>
 
         <UiConnectKeyField :value="connectionKey" filename="vpn-key.txt" />
@@ -11,11 +11,11 @@
                 <circle cx="10" cy="10" r="7.25" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M10 9v4.5M10 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
             </svg>
-            <span>Если VPN с этим ключом не заработал — попробуйте резервный ключ ниже.</span>
+            <span>{{ $t('cabinet.key.hint') }}</span>
         </p>
 
         <div class="connect-key__guide">
-            <p class="connect-key__guide-heading">Как подключить VPN</p>
+            <p class="connect-key__guide-heading">{{ $t('cabinet.key.guide') }}</p>
 
             <ol class="connect-key__roadmap">
                 <li class="connect-key__roadmap-item">
@@ -25,8 +25,8 @@
                     </div>
                     <div class="connect-key__roadmap-card">
                         <div class="connect-key__roadmap-body">
-                            <p class="connect-key__roadmap-title">Скачайте приложение под ваше устройство</p>
-                            <p class="connect-key__roadmap-text">Happ или INCY — телефон, ПК или ТВ. Кнопка ниже откроет инструкцию со ссылками.</p>
+                            <p class="connect-key__roadmap-title">{{ $t('cabinet.key.step1Title') }}</p>
+                            <p class="connect-key__roadmap-text">{{ $t('cabinet.key.step1Text') }}</p>
                         </div>
                         <span class="connect-key__roadmap-check" aria-hidden="true">
                             <svg viewBox="0 0 20 20" fill="none">
@@ -42,8 +42,8 @@
                     </div>
                     <div class="connect-key__roadmap-card">
                         <div class="connect-key__roadmap-body">
-                            <p class="connect-key__roadmap-title">Вставьте ссылку в скачанное приложение</p>
-                            <p class="connect-key__roadmap-text">Скопируйте ключ выше → в приложении «+» → вставить из буфера.</p>
+                            <p class="connect-key__roadmap-title">{{ $t('cabinet.key.step2Title') }}</p>
+                            <p class="connect-key__roadmap-text">{{ $t('cabinet.key.step2Text') }}</p>
                         </div>
                         <span class="connect-key__roadmap-check" aria-hidden="true">
                             <svg viewBox="0 0 20 20" fill="none">
@@ -58,8 +58,8 @@
                     </div>
                     <div class="connect-key__roadmap-card">
                         <div class="connect-key__roadmap-body">
-                            <p class="connect-key__roadmap-title">Выберите сервер и включите</p>
-                            <p class="connect-key__roadmap-text">В списке доступных серверов выберите локацию и нажмите кнопку подключения.</p>
+                            <p class="connect-key__roadmap-title">{{ $t('cabinet.key.step3Title') }}</p>
+                            <p class="connect-key__roadmap-text">{{ $t('cabinet.key.step3Text') }}</p>
                         </div>
                         <span class="connect-key__roadmap-check" aria-hidden="true">
                             <svg viewBox="0 0 20 20" fill="none">
@@ -80,8 +80,9 @@ import { useNotificationStore } from '~/stores/notification'
 
 const { adminUrl } = useAdminApi()
 const storeNotification = useNotificationStore()
+const { t } = useI18n()
 
-const connectionKey = ref('Загрузка…')
+const connectionKey = ref(t('cabinet.loading'))
 
 async function loadKey() {
     const headers = import.meta.server
@@ -101,7 +102,7 @@ async function loadKey() {
         connectionKey.value = '—'
         storeNotification.setNotification({
             type: 'error',
-            text: 'Не удалось получить ключ',
+            text: t('cabinet.key.loadFailed'),
         })
     }
 }

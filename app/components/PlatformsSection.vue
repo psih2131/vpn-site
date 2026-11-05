@@ -67,48 +67,50 @@ defineProps({
     },
 })
 
-const platforms = [
+const { t } = useI18n()
+
+const platforms = computed(() => [
     {
         icon: 'android',
         image: iconAndroid,
-        title: 'VPN для Android',
-        text: 'Смартфоны и планшеты на Android. Happ и INCY есть в Google Play, оба поддерживают VLESS Reality и Hysteria2 и подключаются в одно касание.',
+        title: t('platforms.androidTitle'),
+        text: t('platforms.androidText'),
         to: 'https://darknovavpn.com/blog/kak-podklyuchit-vpn-na-android-poshagovaya-instruktsiya',
     },
     {
         icon: 'apple',
         image: iconApple,
-        title: 'VPN для iPhone и iPad',
-        text: 'INCY скачивается из российского App Store без смены региона Apple ID. Подключение стартует вместе с системой и держится на любых операторах и Wi-Fi.',
+        title: t('platforms.appleTitle'),
+        text: t('platforms.appleText'),
         to: 'https://darknovavpn.com/blog/kak-nastroit-vpn-happ-na-iphone',
     },
     {
         icon: 'windows',
         image: iconWindows,
-        title: 'VPN для Windows',
-        text: 'Клиент для Windows 10 и 11 защищает весь трафик на компьютере и ноутбуке: браузер, игры и приложения работают через выбранный сервер.',
+        title: t('platforms.windowsTitle'),
+        text: t('platforms.windowsText'),
         to: 'https://darknovavpn.com/blog/kak-nastroit-vpn-happ-na-windows',
     },
     {
         icon: 'finder',
         image: iconFinder,
-        title: 'VPN для macOS',
-        text: 'Приложение для Mac на чипах Apple Silicon и Intel. Не нагружает систему и удерживает защищённое соединение в фоновом режиме.',
+        title: t('platforms.macTitle'),
+        text: t('platforms.macText'),
         to: 'https://darknovavpn.com/blog/kak-ustanovit-vpn-na-makbuk-nastroyka-na-macos-s-nulya',
     },
     {
         icon: 'linux',
         image: iconLinux,
-        title: 'VPN для Linux',
-        text: 'Поддержка популярных дистрибутивов и гибкая настройка конфигураций для опытных пользователей, домашних и рабочих серверов.',
+        title: t('platforms.linuxTitle'),
+        text: t('platforms.linuxText'),
     },
     {
         icon: 'androidtv',
         image: iconAndroidTv,
         wide: true,
-        title: 'VPN для Android TV',
-        text: 'Клиент ставится на телевизор или ТВ-приставку и снимает ограничения со стримингов — без отдельной подписки и настройки роутера.',
+        title: t('platforms.tvTitle'),
+        text: t('platforms.tvText'),
         to: 'https://darknovavpn.com/blog/kak-skachat-vpn-na-smart-tv-samsung-lg-sony',
     },
-]
+])
 </script>

@@ -5,6 +5,7 @@ export function useConnectKey() {
     const storeModal = useModalStore()
     const storeNotification = useNotificationStore()
     const { adminUrl } = useAdminApi()
+    const { t } = useI18n()
     const connectionKey = ref('')
 
     function closeModal() {
@@ -38,7 +39,7 @@ export function useConnectKey() {
         if (!connectionKey.value) {
             storeNotification.setNotification({
                 type: 'error',
-                text: 'Не удалось получить ключ',
+                text: t('cabinet.key.loadFailed'),
             })
             return
         }
@@ -47,12 +48,12 @@ export function useConnectKey() {
             await navigator.clipboard.writeText(connectionKey.value)
             storeNotification.setNotification({
                 type: 'success',
-                text: 'Ключ скопирован',
+                text: t('cabinet.key.copied'),
             })
         } catch {
             storeNotification.setNotification({
                 type: 'error',
-                text: 'Не удалось скопировать ключ',
+                text: t('cabinet.key.copyFailed'),
             })
         }
     }

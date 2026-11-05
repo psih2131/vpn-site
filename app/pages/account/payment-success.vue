@@ -7,12 +7,10 @@
                 </svg>
             </span>
             <p class="payment-result__eyebrow">Dark Nova</p>
-            <h1 class="payment-result__title">Оплата прошла</h1>
-            <p class="payment-result__text">
-                Платёж принят. Подписка обновится в кабинете — можно переходить и подключать VPN.
-            </p>
-            <NuxtLink to="/account" class="payment-result__btn">
-                Перейти в кабинет
+            <h1 class="payment-result__title">{{ $t('cabinet.paymentSuccess.title') }}</h1>
+            <p class="payment-result__text">{{ $t('cabinet.paymentSuccess.text') }}</p>
+            <NuxtLink :to="localePath('/account')" class="payment-result__btn">
+                {{ $t('cabinet.paymentSuccess.cta') }}
             </NuxtLink>
         </div>
     </main>
@@ -23,8 +21,11 @@ definePageMeta({
     layout: 'default',
 })
 
+const { t } = useI18n()
+const localePath = useLocalePath()
+
 useSeoMeta({
-    title: 'Оплата прошла — Dark Nova',
+    title: () => t('cabinet.paymentSuccess.meta'),
     robots: 'noindex, nofollow',
 })
 </script>

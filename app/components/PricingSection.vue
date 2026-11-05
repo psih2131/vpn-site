@@ -60,31 +60,25 @@
             <div class="pricing__promo-row">
                 <div class="pricing__promo-card">
                     <div class="pricing__promo-content">
-                        <h3 class="pricing__promo-title">Реферальная<br />программа для вас</h3>
-                        <p class="pricing__promo-text">
-                            50% комиссия со всех платежей привлеченного пользователя.
-                            Лимит на вывод — 2000₽, также можете оплачивать тариф
-                            со своего реферального счета.
-                        </p>
+                        <h3 class="pricing__promo-title">{{ $t('pricing.referralLine1') }}<br>{{ $t('pricing.referralLine2') }}</h3>
+                        <p class="pricing__promo-text">{{ $t('pricing.referralText') }}</p>
                     </div>
                     <img
                         :src="promoReferral"
-                        alt="Реферальная программа Dark Nova VPN"
-                        title="Реферальная программа Dark Nova VPN"
+                        :alt="$t('pricing.referralAlt')"
+                        :title="$t('pricing.referralAlt')"
                         class="pricing__promo-image pricing__promo-image--referral"
                     />
                 </div>
                 <div class="pricing__promo-card">
                     <div class="pricing__promo-content">
-                        <h3 class="pricing__promo-title">Вернем деньги<br />в течение 14 дней</h3>
-                        <p class="pricing__promo-text">
-                            если вам не понравится<br />или не подойдет Dark Nova VPN.
-                        </p>
+                        <h3 class="pricing__promo-title">{{ $t('pricing.refundLine1') }}<br>{{ $t('pricing.refundLine2') }}</h3>
+                        <p class="pricing__promo-text">{{ $t('pricing.refundText1') }}<br>{{ $t('pricing.refundText2') }}</p>
                     </div>
                     <img
                         :src="promoRefund"
-                        alt="Возврат денег в течение 14 дней — Dark Nova VPN"
-                        title="Возврат денег в течение 14 дней — Dark Nova VPN"
+                        :alt="$t('pricing.refundAlt')"
+                        :title="$t('pricing.refundAlt')"
                         class="pricing__promo-image pricing__promo-image--refund"
                     />
                 </div>
@@ -111,6 +105,7 @@ const props = defineProps({
 
 const storeModal = useModalStore()
 const { trackEvent } = useGtag()
+const { t } = useI18n()
 
 function openRegistration(buttonName) {
     trackEvent('click_cta', { button_name: buttonName })
@@ -118,79 +113,74 @@ function openRegistration(buttonName) {
     storeModal.openCloseModal(true)
 }
 
-const monthlyPlanFeatures = [
-    '30 дней',
-    'Нет лимита на трафик',
-    'Нет ограничения по скорости',
-    '5 устройств на подписку',
-    'Приоритетная техподдержка',
-    '10 серверов',
-    'Обход белых списков',
-]
+const sharedFeatures = computed(() => [
+    t('pricing.noTraffic'),
+    t('pricing.noSpeed'),
+    t('pricing.devices'),
+    t('pricing.whitelist'),
+])
 
-const yearlyPlanFeatures = [
-    '365 дней',
-    'Выгода 17%',
-    'Нет лимита на трафик',
-    'Нет ограничения по скорости',
-    '5 устройств на подписку',
-    'Приоритетное обслуживание',
-    'Все серверы',
-    'Обход белых списков',
-]
-
-const quarterlyPlanFeatures = [
-    '90 дней',
-    'Выгода 10%',
-    'Нет лимита на трафик',
-    'Нет ограничения по скорости',
-    '5 устройств на подписку',
-    'Приоритетная техподдержка',
-    '10 серверов',
-    'Обход белых списков',
-]
-
-const plans = [
+const plans = computed(() => [
     {
-        badge: 'Базовый тариф',
+        badge: t('pricing.basic'),
         badgeIcon: 'base',
         trackId: `${props.trackPrefix}pricing_1m`,
-        title: 'Подписка на 1 месяц',
-        features: monthlyPlanFeatures,
+        title: t('pricing.month1'),
+        features: [
+            t('pricing.days30'),
+            ...sharedFeatures.value.slice(0, 3),
+            t('pricing.support'),
+            t('pricing.servers10'),
+            sharedFeatures.value[3],
+        ],
         disabledFeatures: [],
-        priceValue: '130₽',
-        pricePeriodLine1: 'в',
-        pricePeriodLine2: 'месяц',
-        priceNote: '130₽ списывается ежемесячно',
-        button: 'Попробовать бесплатно',
+        priceValue: t('pricing.priceMonth'),
+        pricePeriodLine1: t('pricing.per'),
+        pricePeriodLine2: t('pricing.month'),
+        priceNote: t('pricing.noteMonth'),
+        button: t('pricing.button'),
     },
     {
-        badge: 'Выгодный тариф',
+        badge: t('pricing.value'),
         badgeIcon: 'value',
         trackId: `${props.trackPrefix}pricing_3m`,
-        title: 'Подписка на 3 месяца',
-        features: quarterlyPlanFeatures,
+        title: t('pricing.month3'),
+        features: [
+            t('pricing.days90'),
+            t('pricing.save10'),
+            ...sharedFeatures.value.slice(0, 3),
+            t('pricing.support'),
+            t('pricing.servers10'),
+            sharedFeatures.value[3],
+        ],
         disabledFeatures: [],
-        priceValue: '117₽',
-        pricePeriodLine1: 'в',
-        pricePeriodLine2: 'месяц',
-        priceNote: '350₽ оплата за 3 месяца',
-        priceDiscount: '-10%',
-        button: 'Попробовать бесплатно',
+        priceValue: t('pricing.priceQuarter'),
+        pricePeriodLine1: t('pricing.per'),
+        pricePeriodLine2: t('pricing.month'),
+        priceNote: t('pricing.noteQuarter'),
+        priceDiscount: t('pricing.discountQuarter'),
+        button: t('pricing.button'),
     },
     {
-        badge: 'Выгодный тариф',
+        badge: t('pricing.value'),
         badgeIcon: 'value',
         trackId: `${props.trackPrefix}pricing_1y`,
-        title: 'Подписка на 1 год',
-        features: yearlyPlanFeatures,
+        title: t('pricing.year1'),
+        features: [
+            t('pricing.days365'),
+            t('pricing.save17'),
+            ...sharedFeatures.value.slice(0, 3),
+            t('pricing.service'),
+            t('pricing.allServers'),
+            sharedFeatures.value[3],
+        ],
         disabledFeatures: [],
-        priceValue: '108₽',
-        pricePeriodLine1: 'в',
-        pricePeriodLine2: 'месяц',
-        priceNote: '1 300₽ оплата за год',
-        priceDiscount: '-17%',
-        button: 'Попробовать бесплатно',
+        priceValue: t('pricing.priceYear'),
+        pricePeriodLine1: t('pricing.per'),
+        pricePeriodLine2: t('pricing.month'),
+        priceNote: t('pricing.noteYear'),
+        priceDiscount: t('pricing.discountYear'),
+        button: t('pricing.button'),
     },
-]
+])
 </script>

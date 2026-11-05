@@ -1,6 +1,6 @@
 <template>
     <div class="modal">
-        <button class="modal__close" type="button" aria-label="Закрыть" @click="closeModal">
+        <button class="modal__close" type="button" :aria-label="$t('auth.close')" @click="closeModal">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
@@ -8,26 +8,26 @@
 
         <div class="modal__header">
             <p class="modal__eyebrow">Dark Nova</p>
-            <h2 class="modal__title">Авторизация</h2>
-            <p class="modal__subtitle">Войдите, чтобы управлять подпиской и устройствами</p>
+            <h2 class="modal__title">{{ $t('auth.login.title') }}</h2>
+            <p class="modal__subtitle">{{ $t('auth.login.subtitle') }}</p>
         </div>
 
         <form class="modal__form" @submit.prevent="onSubmit">
             <label class="modal__field">
-                <span class="modal__label">Email</span>
+                <span class="modal__label">{{ $t('auth.email') }}</span>
                 <input
                     v-model="email"
                     class="modal__input"
                     type="email"
                     name="email"
-                    placeholder="you@email.com"
+                    :placeholder="$t('auth.emailPlaceholder')"
                     autocomplete="email"
                     :disabled="loading"
                 >
             </label>
 
             <label class="modal__field">
-                <span class="modal__label">Пароль</span>
+                <span class="modal__label">{{ $t('auth.password') }}</span>
                 <input
                     v-model="password"
                     class="modal__input"
@@ -40,24 +40,24 @@
             </label>
 
             <button class="modal__link modal__link--right" type="button" @click="openRestorePass">
-                Забыли пароль?
+                {{ $t('auth.login.forgot') }}
             </button>
 
             <p v-if="formError" class="modal__error">{{ formError }}</p>
 
             <button class="modal__submit" type="submit" :disabled="loading">
-                {{ loading ? 'Вход…' : 'Войти' }}
+                {{ loading ? $t('auth.login.signingIn') : $t('auth.login.submit') }}
             </button>
         </form>
 
         <p class="modal__footer">
-            Ещё нет аккаунта?
+            {{ $t('auth.login.noAccount') }}
             <button class="modal__link" type="button" @click="openRegistration">
-                Зарегистрироваться
+                {{ $t('auth.login.register') }}
             </button>
         </p>
 
-        <p class="modal__divider">или продолжите в телеграм боте</p>
+        <p class="modal__divider">{{ $t('auth.orTelegram') }}</p>
 
         <a
             :href="telegramBotLink"
@@ -72,7 +72,7 @@
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8-1.56 7.37c-.12.52-.43.65-.87.4l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.49.24l.17-2.43 4.43-4.01c.19-.17-.04-.27-.3-.1l-5.48 3.45-2.36-.74c-.51-.16-.52-.51.11-.76l9.22-3.55c.43-.16.8.1.66.78z"
                 />
             </svg>
-            Использовать в Telegram
+            {{ $t('auth.useTelegram') }}
         </a>
     </div>
 </template>
@@ -82,6 +82,8 @@ import { useModalStore } from '~/stores/modal'
 
 const storeModal = useModalStore()
 const router = useRouter()
+const { t } = useI18n()
+const localePath = useLocalePath()
 const { adminUrl } = useAdminApi()
 const { trackEvent } = useGtag()
 
@@ -120,17 +122,17 @@ async function onSubmit() {
     const passwordValue = password.value
 
     if (!emailValue) {
-        formError.value = 'Введите email'
+        formError.value = t('auth.enterEmail')
         return
     }
 
     if (!EMAIL_REGEX.test(emailValue)) {
-        formError.value = 'Некорректный email'
+        formError.value = t('auth.invalidEmail')
         return
     }
 
     if (!passwordValue) {
-        formError.value = 'Введите пароль'
+        formError.value = t('auth.enterPassword')
         return
     }
 
@@ -152,14 +154,14 @@ async function onSubmit() {
         const data = await response.json().catch(() => null)
 
         if (!response.ok || !data?.success) {
-            formError.value = data?.message || 'Неверный email или пароль'
+            formError.value = data?.message || t('auth.login.badCredentials')
             return
         }
 
         closeModal()
-        await router.push('/account/connect')
+        await router.push(localePath('/account/connect'))
     } catch {
-        formError.value = 'Не удалось войти. Попробуйте позже.'
+        formError.value = t('auth.login.failed')
     } finally {
         loading.value = false
     }

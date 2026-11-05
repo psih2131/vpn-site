@@ -1,8 +1,8 @@
 <template>
     <div class="account-content">
-        <h1 class="account-content__title">Главная</h1>
+        <h1 class="account-content__title">{{ $t('cabinet.nav.home') }}</h1>
 
-        <p v-if="pending" class="account-content__hint">Загрузка…</p>
+        <p v-if="pending" class="account-content__hint">{{ $t('cabinet.loading') }}</p>
 
         <section v-else-if="user" class="account-profile">
             <div class="account-profile__top">
@@ -15,7 +15,7 @@
 
             <form class="account-profile__form" @submit.prevent="onUpdate">
                 <div class="account-profile__section">
-                    <p class="account-profile__section-title">Основная информация</p>
+                    <p class="account-profile__section-title">{{ $t('cabinet.profile.main') }}</p>
                     <div class="account-profile__list">
                         <div class="account-profile__field account-profile__field--static">
                             <span class="account-profile__label">ID</span>
@@ -28,35 +28,35 @@
                         </div>
 
                         <div class="account-profile__field account-profile__field--static">
-                            <span class="account-profile__label">Дата создания</span>
+                            <span class="account-profile__label">{{ $t('cabinet.profile.created') }}</span>
                             <p class="account-profile__value">{{ formatDate(user.createdAt || user.created_at) }}</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="account-profile__section account-profile__section--editable">
-                    <p class="account-profile__section-title">Редактируемые данные</p>
+                    <p class="account-profile__section-title">{{ $t('cabinet.profile.editable') }}</p>
                     <div class="account-profile__list">
                         <label class="account-profile__field">
-                            <span class="account-profile__label">Имя</span>
+                            <span class="account-profile__label">{{ $t('cabinet.profile.firstName') }}</span>
                             <input
                                 v-model="form.firstName"
                                 class="account-profile__input"
                                 type="text"
                                 name="firstName"
-                                placeholder="Имя"
+                                :placeholder="$t('cabinet.profile.firstName')"
                                 autocomplete="given-name"
                             >
                         </label>
 
                         <label class="account-profile__field">
-                            <span class="account-profile__label">Фамилия</span>
+                            <span class="account-profile__label">{{ $t('cabinet.profile.lastName') }}</span>
                             <input
                                 v-model="form.lastName"
                                 class="account-profile__input"
                                 type="text"
                                 name="lastName"
-                                placeholder="Фамилия"
+                                :placeholder="$t('cabinet.profile.lastName')"
                                 autocomplete="family-name"
                             >
                         </label>
@@ -101,7 +101,7 @@
                     <p v-if="formError" class="account-profile__error">{{ formError }}</p>
 
                     <button class="account-profile__submit" type="submit" :disabled="saving">
-                        {{ saving ? 'Сохранение…' : 'Обновить данные' }}
+                        {{ saving ? $t('cabinet.profile.saving') : $t('cabinet.profile.update') }}
                     </button>
                 </div>
             </form>
@@ -119,6 +119,7 @@ definePageMeta({
 
 const { adminUrl } = useAdminApi()
 const storeNotification = useNotificationStore()
+const { t, locale } = useI18n()
 
 const user = ref(null)
 const pending = ref(true)
@@ -140,7 +141,7 @@ const displayName = computed(() => {
     const first = String(form.firstName || '').trim()
     const last = String(form.lastName || '').trim()
     const full = [first, last].filter(Boolean).join(' ')
-    return full || 'Пользователь'
+    return full || t('cabinet.profile.user')
 })
 
 function displayValue(value) {
@@ -154,7 +155,7 @@ function formatDate(value) {
     const date = new Date(value)
     if (Number.isNaN(date.getTime())) return '—'
 
-    return date.toLocaleString('ru-RU', {
+    return date.toLocaleString(locale.value === 'en' ? 'en-GB' : 'ru-RU', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric',
@@ -187,7 +188,7 @@ async function onUpdate() {
         })
 
         if (!data?.success || !data?.data?.user) {
-            formError.value = data?.message || 'Не удалось обновить данные'
+            formError.value = data?.message || t('cabinet.profile.updateFailed')
             return
         }
 
@@ -196,10 +197,10 @@ async function onUpdate() {
 
         storeNotification.setNotification({
             type: 'success',
-            text: 'Данные профиля обновлены',
+            text: t('cabinet.profile.updated'),
         })
     } catch (error) {
-        formError.value = error?.data?.message || error?.message || 'Не удалось обновить данные'
+        formError.value = error?.data?.message || error?.message || t('cabinet.profile.updateFailed')
     } finally {
         saving.value = false
     }

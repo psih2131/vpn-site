@@ -1,26 +1,23 @@
 <template>
     <header class="account-topbar">
-        <NuxtLink to="/" class="account-topbar__home" aria-label="На главную">
+        <NuxtLink :to="localePath('/')" class="account-topbar__home" :aria-label="$t('cabinet.nav.homeAria')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M15 21v-8a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v8"/>
                 <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             </svg>
         </NuxtLink>
-        <NuxtLink to="/account" class="account-topbar__brand">
-            <svg class="account-topbar__mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-                <path d="M18 2L32 8V18C32 26 26 32 18 34C10 32 4 26 4 18V8L18 2Z" fill="#00D981"/>
-                <path d="M18 10L24 13V18C24 22 21 25 18 26C15 25 12 22 12 18V13L18 10Z" fill="#000"/>
-            </svg>
+        <NuxtLink :to="localePath('/account')" class="account-topbar__brand">
+            <img class="account-topbar__mark" :src="logoMark" alt="">
             <span>Dark Nova</span>
         </NuxtLink>
         <span class="account-topbar__spacer" aria-hidden="true"></span>
     </header>
 
-    <nav class="account-tabbar" aria-label="Основная навигация">
+    <nav class="account-tabbar" :aria-label="$t('cabinet.nav.main')">
         <NuxtLink
             v-for="item in tabs"
             :key="item.to"
-            :to="item.to"
+            :to="localePath(item.to)"
             class="account-tabbar__item"
             :class="{ 'is-active': isNavActive(item.to) }"
         >
@@ -32,7 +29,7 @@
             class="account-tabbar__item"
             :class="{ 'is-active': moreOpen || moreActive }"
             type="button"
-            aria-label="Ещё"
+            :aria-label="$t('cabinet.nav.more')"
             :aria-expanded="moreOpen"
             @click="moreOpen = true"
         >
@@ -41,17 +38,17 @@
                     <path d="M4 5h16M4 12h16M4 19h16"/>
                 </svg>
             </span>
-            <span class="account-tabbar__label">Ещё</span>
+            <span class="account-tabbar__label">{{ $t('cabinet.nav.more') }}</span>
         </button>
     </nav>
 
     <Teleport to="body">
         <div v-if="moreOpen" class="account-more">
-            <button class="account-more__backdrop" type="button" aria-label="Закрыть" @click="moreOpen = false"></button>
+            <button class="account-more__backdrop" type="button" :aria-label="$t('cabinet.nav.close')" @click="moreOpen = false"></button>
             <div class="account-more__panel" role="dialog" aria-labelledby="account-more-title">
                 <div class="account-more__head">
-                    <p id="account-more-title" class="account-more__title">Все разделы</p>
-                    <button class="account-more__close" type="button" aria-label="Закрыть" @click="moreOpen = false">
+                    <p id="account-more-title" class="account-more__title">{{ $t('cabinet.nav.moreTitle') }}</p>
+                    <button class="account-more__close" type="button" :aria-label="$t('cabinet.nav.close')" @click="moreOpen = false">
                         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                             <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
                         </svg>
@@ -69,12 +66,12 @@
                             ? { 'aria-disabled': 'true' }
                             : item.external
                                 ? { href: item.to, target: '_blank', rel: 'noopener noreferrer' }
-                                : { to: item.to }"
+                                : { to: localePath(item.to) }"
                         @click="onMoreClick(item)"
                     >
                         <span class="account-more__icon" aria-hidden="true" v-html="item.icon"></span>
                         <span class="account-more__text">{{ item.label }}</span>
-                        <span v-if="item.soon" class="account-more__mark" aria-label="В разработке">
+                        <span v-if="item.soon" class="account-more__mark" :aria-label="$t('cabinet.nav.soon')">
                             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
                                 <rect x="3.2" y="7" width="9.6" height="6.2" rx="1.2" stroke="currentColor" stroke-width="1.3"/>
                                 <path d="M5.4 7V5.2a2.6 2.6 0 015.2 0V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
@@ -91,12 +88,17 @@
                     </component>
                 </div>
 
+                <div class="account-more__lang">
+                    <span>{{ $t('header.language') }}</span>
+                    <LangSwitch />
+                </div>
+
                 <button class="account-more__logout" type="button" :disabled="loggingOut" @click="logout">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M10 7V6a2 2 0 012-2h7a2 2 0 012 2v12a2 2 0 01-2 2h-7a2 2 0 01-2-2v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                         <path d="M15 12H4m0 0l3-3m-3 3l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    Выйти из аккаунта
+                    {{ $t('cabinet.nav.logout') }}
                 </button>
             </div>
         </div>
@@ -105,9 +107,12 @@
 
 <script setup>
 import { NuxtLink } from '#components'
+import logoMark from '~/assets/images/logo.png'
 
 const route = useRoute()
 const { adminUrl } = useAdminApi()
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 const moreOpen = ref(false)
 const loggingOut = ref(false)
@@ -124,26 +129,28 @@ const icons = {
     settings: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="2.8"/><path d="M12 4v2M12 18v2M5.6 6.8l1.4 1.4M17 15.8l1.4 1.4M4 12h2M18 12h2M5.6 17.2l1.4-1.4M17 8.2l1.4-1.4"/></svg>`,
 }
 
-const tabs = [
-    { label: 'Главная', to: '/account', icon: icons.home },
-    { label: 'Подписка', to: '/account/subscription', icon: icons.gem },
-    { label: 'VPN', to: '/account/connect', icon: icons.globe },
-    { label: 'Устройства', to: '/account/devices', icon: icons.devices },
-]
+const tabs = computed(() => [
+    { label: t('cabinet.nav.home'), to: '/account', icon: icons.home },
+    { label: t('cabinet.nav.subscription'), to: '/account/subscription', icon: icons.gem },
+    { label: t('cabinet.nav.vpn'), to: '/account/connect', icon: icons.globe },
+    { label: t('cabinet.nav.devices'), to: '/account/devices', icon: icons.devices },
+])
 
-const moreItems = [
-    { label: 'Реферальная программа', to: '/account/referral', icon: icons.users, soon: true },
-    { label: 'Уведомления', to: '/account/notifications', icon: icons.bell, soon: true },
-    { label: 'Поддержка', to: 'https://t.me/darkNovaVpn_support', icon: icons.support, external: true },
-    { label: 'Документы', to: '/account/documents', icon: icons.docs, soon: true },
-    { label: 'Настройки', to: '/account/settings', icon: icons.settings, soon: true },
-]
+const moreItems = computed(() => [
+    { label: t('cabinet.nav.referral'), to: '/account/referral', icon: icons.users, soon: true },
+    { label: t('cabinet.nav.notifications'), to: '/account/notifications', icon: icons.bell, soon: true },
+    { label: t('cabinet.nav.support'), to: 'https://t.me/darkNovaVpn_support', icon: icons.support, external: true },
+    { label: t('cabinet.nav.documents'), to: '/account/documents', icon: icons.docs, soon: true },
+    { label: t('cabinet.nav.settings'), to: '/account/settings', icon: icons.settings, soon: true },
+])
 
-const moreActive = computed(() => moreItems.some((item) => !item.soon && !item.external && isNavActive(item.to)))
+const moreActive = computed(() => moreItems.value.some((item) => !item.soon && !item.external && isNavActive(item.to)))
 
 function isNavActive(to) {
-    if (to === '/account') return route.path === '/account'
-    return route.path === to || route.path.startsWith(`${to}/`)
+    const current = route.path.replace(/\/$/, '') || '/'
+    const target = localePath(to).replace(/\/$/, '') || '/'
+    if (to === '/account') return current === target
+    return current === target || current.startsWith(`${target}/`)
 }
 
 function onMoreClick(item) {
@@ -169,7 +176,7 @@ async function logout() {
     } finally {
         loggingOut.value = false
         moreOpen.value = false
-        await navigateTo('/')
+        await navigateTo(localePath('/'))
     }
 }
 </script>

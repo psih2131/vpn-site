@@ -1,6 +1,6 @@
 <template>
     <div class="account-content">
-        <h1 class="account-content__title">Поддержка</h1>
+        <h1 class="account-content__title">{{ $t('cabinet.nav.support') }}</h1>
     </div>
 </template>
 

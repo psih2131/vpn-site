@@ -1,20 +1,20 @@
 <template>
     <div class="account-content devices-page">
         <header class="devices-page__head">
-            <h1 class="devices-page__title">Устройства</h1>
-            <p class="devices-page__desc">Устройства, на которых подключён ваш ключ.</p>
+            <h1 class="devices-page__title">{{ $t('cabinet.devices.title') }}</h1>
+            <p class="devices-page__desc">{{ $t('cabinet.devices.desc') }}</p>
         </header>
 
         <section class="devices-card">
             <div class="devices-card__top">
                 <div>
-                    <p class="devices-card__label">Подключено</p>
+                    <p class="devices-card__label">{{ $t('cabinet.devices.connected') }}</p>
                     <p class="devices-card__value">
                         <span>{{ used }}</span>
-                        <small>из {{ limit }}</small>
+                        <small>{{ $t('cabinet.devices.of', { limit }) }}</small>
                     </p>
                 </div>
-                <span class="devices-card__left">Можно добавить ещё {{ free }}</span>
+                <span class="devices-card__left">{{ $t('cabinet.devices.canAdd', { count: free }) }}</span>
             </div>
 
             <div class="devices-card__segments" aria-hidden="true">
@@ -25,7 +25,7 @@
                     :class="{ 'is-filled': index <= used }"
                 ></span>
             </div>
-            <p class="devices-card__max">Максимум {{ limit }} устройств</p>
+            <p class="devices-card__max">{{ $t('cabinet.devices.max', { limit }) }}</p>
 
             <!--
             <div class="devices-card__actions">
@@ -49,12 +49,12 @@
                     <path d="M11 8h6M14.2 8v2M16.4 8v2.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
                 </svg>
             </span>
-            <p>Добавьте ключ из раздела «VPN» в приложение — устройство появится здесь.</p>
-            <NuxtLink to="/account/connect" class="devices-hint__link">Раздел VPN →</NuxtLink>
+            <p>{{ $t('cabinet.devices.hint') }}</p>
+            <NuxtLink :to="localePath('/account/connect')" class="devices-hint__link">{{ $t('cabinet.devices.vpnSection') }}</NuxtLink>
         </div>
 
         <section class="devices-list">
-            <p class="devices-list__label">Ваши устройства</p>
+            <p class="devices-list__label">{{ $t('cabinet.devices.yours') }}</p>
             <div
                 v-for="device in devices"
                 :key="device.id"
@@ -69,7 +69,7 @@
                     </svg>
                 </span>
                 <span class="devices-slot__info">
-                    <span class="devices-slot__name">{{ device.deviceModel || device.deviceOs || 'Устройство' }}</span>
+                    <span class="devices-slot__name">{{ device.deviceModel || device.deviceOs || $t('cabinet.devices.device') }}</span>
                     <span class="devices-slot__meta">{{ deviceLabel(device) }}</span>
                 </span>
             </div>
@@ -79,7 +79,7 @@
                 class="devices-slot"
             >
                 <span class="devices-slot__plus" aria-hidden="true">+</span>
-                <span>Свободный слот</span>
+                <span>{{ $t('cabinet.devices.freeSlot') }}</span>
             </div>
         </section>
     </div>
@@ -92,6 +92,7 @@ definePageMeta({
 })
 
 const { adminUrl } = useAdminApi()
+const localePath = useLocalePath()
 
 const devices = ref([])
 const limit = 5

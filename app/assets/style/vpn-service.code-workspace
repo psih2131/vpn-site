@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../node_scripts/vpn-service"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {}
+}

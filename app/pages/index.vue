@@ -9,8 +9,8 @@
         <section id="hero" class="hero">
             <img
                 :src="heroSchematic"
-                alt="Схема подключения VPN ключа Dark Nova для Happ и INCY"
-                title="Схема подключения VPN ключа Dark Nova для Happ и INCY"
+                :alt="$t('home.hero.schematicAlt')"
+                :title="$t('home.hero.schematicAlt')"
                 class="hero__schematic"
             />
             <div class="container">
@@ -20,18 +20,13 @@
                             <svg class="hero__badge-icon" viewBox="0 0 16 16" fill="currentColor">
                                 <path d="M8 1.2 9.7 5.5 14.4 6l-3.5 3.1.9 4.5L8 11.4 4.2 13.6l.9-4.5L1.6 6l4.7-.5L8 1.2Z"/>
                             </svg>
-                            3 дня бесплатно
+                            {{ $t('home.hero.badge') }}
                         </span>
-                        <h1 class="hero__title">Получи VPN ключ для Happ и INCY<br />бесплатно</h1>
-                        <p class="hero__text">
-                            Выдаём ключ для Happ и INCY в Telegram за пару минут.
-                            Вы получаете VPN на 3 дня бесплатно, 5 устройств на подписке,
-                            10 евро-серверов, без карт и сложных настроек.
-                            Цена подписки на месяц — от 130₽/мес.
-                        </p>
+                        <h1 class="hero__title">{{ $t('home.hero.titleLine1') }}<br>{{ $t('home.hero.titleLine2') }}</h1>
+                        <p class="hero__text">{{ $t('home.hero.text') }}</p>
                         <div class="hero__actions">
                             <button type="button" class="hero__btn" @click="openRegistration('hero_connect_free')">
-                                Подключить бесплатно
+                                {{ $t('home.hero.connect') }}
                                 <svg class="hero__btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                                     <path d="M3 8h10M9 4l4 4-4 4"/>
                                 </svg>
@@ -42,17 +37,17 @@
                                         <path d="M6 4.2v7.6L12.4 8 6 4.2Z"/>
                                     </svg>
                                 </span>
-                                Как это работает
+                                {{ $t('home.hero.how') }}
                             </a>
                         </div>
                         <div class="hero__trust">
-                            <span class="hero__trust-label">Работает с клиентами</span>
+                            <span class="hero__trust-label">{{ $t('home.hero.trust') }}</span>
                             <div class="hero__trust-list">
                                 <span class="hero__trust-item">
                                     <img
                                         :src="logoHapp"
-                                        alt="Клиент Happ для VPN ключа Dark Nova"
-                                        title="Клиент Happ для VPN ключа Dark Nova"
+                                        :alt="$t('home.hero.happAlt')"
+                                        :title="$t('home.hero.happAlt')"
                                         class="hero__trust-logo"
                                     />
                                     <span class="hero__trust-name">Happ</span>
@@ -61,8 +56,8 @@
                                 <span class="hero__trust-item">
                                     <img
                                         :src="logoIncy"
-                                        alt="Клиент INCY для VPN ключа Dark Nova"
-                                        title="Клиент INCY для VPN ключа Dark Nova"
+                                        :alt="$t('home.hero.incyAlt')"
+                                        :title="$t('home.hero.incyAlt')"
                                         class="hero__trust-logo"
                                     />
                                     <span class="hero__trust-name">INCY</span>
@@ -126,52 +121,43 @@
         <!-- Features -->
         <section class="features">
             <div class="container">
-                <h2 class="section-title">Почему доверяют нашему VPN?</h2>
+                <h2 class="section-title">{{ $t('home.features.title') }}</h2>
                 <div class="features__grid">
                     <div class="features__card features__card--large">
                         <div class="features__card-content">
-                            <h3 class="features__card-title">Не записываем логи<br />вашей активности.</h3>
-                            <p class="features__card-text">
-                                Без журнала посещений и передачи данных третьим лицам.
-                                Провайдер видит только зашифрованный трафик — не вашу историю.
-                            </p>
+                            <h3 class="features__card-title">{{ $t('home.features.logsLine1') }}<br>{{ $t('home.features.logsLine2') }}</h3>
+                            <p class="features__card-text">{{ $t('home.features.logsText') }}</p>
                         </div>
                         <img
                             :src="featureSecurity"
-                            alt="Защита данных без логов — Dark Nova VPN"
-                            title="Защита данных без логов — Dark Nova VPN"
+                            :alt="$t('home.features.logsAlt')"
+                            :title="$t('home.features.logsAlt')"
                             class="features__image features__image--security"
                         />
                     </div>
 
                     <div class="features__card features__card--row">
                         <div class="features__card-content">
-                            <h3 class="features__card-title">10 VPN серверов<br />со всего мира.</h3>
-                            <p class="features__card-text">
-                                10 серверов в разных странах, включая отдельные серверы
-                                для обхода белых списков и YouTube без рекламы.
-                            </p>
+                            <h3 class="features__card-title">{{ $t('home.features.serversLine1') }}<br>{{ $t('home.features.serversLine2') }}</h3>
+                            <p class="features__card-text">{{ $t('home.features.serversText') }}</p>
                         </div>
                         <img
                             :src="featureApps"
-                            alt="10 VPN серверов Dark Nova по всему миру"
-                            title="10 VPN серверов Dark Nova по всему миру"
+                            :alt="$t('home.features.serversAlt')"
+                            :title="$t('home.features.serversAlt')"
                             class="features__image features__image--apps"
                         />
                     </div>
 
                     <div class="features__card features__card--row">
                         <div class="features__card-content">
-                            <h3 class="features__card-title">Низкий пинг<br />и стабильная скорость.</h3>
-                            <p class="features__card-text">
-                                Серверы близко к пользователям: комфортный пинг для стриминга,
-                                онлайн-игр и быстрой загрузки файлов без просадок.
-                            </p>
+                            <h3 class="features__card-title">{{ $t('home.features.speedLine1') }}<br>{{ $t('home.features.speedLine2') }}</h3>
+                            <p class="features__card-text">{{ $t('home.features.speedText') }}</p>
                         </div>
                         <img
                             :src="featureSpeed"
-                            alt="Высокая скорость и низкий пинг Dark Nova VPN"
-                            title="Высокая скорость и низкий пинг Dark Nova VPN"
+                            :alt="$t('home.features.speedAlt')"
+                            :title="$t('home.features.speedAlt')"
                             class="features__image features__image--speed"
                         />
                     </div>
@@ -179,17 +165,15 @@
             </div>
         </section>
 
-        <PricingSection title="Тарифный план" />
+        <PricingSection :title="$t('home.pricingTitle')" />
 
-        <CountriesSection title="Список доступных vpn серверов" />
+        <CountriesSection :title="$t('servers.title')" />
 
         <!-- How to connect -->
         <section id="howto" class="howto-grid">
             <div class="container">
-                <h2 class="section-title howto-grid__title">Как подключить наш VPN</h2>
-                <p class="howto-grid__subtitle">
-                    Четыре шага и пара минут — без регистрации, ручных настроек и лишних приложений.
-                </p>
+                <h2 class="section-title howto-grid__title">{{ $t('home.howto.title') }}</h2>
+                <p class="howto-grid__subtitle">{{ $t('home.howto.subtitle') }}</p>
 
                 <div class="howto-grid__wrap">
                     <article v-for="step in howtoSteps" :key="step.num" class="howto-grid__cell">
@@ -218,10 +202,10 @@
                             </svg>
                         </div>
                         <div class="howto-grid__body">
-                            <h3 class="howto-grid__step-title">Пользуйтесь свободным интернетом</h3>
-                            <p class="howto-grid__step-text">3 дня бесплатно, карта не нужна. Дальше — 130₽ в месяц.</p>
+                            <h3 class="howto-grid__step-title">{{ $t('home.howto.ctaTitle') }}</h3>
+                            <p class="howto-grid__step-text">{{ $t('home.howto.ctaText') }}</p>
                         </div>
-                        <span class="howto-grid__meta howto-grid__meta--accent">Начать бесплатно</span>
+                        <span class="howto-grid__meta howto-grid__meta--accent">{{ $t('home.howto.ctaMeta') }}</span>
                     </button>
 
                     <div class="howto-grid__cell howto-grid__cell--empty"></div>
@@ -236,8 +220,8 @@
                     <div class="devices-alt__visual">
                         <img
                             :src="devicesAltPhone"
-                            alt="Приложение Dark Nova VPN на смартфоне"
-                            title="Приложение Dark Nova VPN на смартфоне"
+                            :alt="$t('home.devices.phoneAlt')"
+                            :title="$t('home.devices.phoneAlt')"
                             class="devices-alt__phone"
                         />
                     </div>
@@ -248,9 +232,9 @@
                                 <circle cx="8" cy="8" r="6"/>
                                 <circle cx="8" cy="8" r="2" fill="currentColor" stroke="none"/>
                             </svg>
-                            Одна подписка
+                            {{ $t('home.devices.eyebrow') }}
                         </span>
-                        <h2 class="devices-alt__title">На всех ваших устройствах</h2>
+                        <h2 class="devices-alt__title">{{ $t('home.devices.title') }}</h2>
 
                         <div class="devices-alt__list">
                             <div
@@ -280,7 +264,7 @@
                                     <div class="devices-alt__body">
                                         <p class="devices-alt__text">{{ item.text }}</p>
                                         <button type="button" class="devices-alt__more" @click="openRegistration('devices_connect')">
-                                            Подключить
+                                            {{ $t('home.devices.connect') }}
                                             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                                                 <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/>
                                             </svg>
@@ -295,8 +279,8 @@
         </section>
 
         <PlatformsSection
-            title="Dark Nova VPN работает на всех устройствах"
-            subtitle="Один аккаунт — все платформы. Подключение идёт через приложения Happ и INCY: вы получаете ссылку-подписку в Telegram-боте, вставляете её в клиент — и все серверы появляются в списке автоматически."
+            :title="$t('home.platformsTitle')"
+            :subtitle="$t('home.platformsSubtitle')"
         />
 
         
@@ -304,7 +288,7 @@
         <!-- FAQ -->
         <section id="faq" class="faq">
             <div class="container">
-                <h2 class="section-title faq__title">Ответы на вопросы</h2>
+                <h2 class="section-title faq__title">{{ $t('home.faq.title') }}</h2>
                 <div class="faq__list">
                     <div
                         v-for="(item, index) in faqItems"
@@ -336,46 +320,18 @@
         <section id="about-vpn" class="seo-block">
             <div class="container">
                 <div class="seo-block__inner">
-                    <h2 class="section-title seo-block__title">VPN ключ для Happ и INCY от Dark Nova VPN</h2>
+                    <h2 class="section-title seo-block__title">{{ $t('home.seo.title') }}</h2>
                     <div class="seo-block__content">
-                        <p>
-                            Dark Nova VPN выдаёт рабочий <strong>VPN ключ для Happ и INCY</strong> прямо в Telegram.
-                            Вам не нужно искать отдельные конфиги, бесплатные ссылки на форумах или разовые
-                            ключи «на день» — бот создаёт подписку под ваш аккаунт и присылает одну ссылку,
-                            которая подходит сразу для обоих клиентов.
-                        </p>
-                        <p>
-                            Если вы ищете, где взять ключ для VPN Happ или ключ для VPN INCY, схема простая:
-                            откройте бота Dark Nova, получите пробный доступ на 3 дня и добавьте ссылку
-                            в приложение. Дальше выбираете сервер и подключаетесь в одно касание —
-                            без ручной настройки протоколов и без привязки карты на старте.
-                        </p>
+                        <p>{{ $t('home.seo.p1Before') }}<strong>{{ $t('home.seo.p1Strong') }}</strong>{{ $t('home.seo.p1After') }}</p>
+                        <p>{{ $t('home.seo.p2') }}</p>
 
-                        <h3 class="seo-block__subtitle">Чем удобен ключ Dark Nova для Happ и INCY</h3>
-                        <p>
-                            Один VPN ключ работает на нескольких устройствах после оплаты подписки —
-                            до 5 одновременных подключений. Happ удобен на Android, Windows, macOS, Linux
-                            и Android TV, а INCY ставится из российского App Store без смены региона.
-                            Формат подписки одинаковый: вставили ссылку — пользуетесь.
-                        </p>
-                        <p>
-                            Сервис держит около 10 VPN серверов в Европе и других локациях, протоколы
-                            VLESS Reality и Hysteria2, низкий пинг и стабильную скорость. Логи посещений
-                            не пишем: провайдер видит зашифрованный трафик, а не историю сайтов.
-                        </p>
+                        <h3 class="seo-block__subtitle">{{ $t('home.seo.sub1') }}</h3>
+                        <p>{{ $t('home.seo.p3') }}</p>
+                        <p>{{ $t('home.seo.p4') }}</p>
 
-                        <h3 class="seo-block__subtitle">Как получить VPN ключ бесплатно на 3 дня</h3>
-                        <p>
-                            Пробный период позволяет проверить ключ для Happ и INCY без оплаты.
-                            После теста можно оформить подписку от 130₽/мес прямо в Telegram.
-                            Если сервис не подошёл — возврат в течение 14 дней через поддержку
-                            @darkNovaVpn_support.
-                        </p>
-                        <p>
-                            Dark Nova VPN — это быстрый способ получить VPN ключ для клиентов Happ и INCY
-                            без сложных настроек: выдача в боте, понятные тарифы и стабильное соединение
-                            для телефона, ПК и ТВ.
-                        </p>
+                        <h3 class="seo-block__subtitle">{{ $t('home.seo.sub2') }}</h3>
+                        <p>{{ $t('home.seo.p5') }}</p>
+                        <p>{{ $t('home.seo.p6') }}</p>
                     </div>
                 </div>
             </div>
@@ -425,6 +381,8 @@ definePageMeta({ layout: 'default' })
 
 const storeModal = useModalStore()
 const { trackEvent } = useGtag()
+const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
 function openRegistration(buttonName = 'cta_register') {
     trackEvent('click_cta', { button_name: buttonName })
@@ -452,94 +410,25 @@ function toggleDevice(index) {
     openDevice.value = openDevice.value === index ? null : index
 }
 
-const deviceBenefits = [
-    {
-        title: '5 устройств одновременно',
-        text: 'Телефон, ноутбук, планшет и телевизор работают параллельно. Не нужно отключать одно устройство, чтобы подключить другое.',
-    },
-    {
-        title: 'Все платформы сразу',
-        text: 'Windows, macOS, Linux, Android, iPhone и Android TV. Ставите Happ или INCY — ссылка-подписка везде одна и та же, отдельные аккаунты не нужны.',
-    },
-    {
-        title: 'Подключение в одно касание',
-        text: 'Бот присылает кнопку автоматического подключения: серверы появляются в приложении сами и обновляются, когда мы добавляем новые.',
-    },
-    {
-        title: 'Поддержка и инструкции',
-        text: 'Пошаговые инструкции под каждую систему прямо в Telegram-боте, а живая поддержка отвечает круглосуточно.',
-    },
-]
+const deviceBenefits = computed(() => [1, 2, 3, 4].map((n) => ({
+    title: t(`home.devices.b${n}Title`),
+    text: t(`home.devices.b${n}Text`),
+})))
 
-const howtoSteps = [
-    {
-        num: '01',
-        title: 'Откройте бота',
-        text: 'Нажмите «Подключить» и запустите Dark Nova VPN в Telegram. Регистрация и почта не нужны.',
-        meta: 'Telegram',
-    },
-    {
-        num: '02',
-        title: 'Получите VPN ключ',
-        text: 'Активируйте 3 дня бесплатно или сразу оплатите подписку прямо в переписке с ботом.',
-        meta: 'Пробный период',
-    },
-    {
-        num: '03',
-        title: 'Установите Happ или INCY',
-        text: 'Happ или INCY на телефон, компьютер или телевизор — ссылки бот пришлёт под вашу систему.',
-        meta: 'Happ / INCY',
-    },
-    {
-        num: '04',
-        title: 'Подключитесь',
-        text: 'Нажмите в боте кнопку автоматического подключения — ссылка добавится сама. Или вставьте её в приложение вручную и выберите сервер.',
-        meta: 'Одна кнопка',
-    },
-]
+const howtoSteps = computed(() => [1, 2, 3, 4].map((n) => ({
+    num: String(n).padStart(2, '0'),
+    title: t(`home.howto.s${n}Title`),
+    text: t(`home.howto.s${n}Text`),
+    meta: t(`home.howto.s${n}Meta`),
+})))
 
-const faqItems = [
-    {
-        question: 'Как получить VPN ключ для Happ и INCY?',
-        answer: 'Чтобы получить VPN ключ для клиентов Happ и INCY, нажмите «Подключить» на сайте и перейдите в Telegram-бот Dark Nova. Пройдите короткую регистрацию — бот сразу выдаст пробный доступ на 3 дня и пришлёт ссылку-ключ (подписку). Эту же ссылку можно добавить в Happ или INCY: в приложении выберите добавление по ссылке, вставьте ключ из бота и подключитесь к серверу. Один ключ подходит для обоих клиентов, отдельно для Happ и INCY ничего покупать не нужно. После пробного периода продлите подписку в боте — ключ останется тем же.',
-    },
-    {
-        question: 'В каких приложениях работает VPN ключ?',
-        answer: 'Мы выдаём одну ссылку-подписку, которая подходит для Happ и INCY — оба клиента работают на ядре Xray. Happ есть в Google Play и на Windows, macOS, Linux и Android TV, а INCY скачивается из российского App Store без смены региона Apple ID.',
-    },
-    {
-        question: 'Сколько устройств можно подключить по нашему VPN ключу?',
-        answer: 'Платная подписка Dark Nova VPN работает одновременно на 5 устройствах — например, телефон, ноутбук и телевизор. В пробном периоде доступно 1 устройство.',
-    },
-    {
-        question: 'Есть ли пробный период у нашего VPN?',
-        answer: 'Да, вы можете попробовать VPN бесплатно в течение 3 дней: лимит трафика 20 GB, ограничение скорости загрузки и 1 устройство. После пробного периода подписка стоит 130₽/месяц.',
-    },
-    {
-        question: 'Сколько стоит подписка и что выгоднее?',
-        answer: 'Месячная — 130₽. На 3 месяца — 350₽ (≈117₽/мес, выгода 10%). Годовая — 1 300₽ (≈108₽/мес, выгода 17%), приоритетное обслуживание и доступ ко всем серверам.',
-    },
-    {
-        question: 'Будет ли VPN работать при блокировках?',
-        answer: 'Да. Серверы работают на VLESS с Reality и на Hysteria2 с TLS — такой трафик выглядит как обычное HTTPS-соединение и не распознаётся фильтрами. Если у оператора действует белый список сайтов, помогает отдельный сервер обхода.',
-    },
-    {
-        question: 'Вы храните логи?',
-        answer: 'Нет. Мы не ведём журнал посещённых сайтов и не передаём данные третьим лицам — провайдер тоже не увидит вашу историю, он видит только зашифрованное соединение.',
-    },
-    {
-        question: 'Можно ли вернуть деньги?',
-        answer: 'Да. Если сервис не подошёл, мы вернём оплату в течение 14 дней с момента покупки — просто напишите в поддержку.',
-    },
-    {
-        question: 'Как работает реферальная программа?',
-        answer: 'Приглашайте друзей по реферальной ссылке из бота и получайте 50% комиссии со всех их платежей на свой баланс. Лимит на вывод — 2000₽, также баланс можно тратить на оплату своего тарифа.',
-    },
-    {
-        question: 'Как связаться с поддержкой?',
-        answer: 'Напишите нам в Telegram — @darkNovaVpn_support. Мы отвечаем круглосуточно.',
-    },
-]
+const faqItems = computed(() => Array.from({ length: 10 }, (_, index) => {
+    const n = index + 1
+    return {
+        question: t(`home.faq.q${n}`),
+        answer: t(`home.faq.a${n}`),
+    }
+}))
 
 const blogPosts = [
     {
@@ -566,126 +455,126 @@ const blogPosts = [
 
 
 const siteUrl = 'https://darknovavpn.com'
-const pageTitle = 'VPN ключ для Happ и INCY — Dark Nova VPN'
-const pageDescription = 'VPN ключ для клиентов Happ и INCY. Быстрая выдача в Telegram, 3 дня бесплатно, оплата от 130₽/мес. Dark Nova VPN.'
-const pageKeywords = 'VPN ключ для Happ, VPN ключ для INCY, ключ для впн Happ, ключ для впн INCY, VPN Happ, VPN INCY, Dark Nova VPN, VPN ключ Telegram'
 const ogImage = `${siteUrl}/dark-nova-green-eyes.png`
- 
-useHead({
-    title: pageTitle,
-    htmlAttrs: { lang: 'ru' },
-    meta: [
-        { name: 'description', content: pageDescription },
-        { name: 'keywords', content: pageKeywords },
-        { name: 'author', content: 'Dark Nova VPN' },
-        { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
-        { name: 'googlebot', content: 'index, follow' },
-        { name: 'theme-color', content: '#000000' },
-        { property: 'og:title', content: pageTitle },
-        { property: 'og:description', content: pageDescription },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${siteUrl}/` },
-        { property: 'og:locale', content: 'ru_RU' },
-        { property: 'og:site_name', content: 'Dark Nova VPN' },
-        { property: 'og:image', content: ogImage },
-        { property: 'og:image:alt', content: 'VPN ключ для Happ и INCY — Dark Nova VPN' },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: pageTitle },
-        { name: 'twitter:description', content: pageDescription },
-        { name: 'twitter:image', content: ogImage },
-    ],
-    link: [
-        { rel: 'canonical', href: `${siteUrl}/` },
-        { rel: 'alternate', hreflang: 'ru', href: `${siteUrl}/` },
-        { rel: 'alternate', hreflang: 'x-default', href: `${siteUrl}/` },
-    ],
-    script: [
-        {
-            type: 'application/ld+json',
-            children: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@graph': [
-                    {
-                        '@type': 'WebSite',
-                        '@id': `${siteUrl}/#website`,
-                        url: `${siteUrl}/`,
-                        name: 'Dark Nova VPN',
-                        description: pageDescription,
-                        inLanguage: 'ru-RU',
-                        publisher: { '@id': `${siteUrl}/#organization` },
-                    },
-                    {
-                        '@type': 'Organization',
-                        '@id': `${siteUrl}/#organization`,
-                        name: 'Dark Nova VPN',
-                        url: `${siteUrl}/`,
-                        logo: {
-                            '@type': 'ImageObject',
-                            url: ogImage,
+
+useHead(() => {
+    const pageTitle = t('home.meta.title')
+    const pageDescription = t('home.meta.description')
+    const pagePath = localePath('/')
+    const pageUrl = `${siteUrl}${pagePath === '/' ? '/' : pagePath}`
+    const lang = locale.value === 'en' ? 'en' : 'ru'
+    const ogLocale = lang === 'en' ? 'en_US' : 'ru_RU'
+    const inLanguage = lang === 'en' ? 'en-US' : 'ru-RU'
+
+    return {
+        title: pageTitle,
+        htmlAttrs: { lang },
+        meta: [
+            { name: 'description', content: pageDescription },
+            { name: 'keywords', content: t('home.meta.keywords') },
+            { name: 'author', content: 'Dark Nova VPN' },
+            { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+            { name: 'googlebot', content: 'index, follow' },
+            { name: 'theme-color', content: '#000000' },
+            { property: 'og:title', content: pageTitle },
+            { property: 'og:description', content: pageDescription },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: pageUrl },
+            { property: 'og:locale', content: ogLocale },
+            { property: 'og:site_name', content: 'Dark Nova VPN' },
+            { property: 'og:image', content: ogImage },
+            { property: 'og:image:alt', content: t('home.meta.imageAlt') },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: pageTitle },
+            { name: 'twitter:description', content: pageDescription },
+            { name: 'twitter:image', content: ogImage },
+        ],
+        link: [
+            { rel: 'canonical', href: pageUrl },
+            { rel: 'alternate', hreflang: 'ru', href: `${siteUrl}/` },
+            { rel: 'alternate', hreflang: 'en', href: `${siteUrl}/en` },
+            { rel: 'alternate', hreflang: 'x-default', href: `${siteUrl}/` },
+        ],
+        script: [
+            {
+                type: 'application/ld+json',
+                children: JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@graph': [
+                        {
+                            '@type': 'WebSite',
+                            '@id': `${pageUrl}#website`,
+                            url: pageUrl,
+                            name: 'Dark Nova VPN',
+                            description: pageDescription,
+                            inLanguage,
+                            publisher: { '@id': `${siteUrl}/#organization` },
                         },
-                        image: ogImage,
-                        sameAs: [
-                            'https://t.me/darkNovaVpn_support',
-                        ],
-                        contactPoint: {
-                            '@type': 'ContactPoint',
-                            contactType: 'customer support',
-                            url: 'https://t.me/darkNovaVpn_support',
-                            availableLanguage: ['Russian'],
+                        {
+                            '@type': 'Organization',
+                            '@id': `${siteUrl}/#organization`,
+                            name: 'Dark Nova VPN',
+                            url: `${siteUrl}/`,
+                            logo: {
+                                '@type': 'ImageObject',
+                                url: ogImage,
+                            },
+                            image: ogImage,
+                            sameAs: [
+                                'https://t.me/darkNovaVpn_support',
+                            ],
+                            contactPoint: {
+                                '@type': 'ContactPoint',
+                                contactType: 'customer support',
+                                url: 'https://t.me/darkNovaVpn_support',
+                                availableLanguage: ['Russian', 'English'],
+                            },
                         },
-                    },
-                    {
-                        '@type': 'SoftwareApplication',
-                        name: 'VPN ключ для Happ и INCY — Dark Nova VPN',
-                        alternateName: 'Dark Nova VPN',
-                        applicationCategory: 'SecurityApplication',
-                        operatingSystem: 'Android, iOS, Windows, macOS, Linux, Android TV',
-                        offers: [
-                            {
-                                '@type': 'Offer',
-                                name: 'Подписка на 1 месяц',
-                                price: '130',
-                                priceCurrency: 'RUB',
-                                url: `${siteUrl}/#pricing`,
-                                description: 'VPN ключ для Happ и INCY на 1 месяц',
-                            },
-                            {
-                                '@type': 'Offer',
-                                name: 'Подписка на 3 месяца',
-                                price: '350',
-                                priceCurrency: 'RUB',
-                                url: `${siteUrl}/#pricing`,
-                                description: 'VPN ключ для Happ и INCY на 3 месяца — 350₽ (скидка 10%)',
-                            },
-                            {
-                                '@type': 'Offer',
-                                name: 'Подписка на 1 год',
-                                price: '1300',
-                                priceCurrency: 'RUB',
-                                url: `${siteUrl}/#pricing`,
-                                description: 'VPN ключ для Happ и INCY на 1 год — 1 300₽ (скидка 17%)',
-                            },
-                        ],
-                        description: pageDescription,
-                    },
-                    {
-                        '@type': 'FAQPage',
-                        '@id': `${siteUrl}/#faq`,
-                        url: `${siteUrl}/`,
-                        inLanguage: 'ru-RU',
-                        isPartOf: { '@id': `${siteUrl}/#website` },
-                        mainEntity: faqItems.map((item) => ({
-                            '@type': 'Question',
-                            name: item.question,
-                            acceptedAnswer: {
-                                '@type': 'Answer',
-                                text: item.answer,
-                            },
-                        })),
-                    },
-                ],
-            }),
-        },
-    ],
+                        {
+                            '@type': 'SoftwareApplication',
+                            name: pageTitle,
+                            alternateName: 'Dark Nova VPN',
+                            applicationCategory: 'SecurityApplication',
+                            operatingSystem: 'Android, iOS, Windows, macOS, Linux, Android TV',
+                            offers: (lang === 'en'
+                                ? [
+                                    ['2', 'USD'],
+                                    ['4.5', 'USD'],
+                                    ['16', 'USD'],
+                                ]
+                                : [
+                                    ['130', 'RUB'],
+                                    ['350', 'RUB'],
+                                    ['1300', 'RUB'],
+                                ]).map(([price, priceCurrency], index) => ({
+                                    '@type': 'Offer',
+                                    name: t(['home.meta.offer1Name', 'home.meta.offer3Name', 'home.meta.offer12Name'][index]),
+                                    price,
+                                    priceCurrency,
+                                    url: `${pageUrl}#pricing`,
+                                    description: t(['home.meta.offer1Description', 'home.meta.offer3Description', 'home.meta.offer12Description'][index]),
+                                })),
+                            description: pageDescription,
+                        },
+                        {
+                            '@type': 'FAQPage',
+                            '@id': `${pageUrl}#faq`,
+                            url: pageUrl,
+                            inLanguage,
+                            isPartOf: { '@id': `${pageUrl}#website` },
+                            mainEntity: faqItems.value.map((item) => ({
+                                '@type': 'Question',
+                                name: item.question,
+                                acceptedAnswer: {
+                                    '@type': 'Answer',
+                                    text: item.answer,
+                                },
+                            })),
+                        },
+                    ],
+                }),
+            },
+        ],
+    }
 })
 </script>

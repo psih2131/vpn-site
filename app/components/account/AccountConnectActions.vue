@@ -1,6 +1,6 @@
 <template>
     <div class="connect-grid">
-        <UiConnectActionButton title="Начать установку VPN" pulse @click="openDevices">
+        <UiConnectActionButton :title="$t('cabinet.connect.install')" pulse @click="openDevices">
             <template #icon>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>

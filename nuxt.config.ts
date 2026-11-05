@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/sitemap', '@pinia/nuxt'],
+  modules: ['@nuxtjs/sitemap', '@pinia/nuxt', '@nuxtjs/i18n'],
   ssr: true,
 
   // Avoid Vite "#app-manifest" resolve race on cold/dev start (nuxt#30461 / #33606)
@@ -37,6 +37,14 @@ export default defineNuxtConfig({
         },
       ],
     },
+  },
+
+  i18n: {
+    defaultLocale: 'ru',
+    locales: [
+      { code: 'ru', name: 'Russian', file: 'ru.json' },
+      { code: 'en', name: 'English', file: 'en.json' },
+    ]
   },
   
 

@@ -15,7 +15,7 @@
                 :disabled="loading || !activationLink"
                 @click="activateAccount"
             >
-                {{ loading ? 'Активация…' : 'Активировать аккаунт' }}
+                {{ loading ? $t('auth.activate.activating') : $t('auth.activate.activate') }}
             </button>
 
             <button
@@ -24,11 +24,11 @@
                 class="activate-page__btn"
                 @click="openAuthorization"
             >
-                Войти в аккаунт
+                {{ $t('auth.activate.signIn') }}
             </button>
 
-            <NuxtLink to="/" class="activate-page__back">
-                ← На главную
+            <NuxtLink :to="$localePath('/')" class="activate-page__back">
+                {{ $t('auth.activate.back') }}
             </NuxtLink>
         </div>
     </main>
@@ -44,6 +44,7 @@ definePageMeta({
 const route = useRoute()
 const { adminUrl } = useAdminApi()
 const storeModal = useModalStore()
+const { t } = useI18n()
 
 const activationLink = computed(() => String(route.params.link || '').trim())
 
@@ -54,23 +55,17 @@ const successMessage = ref('')
 const alreadyActivated = ref(false)
 
 const title = computed(() => {
-    if (status.value === 'success') return 'Аккаунт активирован'
-    if (alreadyActivated.value) return 'Аккаунт уже активен'
-    if (status.value === 'error') return 'Не удалось активировать'
-    return 'Активация аккаунта'
+    if (status.value === 'success') return t('auth.activate.titleSuccess')
+    if (alreadyActivated.value) return t('auth.activate.titleAlready')
+    if (status.value === 'error') return t('auth.activate.titleError')
+    return t('auth.activate.titleIdle')
 })
 
 const description = computed(() => {
-    if (status.value === 'success') {
-        return 'Email подтверждён. Теперь вы можете войти и пользоваться сервисом.'
-    }
-    if (alreadyActivated.value) {
-        return 'Этот аккаунт уже был активирован ранее. Просто войдите с вашим email и паролем.'
-    }
-    if (status.value === 'error') {
-        return 'Проверьте ссылку из письма или запросите новое письмо для подтверждения.'
-    }
-    return 'Нажмите кнопку ниже, чтобы подтвердить email и активировать аккаунт.'
+    if (status.value === 'success') return t('auth.activate.descSuccess')
+    if (alreadyActivated.value) return t('auth.activate.descAlready')
+    if (status.value === 'error') return t('auth.activate.descError')
+    return t('auth.activate.descIdle')
 })
 
 async function activateAccount() {
@@ -91,17 +86,17 @@ async function activateAccount() {
         const message = data?.data?.message || data?.message || ''
 
         if (!response.ok || !data?.success) {
-            const text = message || 'Некорректная ссылка активации'
+            const text = message || t('auth.activate.invalidLink')
             errorMessage.value = text
             alreadyActivated.value = /уже активирован/i.test(text)
             status.value = 'error'
             return
         }
 
-        successMessage.value = message || 'Аккаунт успешно активирован'
+        successMessage.value = message || t('auth.activate.successFallback')
         status.value = 'success'
     } catch {
-        errorMessage.value = 'Не удалось связаться с сервером. Попробуйте позже.'
+        errorMessage.value = t('auth.activate.networkError')
         status.value = 'error'
     } finally {
         loading.value = false
@@ -116,7 +111,7 @@ function openAuthorization() {
 }
 
 useSeoMeta({
-    title: 'Активация аккаунта — Dark Nova',
+    title: () => t('auth.activate.metaTitle'),
     robots: 'noindex, nofollow',
 })
 </script>

@@ -2,8 +2,11 @@
     <aside class="account-aside">
         <div class="account-aside__top">
             <div class="account-aside__header">
-                <NuxtLink to="/" class="account-aside__brand">Dark Nova</NuxtLink>
-                <NuxtLink to="/" class="account-aside__collapse" aria-label="На главную">
+                <NuxtLink :to="localePath('/')" class="account-aside__brand">
+                    <img class="account-aside__brand-icon" :src="logoMark" alt="">
+                    <span>Dark Nova</span>
+                </NuxtLink>
+                <NuxtLink :to="localePath('/')" class="account-aside__collapse" :aria-label="$t('cabinet.nav.homeAria')">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M14.5 7.5L10 12l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -24,7 +27,7 @@
                             ? { 'aria-disabled': 'true' }
                             : item.external
                                 ? { href: item.to, target: '_blank', rel: 'noopener noreferrer' }
-                                : { to: item.to }"
+                                : { to: localePath(item.to) }"
                         class="account-aside__link"
                         :class="{
                             'is-active': !item.soon && !item.external && isNavActive(item.to),
@@ -48,7 +51,7 @@
                         </svg>
                         <span class="account-aside__link-icon" v-html="item.icon"></span>
                         <span class="account-aside__link-text">{{ item.label }}</span>
-                        <span v-if="item.soon" class="account-aside__soon" aria-label="В разработке">
+                        <span v-if="item.soon" class="account-aside__soon" :aria-label="$t('cabinet.nav.soon')">
                             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
                                 <rect x="3.2" y="7" width="9.6" height="6.2" rx="1.2" stroke="currentColor" stroke-width="1.3"/>
                                 <path d="M5.4 7V5.2a2.6 2.6 0 015.2 0V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
@@ -56,6 +59,10 @@
                         </span>
                         <span v-else-if="item.badge" class="account-aside__badge">{{ item.badge }}</span>
                     </component>
+                </div>
+                <div class="account-aside__lang">
+                    <span>{{ $t('header.language') }}</span>
+                    <LangSwitch />
                 </div>
             </nav>
         </div>
@@ -67,15 +74,18 @@
                     <path d="M15 12H4m0 0l3-3m-3 3l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </span>
-            <span>Выйти из аккаунта</span>
+            <span>{{ $t('cabinet.nav.logout') }}</span>
         </button>
     </aside>
 </template>
 
 <script setup>
 import { NuxtLink } from '#components'
+import logoMark from '~/assets/images/logo.png'
 
 const route = useRoute()
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 const icons = {
     home: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 10.8L12 4.2l8 6.6V20a.8.8 0 01-.8.8h-4.4v-5.2H9.2V20.8H4.8A.8.8 0 014 20v-9.2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
@@ -89,25 +99,27 @@ const icons = {
     devices: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/><path d="M10 19v-3.96 3.15"/><path d="M7 19h5"/><rect width="6" height="10" x="16" y="12" rx="2"/></svg>`,
 }
 
-const navGroups = [
+const navGroups = computed(() => [
     [
-        { label: 'Главная', to: '/account', icon: icons.home },
-        { label: 'Оплата подписки', to: '/account/subscription', icon: icons.payment },
-        { label: 'Подключить VPN', to: '/account/connect', icon: icons.vpn, highlight: true },
-        { label: 'Устройства', to: '/account/devices', icon: icons.devices },
-        { label: 'Реферальная программа', to: '/account/referral', icon: icons.users, soon: true },
-        { label: 'Уведомления', to: '/account/notifications', icon: icons.bell, soon: true },
+        { label: t('cabinet.nav.home'), to: '/account', icon: icons.home },
+        { label: t('cabinet.nav.subscriptionPay'), to: '/account/subscription', icon: icons.payment },
+        { label: t('cabinet.nav.connect'), to: '/account/connect', icon: icons.vpn, highlight: true },
+        { label: t('cabinet.nav.devices'), to: '/account/devices', icon: icons.devices },
+        { label: t('cabinet.nav.referral'), to: '/account/referral', icon: icons.users, soon: true },
+        { label: t('cabinet.nav.notifications'), to: '/account/notifications', icon: icons.bell, soon: true },
     ],
     [
-        { label: 'Поддержка', to: 'https://t.me/darkNovaVpn_support', icon: icons.support, external: true },
-        { label: 'Документы', to: '/account/documents', icon: icons.docs, soon: true },
-        { label: 'Настройки', to: '/account/settings', icon: icons.settings, soon: true },
+        { label: t('cabinet.nav.support'), to: 'https://t.me/darkNovaVpn_support', icon: icons.support, external: true },
+        { label: t('cabinet.nav.documents'), to: '/account/documents', icon: icons.docs, soon: true },
+        { label: t('cabinet.nav.settings'), to: '/account/settings', icon: icons.settings, soon: true },
     ],
-]
+])
 
 function isNavActive(to) {
-    if (to === '/account') return route.path === '/account'
-    return route.path === to || route.path.startsWith(`${to}/`)
+    const current = route.path.replace(/\/$/, '') || '/'
+    const target = localePath(to).replace(/\/$/, '') || '/'
+    if (to === '/account') return current === target
+    return current === target || current.startsWith(`${target}/`)
 }
 
 const { adminUrl } = useAdminApi()
@@ -126,7 +138,7 @@ async function logout() {
         // даже если запрос упал — уводим с панели
     } finally {
         loggingOut.value = false
-        await navigateTo('/')
+        await navigateTo(localePath('/'))
     }
 }
 </script>

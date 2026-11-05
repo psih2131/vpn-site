@@ -25,14 +25,16 @@
 	width: 36px;
 	height: 36px;
 	flex-shrink: 0;
+	object-fit: contain;
+	display: block;
 }
 
 .header__logo-text {
 	font-family: $titleFont;
-	font-size: 22px;
-	font-weight: 700;
+	font-size: 24px;
+	font-weight: 500;
 	color: $color-text;
-	letter-spacing: -0.02em;
+	letter-spacing: 2px;
 }
 
 .header__nav {
@@ -142,7 +144,40 @@
 }
 
 .header__actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
 	flex-shrink: 0;
+}
+
+.lang-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 4px;
+	border-radius: $radius-pill;
+	background-color: $color-bg-card-inner;
+	border: 1px solid $color-border-light;
+}
+
+.lang-switch__link {
+	padding: 6px 10px;
+	border-radius: $radius-pill;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: $color-text-muted;
+	text-transform: uppercase;
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.lang-switch__link:hover,
+.lang-switch__link--active {
+	color: $color-text;
+}
+
+.lang-switch__link--active {
+	background-color: rgba(255, 255, 255, 0.08);
 }
 
 .header__connect-btn {
@@ -227,5 +262,16 @@
 		left: 0;
 		right: 0;
 		width: 100%;
+	}
+	.header__logo-text{
+		font-size: 20px;
+		letter-spacing: 1px;
+		font-weight: 500;
+	}
+	.header__user-email{
+		display: none;
+	}
+	.header__user{
+		padding: 6px;
 	}
 }

@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink to="/account/devices" class="connect-devices">
+    <NuxtLink :to="localePath('/account/devices')" class="connect-devices">
         <div class="connect-devices__main">
             <span class="connect-devices__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -10,8 +10,8 @@
                 </svg>
             </span>
             <div class="connect-devices__text">
-                <p class="connect-devices__title">Ваши полключенные устройства</p>
-                <p class="connect-devices__desc">Максимальное количество до {{ limit }} штук.</p>
+                <p class="connect-devices__title">{{ $t('cabinet.connect.devicesTitle') }}</p>
+                <p class="connect-devices__desc">{{ $t('cabinet.connect.devicesLimit', { limit }) }}</p>
             </div>
         </div>
 
@@ -26,6 +26,7 @@
 
 <script setup>
 const { adminUrl } = useAdminApi()
+const localePath = useLocalePath()
 
 const devices = ref([])
 const limit = 5

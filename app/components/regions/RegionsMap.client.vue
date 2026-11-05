@@ -27,7 +27,7 @@
             </div>
             <div class="regions-map__tooltip-status">
                 <span class="regions-map__tooltip-status-dot"></span>
-                <span class="regions-map__tooltip-status-text">Доступен</span>
+                <span class="regions-map__tooltip-status-text">{{ $t('regions.map.available') }}</span>
                 <span class="regions-map__tooltip-online">Online</span>
             </div>
             <div class="regions-map__tooltip-line"></div>
@@ -48,39 +48,46 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 
 setWorkerUrl(maplibreWorkerUrl)
 
-const servers = [
-    { id: 'fi', flag: 'fi', city: 'Хельсинки', country: 'Финляндия', lng: 24.9384, lat: 60.1699 },
-    { id: 'nl', flag: 'nl', city: 'Амстердам', country: 'Нидерланды', lng: 4.9041, lat: 52.3676 },
-    { id: 'de', flag: 'de', city: 'Берлин', country: 'Германия', lng: 10.4515, lat: 51.1657 },
-    { id: 'cz', flag: 'cz', city: 'Прага', country: 'Чехия', lng: 14.4378, lat: 50.0755 },
-    { id: 'ru', flag: 'ru', city: 'Москва', country: 'Россия', lng: 37.6173, lat: 55.7558 },
-    { id: 'us', flag: 'us', city: 'Нью-Йорк', country: 'США', lng: -74.006, lat: 40.7128 },
+const { t } = useI18n()
+
+const serverPoints = [
+    { id: 'fi', flag: 'fi', city: 'helsinki', country: 'finland', lng: 24.9384, lat: 60.1699 },
+    { id: 'nl', flag: 'nl', city: 'amsterdam', country: 'netherlands', lng: 4.9041, lat: 52.3676 },
+    { id: 'de', flag: 'de', city: 'berlin', country: 'germany', lng: 10.4515, lat: 51.1657 },
+    { id: 'cz', flag: 'cz', city: 'prague', country: 'czechia', lng: 14.4378, lat: 50.0755 },
+    { id: 'ru', flag: 'ru', city: 'moscow', country: 'russia', lng: 37.6173, lat: 55.7558 },
+    { id: 'us', flag: 'us', city: 'newYork', country: 'usa', lng: -74.006, lat: 40.7128 },
 ]
 
-const regions = [
-    { id: 'europe', label: 'Европа', center: [15, 54], zoom: 3.4 },
-    { id: 'baltic', label: 'Балтика', center: [22, 59], zoom: 4.2 },
-    { id: 'west', label: 'Запад', center: [6, 50], zoom: 4.4 },
-    { id: 'cis', label: 'СНГ', center: [37, 55], zoom: 3.8 },
-    { id: 'na', label: 'Северная Америка', center: [-95, 40], zoom: 3.2 },
-    { id: 'asia', label: 'Азия', center: [90, 40], zoom: 2.8 },
-    { id: 'latam', label: 'Лат. Америка', center: [-60, -15], zoom: 2.6 },
-    { id: 'oceania', label: 'Океания', center: [145, -25], zoom: 2.8 },
-    { id: 'me', label: 'Бл. Восток', center: [45, 28], zoom: 3.4 },
+const regionViews = [
+    { id: 'europe', center: [15, 54], zoom: 3.4 },
+    { id: 'baltic', center: [22, 59], zoom: 4.2 },
+    { id: 'west', center: [6, 50], zoom: 4.4 },
+    { id: 'cis', center: [37, 55], zoom: 3.8 },
+    { id: 'na', center: [-95, 40], zoom: 3.2 },
+    { id: 'asia', center: [90, 40], zoom: 2.8 },
+    { id: 'latam', center: [-60, -15], zoom: 2.6 },
+    { id: 'oceania', center: [145, -25], zoom: 2.8 },
+    { id: 'me', center: [45, 28], zoom: 3.4 },
 ]
+
+const regions = computed(() => regionViews.map((region) => ({
+    ...region,
+    label: t(`regions.map.${region.id}`),
+})))
 
 const PULSE_DURATION_MS = 2800
 const HOVER_LAYERS = ['servers-dot', 'servers-pulse']
 
 const serversGeoJson = {
     type: 'FeatureCollection',
-    features: servers.map((server, index) => ({
+    features: serverPoints.map((server, index) => ({
         type: 'Feature',
         properties: {
             id: server.id,
             flag: server.flag,
-            label: `${server.city}, ${server.country}`,
-            phase: index / servers.length,
+            label: `${t(`regions.map.${server.city}`)}, ${t(`regions.map.${server.country}`)}`,
+            phase: index / serverPoints.length,
             pulseRadius: 8,
             pulseOpacity: 0.3,
         },
@@ -238,7 +245,7 @@ function startPulse() {
 
 function selectRegion(id) {
     activeRegion.value = id
-    const region = regions.find((item) => item.id === id)
+    const region = regions.value.find((item) => item.id === id)
     if (!map || !region) return
 
     map.flyTo({
@@ -271,7 +278,7 @@ function initMap() {
         })
 
         map.on('error', (event) => {
-            const message = event?.error?.message || 'Не удалось загрузить карту'
+            const message = event?.error?.message || t('regions.map.loadError')
             errorText.value = message
             console.error('[regions-map]', event?.error || event)
         })
@@ -279,7 +286,7 @@ function initMap() {
         requestAnimationFrame(() => map?.resize())
         setTimeout(() => map?.resize(), 200)
     } catch (error) {
-        errorText.value = error?.message || 'Ошибка инициализации карты'
+        errorText.value = error?.message || t('regions.map.initError')
         console.error('[regions-map]', error)
     }
 }

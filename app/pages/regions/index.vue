@@ -3,23 +3,21 @@
         <section class="regions-hero">
             <div class="container">
                 <h1 class="regions-hero__title">
-                    VPN-серверы Dark Nova:
-                    <span class="regions-hero__accent">карта регионов</span>
+                    {{ $t('regions.title') }}
+                    <span class="regions-hero__accent">{{ $t('regions.accent') }}</span>
                 </h1>
-                <p class="regions-hero__subtitle">
-                    Нидерланды, Германия, Финляндия, США, Чехия и Россия — выберите локацию и подключайтесь за минуту.
-                </p>
+                <p class="regions-hero__subtitle">{{ $t('regions.subtitle') }}</p>
 
                 <div class="regions-hero__stats">
-                    <div class="regions-hero__stat">6 СТРАН</div>
-                    <div class="regions-hero__stat">10 ЛОКАЦИЙ</div>
-                    <div class="regions-hero__stat">99.9% UPTIME</div>
+                    <div class="regions-hero__stat">{{ $t('regions.countries') }}</div>
+                    <div class="regions-hero__stat">{{ $t('regions.locations') }}</div>
+                    <div class="regions-hero__stat">{{ $t('regions.uptime') }}</div>
                 </div>
 
                 <ClientOnly>
                     <RegionsMap />
                     <template #fallback>
-                        <div class="regions-map regions-map--fallback">Загрузка карты…</div>
+                        <div class="regions-map regions-map--fallback">{{ $t('regions.loading') }}</div>
                     </template>
                 </ClientOnly>
             </div>
@@ -27,7 +25,7 @@
 
         <section class="countries">
             <div class="container">
-                <h2 class="section-title">Список доступных vpn серверов</h2>
+                <h2 class="section-title">{{ $t('servers.title') }}</h2>
                 <div class="countries__grid">
                     <div
                         v-for="country in countries"
@@ -53,7 +51,7 @@
 
         <section id="faq" class="faq">
             <div class="container">
-                <h2 class="section-title faq__title">Ответы на вопросы</h2>
+                <h2 class="section-title faq__title">{{ $t('regions.faqTitle') }}</h2>
                 <div class="faq__list">
                     <div
                         v-for="(item, index) in faqItems"
@@ -92,33 +90,20 @@
 <script setup>
 import { Vue3SlideUpDown } from 'vue3-slide-up-down'
 
-const pageTitle = 'VPN-серверы по странам — карта регионов | Dark Nova'
-const pageDescription = 'Карта VPN-серверов Dark Nova: Нидерланды, Германия, Финляндия, США, Чехия и Россия. Список локаций и протоколов VLESS / Hysteria.'
-const pageUrl = 'https://darknovavpn.com/regions'
-const ogImage = 'https://darknovavpn.com/dark-nova-green-eyes.png'
+const { t, locale } = useI18n()
+const localePath = useLocalePath()
+const countries = useVpnServers()
 
-const faqItems = [
-    {
-        question: 'В каких странах есть серверы Dark Nova?',
-        answer: 'Сейчас доступны локации в Нидерландах, Германии, Финляндии, США, Чехии и России. На карте выше отмечены страны с серверами, ниже — полный список протоколов VLESS и Hysteria.',
-    },
-    {
-        question: 'Одна подписка работает на все регионы?',
-        answer: 'Да. Одна ссылка-подписка из Telegram-бота открывает все доступные серверы в Happ или INCY. Отдельно покупать доступ к каждой стране не нужно.',
-    },
-    {
-        question: 'Как выбрать страну в Happ или INCY?',
-        answer: 'Добавьте подписку из бота в клиент, обновите список серверов и выберите нужную локацию — например Германию или Нидерланды. Подключение занимает несколько секунд.',
-    },
-    {
-        question: 'Что делать, если сервер не подключается?',
-        answer: 'Смените локацию в списке, проверьте что подписка активна и ссылка вставлена целиком. Если не помогло — напишите в поддержку Dark Nova в Telegram, подскажем по вашему устройству.',
-    },
-    {
-        question: 'Чем отличаются VLESS и Hysteria?',
-        answer: 'VLESS Reality хорошо маскируется под обычный HTTPS-трафик. Hysteria часто даёт более стабильную скорость на нестабильных сетях. В подписке обычно есть оба варианта — можно переключаться и сравнить.',
-    },
-]
+const siteUrl = 'https://darknovavpn.com'
+const ogImage = `${siteUrl}/dark-nova-green-eyes.png`
+
+const faqItems = computed(() => Array.from({ length: 5 }, (_, index) => {
+    const n = index + 1
+    return {
+        question: t(`regions.q${n}`),
+        answer: t(`regions.a${n}`),
+    }
+}))
 
 const openFaq = ref(null)
 
@@ -126,56 +111,55 @@ function toggleFaq(index) {
     openFaq.value = openFaq.value === index ? null : index
 }
 
-useHead({
-    title: pageTitle,
-    meta: [
-        { name: 'description', content: pageDescription },
-        { name: 'robots', content: 'index, follow' },
-        { property: 'og:title', content: pageTitle },
-        { property: 'og:description', content: pageDescription },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: pageUrl },
-        { property: 'og:image', content: ogImage },
-        { property: 'og:image:alt', content: 'VPN-серверы Dark Nova — карта регионов' },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: pageTitle },
-        { name: 'twitter:description', content: pageDescription },
-        { name: 'twitter:image', content: ogImage },
-    ],
-    link: [
-        { rel: 'canonical', href: pageUrl },
-    ],
-    script: [
-        {
-            type: 'application/ld+json',
-            children: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'FAQPage',
-                mainEntity: faqItems.map((item) => ({
-                    '@type': 'Question',
-                    name: item.question,
-                    acceptedAnswer: {
-                        '@type': 'Answer',
-                        text: item.answer,
-                    },
-                })),
-            }),
-        },
-    ],
-})
+useHead(() => {
+    const pageTitle = t('regions.metaTitle')
+    const pageDescription = t('regions.metaDescription')
+    const pagePath = localePath('/regions')
+    const pageUrl = `${siteUrl}${pagePath}`
+    const lang = locale.value === 'en' ? 'en' : 'ru'
 
-const countries = [
-    { flag: 'nl', name: 'Нидерланды Vless', city: 'VLESS | TCP | Reality', badge: 'Extra Fast', badgeType: 'fast' },
-    { flag: 'nl', name: 'Нидерланды Hysteria', city: 'Hysteria | hysteria | TLS', badge: 'Extra Fast', badgeType: 'fast' },
-    { flag: 'de', name: 'Германия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'de', name: 'Германия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'fi', name: 'Финляндия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'fi', name: 'Финляндия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'us', name: 'США Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'us', name: 'США Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'ru', name: 'Россия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'ru', name: 'Россия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'cz', name: 'Чехия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'globe', name: 'Ютуб без рекламы', city: 'VLESS | xhttp | TLS', badge: 'No Ads', badgeType: 'noads' },
-]
+    return {
+        title: pageTitle,
+        htmlAttrs: { lang },
+        meta: [
+            { name: 'description', content: pageDescription },
+            { name: 'robots', content: 'index, follow' },
+            { property: 'og:title', content: pageTitle },
+            { property: 'og:description', content: pageDescription },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: pageUrl },
+            { property: 'og:locale', content: lang === 'en' ? 'en_US' : 'ru_RU' },
+            { property: 'og:image', content: ogImage },
+            { property: 'og:image:alt', content: t('regions.imageAlt') },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: pageTitle },
+            { name: 'twitter:description', content: pageDescription },
+            { name: 'twitter:image', content: ogImage },
+        ],
+        link: [
+            { rel: 'canonical', href: pageUrl },
+            { rel: 'alternate', hreflang: 'ru', href: `${siteUrl}/regions` },
+            { rel: 'alternate', hreflang: 'en', href: `${siteUrl}/en/regions` },
+            { rel: 'alternate', hreflang: 'x-default', href: `${siteUrl}/regions` },
+        ],
+        script: [
+            {
+                type: 'application/ld+json',
+                children: JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'FAQPage',
+                    inLanguage: lang === 'en' ? 'en-US' : 'ru-RU',
+                    mainEntity: faqItems.value.map((item) => ({
+                        '@type': 'Question',
+                        name: item.question,
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: item.answer,
+                        },
+                    })),
+                }),
+            },
+        ],
+    }
+})
 </script>

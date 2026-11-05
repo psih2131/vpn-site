@@ -1,25 +1,25 @@
 <template>
     <section class="sub-recent">
-        <h2 class="sub-recent__title">История транзакций</h2>
+        <h2 class="sub-recent__title">{{ $t('cabinet.payments.title') }}</h2>
 
         <div class="sub-recent__table-wrap">
             <table class="sub-recent__table">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Сумма</th>
-                        <th>Валюта</th>
-                        <th>Статус</th>
-                        <th>Создан</th>
-                        <th>Оплачен</th>
+                        <th>{{ $t('cabinet.payments.amount') }}</th>
+                        <th>{{ $t('cabinet.payments.currency') }}</th>
+                        <th>{{ $t('cabinet.payments.status') }}</th>
+                        <th>{{ $t('cabinet.payments.created') }}</th>
+                        <th>{{ $t('cabinet.payments.paid') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-if="pending">
-                        <td colspan="6">Загрузка…</td>
+                        <td colspan="6">{{ $t('cabinet.loading') }}</td>
                     </tr>
                     <tr v-else-if="payments.length === 0">
-                        <td colspan="6">Оплат пока нет</td>
+                        <td colspan="6">{{ $t('cabinet.payments.empty') }}</td>
                     </tr>
                     <template v-else>
                         <tr v-for="row in payments" :key="row.id">
@@ -30,7 +30,7 @@
                             <td>{{ row.currency }}</td>
                             <td>
                                 <span class="sub-recent__status" :class="statusClass(row.status)">
-                                    {{ row.status }}
+                                    {{ statusLabel(row.status) }}
                                 </span>
                             </td>
                             <td>{{ formatDate(row.created_at) }}</td>
@@ -45,9 +45,20 @@
 
 <script setup>
 const { adminUrl } = useAdminApi()
+const { t, locale } = useI18n()
 
 const payments = ref([])
 const pending = ref(true)
+
+function statusLabel(status) {
+    const key = {
+        CONFIRMED: 'confirmed',
+        CANCELED: 'canceled',
+        PENDING: 'pending',
+    }[status]
+
+    return key ? t(`cabinet.payments.${key}`) : status
+}
 
 function statusClass(status) {
     if (status === 'CONFIRMED') return 'is-success'
@@ -62,7 +73,7 @@ function formatDate(value) {
     const date = new Date(value)
     if (Number.isNaN(date.getTime())) return '—'
 
-    return date.toLocaleDateString('ru-RU')
+    return date.toLocaleDateString(locale.value === 'en' ? 'en-GB' : 'ru-RU')
 }
 
 async function loadPayments() {

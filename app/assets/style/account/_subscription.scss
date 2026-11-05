@@ -181,6 +181,13 @@
 	margin-top: 14px;
 }
 
+.sub-pay__actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
 .sub-pay__ready {
 	width: 100%;
 	padding: 14px 16px;
@@ -213,21 +220,31 @@
 
 .sub-pay__btn {
 	display: inline-flex;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	gap: 10px;
 	min-width: 220px;
-	padding: 13px 22px;
+	padding: 12px 18px;
 	border-radius: 12px;
 	background: #fff;
 	color: #111;
 	font-family: $textFont;
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 650;
+	line-height: 1.2;
 	transition: opacity 0.15s ease;
 
 	&:hover {
 		opacity: 0.9;
 	}
+}
+
+.sub-pay__sbp-icon,
+.sub-pay__btc-icon {
+	width: 32px;
+	height: 32px;
+	flex-shrink: 0;
 }
 
 .sub-recent {
@@ -364,6 +381,11 @@
 
 	.sub-pay__footer {
 		justify-content: stretch;
+	}
+
+	.sub-pay__actions {
+		flex-direction: column;
+		width: 100%;
 	}
 
 	.sub-pay__btn {

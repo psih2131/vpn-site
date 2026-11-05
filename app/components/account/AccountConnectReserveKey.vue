@@ -1,7 +1,7 @@
 <template>
     <section class="connect-key">
         <div class="connect-key__top">
-            <span class="connect-key__label">Резервный VPN ключ</span>
+            <span class="connect-key__label">{{ $t('cabinet.key.reserve') }}</span>
         </div>
 
         <UiConnectKeyField :value="connectionKey" filename="vpn-reserve-key.txt" input />
@@ -15,8 +15,8 @@
                     </svg>
                 </span>
                 <div>
-                    <p class="connect-key__info-title">Запасной ключ на случай сбоя</p>
-                    <p class="connect-key__info-lead">Подключайте только если основной VPN ключ перестал работать.</p>
+                    <p class="connect-key__info-title">{{ $t('cabinet.key.reserveTitle') }}</p>
+                    <p class="connect-key__info-lead">{{ $t('cabinet.key.reserveLead') }}</p>
                 </div>
             </div>
 
@@ -24,22 +24,22 @@
                 <li class="connect-key__info-item">
                     <span class="connect-key__info-num">01</span>
                     <div>
-                        <p class="connect-key__info-item-title">Когда нужен</p>
-                        <p class="connect-key__info-item-text">Не обновляется список серверов, не идёт подключение или приложение показывает ошибку.</p>
+                        <p class="connect-key__info-item-title">{{ $t('cabinet.key.whenTitle') }}</p>
+                        <p class="connect-key__info-item-text">{{ $t('cabinet.key.whenText') }}</p>
                     </div>
                 </li>
                 <li class="connect-key__info-item">
                     <span class="connect-key__info-num">02</span>
                     <div>
-                        <p class="connect-key__info-item-title">Чем отличается</p>
-                        <p class="connect-key__info-item-text">Серверы идут по отдельности. Если один узел заблокируют, остальные продолжат работать.</p>
+                        <p class="connect-key__info-item-title">{{ $t('cabinet.key.diffTitle') }}</p>
+                        <p class="connect-key__info-item-text">{{ $t('cabinet.key.diffText') }}</p>
                     </div>
                 </li>
                 <li class="connect-key__info-item">
                     <span class="connect-key__info-num">03</span>
                     <div>
-                        <p class="connect-key__info-item-title">Как добавить</p>
-                        <p class="connect-key__info-item-text">Добавляется точно так же, как основной ключ. Если основной уже был в приложении — лучше удалить его и подключить резервный.</p>
+                        <p class="connect-key__info-item-title">{{ $t('cabinet.key.addTitle') }}</p>
+                        <p class="connect-key__info-item-text">{{ $t('cabinet.key.addText') }}</p>
                     </div>
                 </li>
             </ul>
@@ -52,8 +52,9 @@ import { useNotificationStore } from '~/stores/notification'
 
 const { adminUrl } = useAdminApi()
 const storeNotification = useNotificationStore()
+const { t } = useI18n()
 
-const connectionKey = ref('Загрузка…')
+const connectionKey = ref(t('cabinet.loading'))
 
 async function loadKey() {
     const headers = import.meta.server
@@ -73,7 +74,7 @@ async function loadKey() {
         connectionKey.value = '—'
         storeNotification.setNotification({
             type: 'error',
-            text: 'Не удалось получить ключ',
+            text: t('cabinet.key.loadFailed'),
         })
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="account-content">
-        <h1 class="account-content__title">Настройки</h1>
+        <h1 class="account-content__title">{{ $t('cabinet.nav.settings') }}</h1>
     </div>
 </template>
 

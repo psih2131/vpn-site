@@ -36,18 +36,5 @@ defineProps({
     },
 })
 
-const countries = [
-    { flag: 'nl', name: 'Нидерланды Vless', city: 'VLESS | TCP | Reality', badge: 'Extra Fast', badgeType: 'fast' },
-    { flag: 'nl', name: 'Нидерланды Hysteria', city: 'Hysteria | hysteria | TLS', badge: 'Extra Fast', badgeType: 'fast' },
-    { flag: 'de', name: 'Германия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'de', name: 'Германия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'fi', name: 'Финляндия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'fi', name: 'Финляндия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'us', name: 'США Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'us', name: 'США Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'ru', name: 'Россия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'ru', name: 'Россия Hysteria', city: 'Hysteria | hysteria | TLS' },
-    { flag: 'cz', name: 'Чехия Vless', city: 'VLESS | TCP | Reality' },
-    { flag: 'globe', name: 'Ютуб без рекламы', city: 'VLESS | xhttp | TLS', badge: 'No Ads', badgeType: 'noads' },
-]
+const countries = useVpnServers()
 </script>

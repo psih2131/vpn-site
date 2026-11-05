@@ -6,7 +6,7 @@
         aria-modal="true"
         :aria-labelledby="selected ? 'device-guide-title' : 'device-modal-title'"
     >
-        <button class="modal__close device-modal__x" type="button" aria-label="Закрыть" @click="closeModal">
+        <button class="modal__close device-modal__x" type="button" :aria-label="$t('cabinet.nav.close')" @click="closeModal">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
@@ -24,8 +24,8 @@
 
         <template v-else>
             <div class="device-modal__head">
-                <h2 id="device-modal-title" class="device-modal__title">Выберите ваше устройство</h2>
-                <p class="device-modal__text">Мы подберём подходящий клиент и инструкцию</p>
+                <h2 id="device-modal-title" class="device-modal__title">{{ $t('cabinet.guide.pickTitle') }}</h2>
+                <p class="device-modal__text">{{ $t('cabinet.guide.pickText') }}</p>
             </div>
 
             <div class="device-modal__grid">
@@ -41,7 +41,7 @@
                 </button>
             </div>
 
-            <button class="device-modal__close" type="button" @click="closeModal">Закрыть</button>
+            <button class="device-modal__close" type="button" @click="closeModal">{{ $t('cabinet.nav.close') }}</button>
         </template>
         </div>
     </div>

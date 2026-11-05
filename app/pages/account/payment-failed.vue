@@ -7,12 +7,10 @@
                 </svg>
             </span>
             <p class="payment-result__eyebrow">Dark Nova</p>
-            <h1 class="payment-result__title">Оплата не прошла</h1>
-            <p class="payment-result__text">
-                Платёж отменён или отклонён. Деньги не списаны — можно вернуться и попробовать ещё раз.
-            </p>
-            <NuxtLink to="/account/subscription" class="payment-result__btn">
-                Вернуться к оплате
+            <h1 class="payment-result__title">{{ $t('cabinet.paymentFailed.title') }}</h1>
+            <p class="payment-result__text">{{ $t('cabinet.paymentFailed.text') }}</p>
+            <NuxtLink :to="localePath('/account/subscription')" class="payment-result__btn">
+                {{ $t('cabinet.paymentFailed.cta') }}
             </NuxtLink>
         </div>
     </main>
@@ -23,8 +21,11 @@ definePageMeta({
     layout: 'default',
 })
 
+const { t } = useI18n()
+const localePath = useLocalePath()
+
 useSeoMeta({
-    title: 'Оплата не прошла — Dark Nova',
+    title: () => t('cabinet.paymentFailed.meta'),
     robots: 'noindex, nofollow',
 })
 </script>

@@ -1,29 +1,28 @@
 <template>
     <header class="header">
         <div class="container header__inner">
-            <a href="/" class="header__logo">
-                <svg class="header__logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 2L32 8V18C32 26 26 32 18 34C10 32 4 26 4 18V8L18 2Z" fill="#00D981"/>
-                    <path d="M18 10L24 13V18C24 22 21 25 18 26C15 25 12 22 12 18V13L18 10Z" fill="#000"/>
-                </svg>
+            <NuxtLink :to="$localePath('/')" class="header__logo">
+                <img class="header__logo-icon" :src="logoMark" alt="">
                 <span class="header__logo-text">Dark Nova</span>
-            </a>
+            </NuxtLink>
 
             <nav class="header__nav">
                 <div class="header__nav-item">
                     <span class="header__nav-badge">Free</span>
-                    <a href="/#hero" class="header__nav-link">Попробовать бесплатно</a>
+                    <a :href="`${$localePath('/')}#hero`" class="header__nav-link">{{ $t('header.tryFree') }}</a>
                 </div>
-                <a href="/#pricing" class="header__nav-link">Тарифный план</a>
-                <NuxtLink to="/regions" class="header__nav-link">Доступные регионы</NuxtLink>
-                <NuxtLink to="/blog" class="header__nav-link">Блог</NuxtLink>
-                <a href="https://t.me/darkNovaVpn_support" target="_blank" rel="noopener noreferrer" class="header__nav-link">Поддержка</a>
+                <a :href="`${$localePath('/')}#pricing`" class="header__nav-link">{{ $t('header.pricing') }}</a>
+                <NuxtLink :to="$localePath('/regions')" class="header__nav-link">{{ $t('header.regions') }}</NuxtLink>
+                <NuxtLink :to="$localePath('/blog')" class="header__nav-link">{{ $t('header.blog') }}</NuxtLink>
+                <a href="https://t.me/darkNovaVpn_support" target="_blank" rel="noopener noreferrer" class="header__nav-link">{{ $t('header.support') }}</a>
             </nav>
 
             <div class="header__actions">
+                <LangSwitch />
+
                 <NuxtLink
                     v-if="user"
-                    to="/account"
+                    :to="$localePath('/account')"
                     class="header__user"
                 >
                     <span class="header__user-avatar" aria-hidden="true">{{ userInitial }}</span>
@@ -36,7 +35,7 @@
                     class="header__connect-btn"
                     @click="openAuthModal"
                 >
-                    Авторизоваться
+                    {{ $t('header.signIn') }}
                 </button>
             </div>
         </div>
@@ -45,6 +44,7 @@
 
 <script setup>
 import { useModalStore } from '~/stores/modal'
+import logoMark from '~/assets/images/logo.png'
 
 const storeModal = useModalStore()
 const { adminUrl } = useAdminApi()
