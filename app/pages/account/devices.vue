@@ -54,33 +54,23 @@
         </div>
 
         <section class="devices-list">
-            <p class="devices-list__label">{{ $t('cabinet.devices.yours') }}</p>
-            <div
-                v-for="device in devices"
-                :key="device.id"
-                class="devices-slot devices-slot--active"
-            >
-                <span class="devices-slot__plus" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/>
-                        <path d="M10 19v-3.96 3.15"/>
-                        <path d="M7 19h5"/>
-                        <rect width="6" height="10" x="16" y="12" rx="2"/>
-                    </svg>
-                </span>
-                <span class="devices-slot__info">
-                    <span class="devices-slot__name">{{ device.deviceModel || device.deviceOs || $t('cabinet.devices.device') }}</span>
-                    <span class="devices-slot__meta">{{ deviceLabel(device) }}</span>
-                </span>
+            <div class="devices-list__head">
+                <p class="devices-list__label">{{ $t('cabinet.devices.yours') }}</p>
+                <AccountDevicesDeleteAll @deleted="loadDevices" />
             </div>
-            <div
+            <AccountDevicesElement
+                v-for="device in devices"
+                :key="device.hwid || device.id"
+                :id="device.hwid || device.id"
+                :name="device.deviceModel || device.deviceOs || $t('cabinet.devices.device')"
+                :meta="deviceLabel(device)"
+                @deleted="loadDevices"
+            />
+            <AccountDevicesEmptyElement
                 v-for="index in free"
                 :key="`free-${index}`"
-                class="devices-slot"
-            >
-                <span class="devices-slot__plus" aria-hidden="true">+</span>
-                <span>{{ $t('cabinet.devices.freeSlot') }}</span>
-            </div>
+                :label="$t('cabinet.devices.freeSlot')"
+            />
         </section>
     </div>
 </template>

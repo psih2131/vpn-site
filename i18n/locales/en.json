@@ -373,7 +373,13 @@
       "vpnSection": "VPN section →",
       "yours": "Your devices",
       "device": "Device",
-      "freeSlot": "Free slot"
+      "freeSlot": "Free slot",
+      "remove": "Delete",
+      "removedText": "This device is no longer linked to your key.",
+      "removeFailedText": "Couldn't remove the device. Try again in a moment.",
+      "removeAll": "Delete all devices",
+      "removedAllText": "All devices are no longer linked to your key.",
+      "removeAllFailedText": "Couldn't remove the devices. Try again in a moment."
     },
     "connect": {
       "title": "Your VPN key",
