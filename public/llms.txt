@@ -23,6 +23,7 @@ Dark Nova выдаёт ссылку-подписку в Telegram а также �
 - [Что такое ключ для VPN](https://darknovavpn.com/blog/chto-takoe-klyuch-dlya-vpn-konfig-podpiska-i-vless): Конфиг, подписка и VLESS
 - [Великий китайский файрвол](https://darknovavpn.com/blog/velikiy-kitayskiy-fayrvol-kak-ustroen-internet-v-kitae): Как устроен интернет в Китае
 - [Karing VPN: скачать и настроить](https://darknovavpn.com/blog/karing-vpn-skachat-i-nastroit): Что такое Karing, где скачать и как настроить
+- [Почему ChatGPT не работает с VPN](https://darknovavpn.com/blog/pochemu-chatgpt-ne-rabotaet-s-vpn-chto-proverit): Что проверить, если ChatGPT пишет «недоступен в вашем регионе» при включённом VPN
 
 ## Optional
 
